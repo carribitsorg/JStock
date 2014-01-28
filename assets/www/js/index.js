@@ -100,7 +100,9 @@
 			}
 		});
 	});
+        /*::COMMENT::*/
 	//h2 widget
+        /*
 	$( document ).on( "mobileinit", function(){
 		$.widget( "mobile.h2linker", {
 			options:{
@@ -166,6 +168,7 @@
 			$(e.target).h2linker();
 		}
 	});
+                    */
 })( jQuery );
 
 // Turn off AJAX for local file browsing
@@ -238,7 +241,8 @@ $( document ).on( "pagecreate", ".jqm-demos", function( event ) {
 		text += " " + str;
 	}
 
-	$( ".jqm-version" ).html( text );
+/*::COMMENT::*/
+	//$( ".jqm-version" ).html( text );
 
 	// Global navmenu panel
 	$( ".jqm-navmenu-panel ul" ).listview();
@@ -651,7 +655,7 @@ $.fn.viewSourceCode = function() {
 };
 
 $( document ).on( "pagebeforecreate", "[data-role='page']", function() {
-	$( this ).find( "[data-demo-html], [data-demo-js], [data-demo-css], [data-demo-php]" ).viewSourceCode();
+	//$( this ).find( "[data-demo-html], [data-demo-js], [data-demo-css], [data-demo-php]" ).viewSourceCode();
 	SyntaxHighlighter.defaults['toolbar'] = false;
 	SyntaxHighlighter.defaults['auto-links'] = false;
 });

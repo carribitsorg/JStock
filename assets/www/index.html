@@ -9,15 +9,7 @@
         <link rel="stylesheet" href="lib/ios_inspired/styles.css"/>
         <link rel="stylesheet" href="css/styles.css"/>
 
-        <!-- CSS2 -->
-        <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
-        <link rel="stylesheet" href="css/jqm-demos.css">
-        <!-- JS2 -->
-        <script src="js/jquery.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/jquery.mobile-1.4.0.min.js"></script>
 
-        <!-- Libraries -->
         <script src="lib/jquery.js"></script>
         <script src="js/jqm-config.js"></script> <!-- jQuery Mobile config should be loaded after jQuery and before jQuery Mobile -->
         <script src="lib/jquery.mobile/jquery.mobile-1.1.0.js"></script>
@@ -93,12 +85,11 @@
 
         <script type="text/html" class="template" id="main-page">
 
-            <div data-role="header" class="jqm-header">
-            <h2><a href="../" title="jQuery Mobile Demos home"><img src="../_assets/img/jquery-logo.png" alt="jQuery Mobile"></a></h2>
-            <p><span class="jqm-version"></span> Demos</p>
-            <a href="#" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
-            <a href="#" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-search ui-nodisc-icon ui-alt-icon ui-btn-right">Search</a>
-            </div><!-- /header -->
+           <div data-role="header" data-position="fixed">
+            <h1>Add New Post</h1>
+            <a href="#"  data-theme="a">Home</a>
+            <a href="#about" data-theme="a">About</a>
+            </div>
 
             <div data-role="content">
             <ul data-role="listview" data-inset="true">

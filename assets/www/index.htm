@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>JAMAICA STOCK EXCHANGE</title>
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" href="css/font.css">
+        <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
+        <link rel="stylesheet" href="css/jqm-demos.css">
+        <script src="js/jquery.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/jquery.mobile-1.4.0.min.js"></script>
+
+
+        <style type="text/css">
+            .ui-icon-home:after{background-image:url('images/home_i.png')}
+            .ui-icon-calendar:after{background-image:url('images/calendar_i.png')}
+            .ui-icon-news:after{background-image:url('images/news_i.png')}
+            .ui-icon-report:after{background-image:url('images/report_i.png')}
+
+
+
+            .application-icon .ui-btn-icon-left:after, 
+            .application-icon .ui-btn-icon-right:after,
+            .application-icon .ui-btn-icon-top:after, 
+            .application-icon .ui-btn-icon-bottom:after,
+            .application-icon .ui-btn-icon-notext:after {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 48px;
+                height: 48px;
+            }
+
+            .application-icon .ui-btn-icon-left:after, 
+            .application-icon .ui-btn-icon-right:after, 
+            .application-icon .ui-btn-icon-top:after, 
+            .application-icon .ui-btn-icon-bottom:after, 
+            .application-icon .ui-btn-icon-notext:after {
+
+                background-color: rgba(255,255,255,0);
+                background-position: center center;
+                background-repeat: no-repeat;
+                -webkit-border-radius: 1em;
+                border-radius: 1em;
+            }
+
+            .application-icon .ui-btn-icon-bottom:after {
+                bottom: -0.35em;
+            }
+
+            .ui-btn-active{ 
+                color: #FFF !important;
+                border-color: red;
+                background: none !important;
+                background-color: rgba(255,255,255,0) !important;  
+                border-width: 0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div data-role="page" class="jqm-demos" data-quicklinks="true">
+
+            <div data-role="header" data-tap-toggle="false" class="jqm-header" data-position="fixed">
+                <h2><a href="../" title="jQuery Mobile Demos home"><img src="images/logo.png" alt="jQuery Mobile"></a></h2>
+                <a href="#" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+                <a href="#" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-search ui-nodisc-icon ui-alt-icon ui-btn-right">Search</a>
+            </div>
+
+            <div role="main" class="ui-content jqm-content">
+
+                <h1>Jamaica Stock Exchange</h1>
+
+                <p>The toolbar widget is used to enhance headers and footers.</p>
+                <div class="ui-block-a">
+                    <div class="jqm-block-content">
+                        <h3>Daily Main Market Summary : Jan 2014</h3>
+
+                        <p><a href="pages/index.html" data-ajax="false" class="ui-link">Pages</a></p>
+                        <p><a href="navigation/index.html" data-ajax="false" class="ui-link">Navigation</a></p>
+                        <p><a href="loader/index.html" data-ajax="false" class="ui-link">Loader</a></p>
+                        <p><a href="transitions/index.html" data-ajax="false" class="ui-link">Transitions</a></p>
+                    </div>
+                    
+                    
+                </div>
+                <br><br><br>
+                <p>The header is a toolbar at the top of the page that usually contains the page title text and optional buttons positioned to the left and/or right of the title for navigation or actions.</p>
+
+                <p>The title text is normally an H1 heading element but it's possible to use any heading level (H1-H6) to allow for semantic flexibility. The framework add class <code>ui-title</code> to headings that are immediate children of toolbars. All heading levels with class <code>ui-title</code> are styled identically by default to maintain visual consistency.</p>
+                <p>The header is a toolbar at the top of the page that usually contains the page title text and optional buttons positioned to the left and/or right of the title for navigation or actions.</p>
+
+                <p>The title text is normally an H1 heading element but it's possible to use any heading level (H1-H6) to allow for semantic flexibility. The framework add class <code>ui-title</code> to headings that are immediate children of toolbars. All heading levels with class <code>ui-title</code> are styled identically by default to maintain visual consistency.</p>
+
+
+            </div>
+            <div id="main_head" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+                <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+                    <li data-filtertext="demos homepage" data-icon="home"><a href=".././">Main Market</a></li>
+                    <li data-filtertext="introduction overview getting started"><a href="../intro/" data-ajax="false">Jnr. Market</a></li>
+                    <li data-filtertext="buttons button markup buttonmarkup method anchor link button element"><a href="../button-markup/" data-ajax="false">Comb. Market</a></li>
+                    <li data-filtertext="form button widget input button submit reset"><a href="../button/" data-ajax="false">US Market</a></li>
+                    <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false">
+
+                </ul>
+            </div>
+
+
+            <div data-role="navbar" data-position="fixed" data-iconpos="bottom" class="ui-footer ui-footer-fixed slideup ui-bar-inherit application-icon">
+                <ul>
+                    <li><a href="#" data-icon="home"></a></li>
+                    <li><a href="#" data-icon="report" class="ui-btn-active"></a></li>
+                    <li><a href="#" data-icon="calendar"></a></li>
+                    <li><a href="#" data-icon="news"></a></li>
+                </ul>
+            </div>
+
+
+            <div data-role="panel" class="jqm-search-panel" data-position="right" data-display="overlay" data-theme="a">
+                <div class="jqm-search">
+                    <ul class="jqm-list" data-filter-placeholder="Search market" data-filter-reveal="true">
+                        <li data-filtertext="introduction overview getting started"><a href="../intro/" data-ajax="false">Introduction</a></li>
+                        <li data-filtertext="buttons button markup buttonmarkup method anchor link button element"><a href="../button-markup/" data-ajax="false">Buttons</a></li>
+                        <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

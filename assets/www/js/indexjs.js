@@ -1,4 +1,7 @@
+define([ "jquery"], function( $ ) {
+
 (function( $, undefined ) {
+    console.log($);
 	//special click handling to make widget work remove after nav changes in 1.4
 	var href,
 		ele = "";
@@ -212,7 +215,8 @@ if ( location.protocol.substr(0,4)  === 'file' ||
 			.append( "<p>The AJAX-based navigation used throughout the jQuery Mobile docs may need to be viewed on a web server to work in certain browsers. If you see an error message when you click a link, please try a different browser.</p>" );
 
 			$( document ).on( "pagecreate", function( event ) {
-				$( event.target ).append( message );
+                                /*::COMMENT::*/
+				//$( event.target ).append( message );
 			});
 		});
 	});
@@ -718,6 +722,7 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 
 ;(function()
 {
+    return;
 	// CommonJS
 	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
 
@@ -772,6 +777,7 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 
 ;(function()
 {
+    return;
 	// CommonJS
 	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
 
@@ -809,6 +815,7 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 
 ;(function()
 {
+    return;
 	// CommonJS
 	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
 
@@ -885,6 +892,7 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 
 ;(function()
 {
+    return;
 	// CommonJS
 	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
 
@@ -1029,3 +1037,4 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 		return ($.event.dispatch || $.event.handle).apply(this, args);
 	}
 })(jQuery);
+} );

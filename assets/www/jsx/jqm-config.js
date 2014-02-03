@@ -1,5 +1,5 @@
 $(document).bind("mobileinit", function () {
-
+return;
   // Disable jQueryMobile routing.
   $.mobile.ajaxEnabled = false;
   $.mobile.linkBindingEnabled = false;

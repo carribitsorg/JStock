@@ -48,6 +48,7 @@ define([ "jquery","backbone", "../models/CategoryModel", "../collections/Categor
 
             // Stores the current Category View  inside of the currentView variable
             var currentView = this[ type + "View" ];
+            console.log(currentView);
 
             // If there are no collections in the current Category View
             if(!currentView.collection.length) {

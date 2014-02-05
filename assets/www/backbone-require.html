@@ -90,7 +90,7 @@
         </style>
     </head>
     <body>
-        <div id="categories" data-role="page" data-title="Categories" class="jqm-demos" data-quicklinks="true">
+        <div id="appview" data-role="page" data-title="Categories" class="jqm-demos" data-quicklinks="true">
 
             <div data-role="header" data-tap-toggle="false" class="jqm-header" data-position="fixed">
                 <h2><a href="../" title="jQuery Mobile Demos home"><img src="images/logo.png" alt="jQuery Mobile"></a></h2>
@@ -108,21 +108,16 @@
             </div>
 
             <div id="main" role="main" class="ui-content jqm-content">
-                <h2>Select a Category Below:</h2>
-                <ul data-role="listview" data-inset="true">
-                    <li><a href="#category?animals" class="animals">Animals</a></li>
-                    <li><a href="#category?colors" class="colors">Colors</a></li>
-                    <li><a href="#category?vehicles" class="vehicles">Vehicles</a></li>
-                </ul>
+               
             </div><!-- /content -->
 
             <div data-role="navbar" data-position="fixed" data-iconpos="bottom" class="ui-footer ui-footer-fixed slideup ui-bar-inherit application-icon">
                 <ul>
-                    <li><a href="#" data-icon="home"></a></li>
-                    <li><a href="#" data-icon="report" class="ui-btn-active"></a></li>
-                    <li><a href="#" data-icon="calendar"></a></li>
-                    <li><a href="#" data-icon="news"></a></li>
-                    <li><a href="#" data-icon="quote"></a></li>
+                    <li><a href="#home" data-icon="home"></a></li>
+                    <li><a href="#report" data-icon="report" class="ui-btn-active"></a></li>
+                    <li><a href="#calendar" data-icon="calendar"></a></li>
+                    <li><a href="#news" data-icon="news"></a></li>
+                    <li><a href="#quote" data-icon="quote"></a></li>
                 </ul>
             </div>
 
@@ -185,6 +180,19 @@
             </div><!-- /content -->
 
         </div>
+        
+        <div id="report" data-role="page" data-title="Report">
+
+            <div data-role="header">
+                <h1>Report</h1>
+            </div><!-- /header -->
+
+            <div role="main" class="ui-content">
+                <ul data-role="listview" data-inset="true">
+                </ul>
+            </div><!-- /content -->
+
+        </div>
 
         <!-- Underscore Template that is used to display all of the Category Models -->
         <script id="categoryItems" type="text/template">
@@ -198,7 +206,5 @@
             <% }); %>
 
         </script>
-
-
     </body>
 </html>

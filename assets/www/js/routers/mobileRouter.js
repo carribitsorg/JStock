@@ -2,83 +2,100 @@
 // =============
 
 // Includes file dependencies
-define([ "jquery","backbone", "../models/CategoryModel", "../collections/CategoriesCollection", "../views/CategoryView","indexjs" ], function( $, Backbone, CategoryModel, CategoriesCollection, CategoryView,indexjs ) {
+define(["jquery", "backbone", "../models/CategoryModel", "../collections/CategoriesCollection", "indexjs",
+    "../views/CategoryView", "../views/ReportView"],
+        function($, Backbone, CategoryModel, CategoriesCollection, indexjs, CategoryView, ReportView) {
 
-    // Extends Backbone.Router
-    var CategoryRouter = Backbone.Router.extend( {
+            // Extends Backbone.Router
+            var CategoryRouter = Backbone.Router.extend({
+                // The Router constructor
+                initialize: function() {
 
-        // The Router constructor
-        initialize: function() {
+                    // Instantiates a new Animal Category View
+                    this.animalsView = new CategoryView({el: "#animals", collection: new CategoriesCollection([], {type: "animals"})});
 
-            // Instantiates a new Animal Category View
-            this.animalsView = new CategoryView( { el: "#animals", collection: new CategoriesCollection( [] , { type: "animals" } ) } );
+                    // Instantiates a new Colors Category View
+                    this.colorsView = new CategoryView({el: "#colors", collection: new CategoriesCollection([], {type: "colors"})});
 
-            // Instantiates a new Colors Category View
-            this.colorsView = new CategoryView( { el: "#colors", collection: new CategoriesCollection( [] , { type: "colors" } ) } );
+                    // Instantiates a new Vehicles Category View
+                    this.vehiclesView = new CategoryView({el: "#vehicles", collection: new CategoriesCollection([], {type: "vehicles"})});
 
-            // Instantiates a new Vehicles Category View
-            this.vehiclesView = new CategoryView( { el: "#vehicles", collection: new CategoriesCollection( [] , { type: "vehicles" } ) } );
 
-            // Tells Backbone to start watching for hashchange events
-            Backbone.history.start();
 
-        },
+                    this.reportView = new ReportView({el: "#appview", collection: new CategoriesCollection([], {type: "vehicles"})});
 
-        // Backbone.js Routes
-        routes: {
+                    // Tells Backbone to start watching for hashchange events
+                    Backbone.history.start();
 
-            // When there is no hash bang on the url, the home method is called
-            "": "home",
+                },
+                // Backbone.js Routes
+                routes: {
+                    // When there is no hash bang on the url, the home method is called
+                    "": "home",
+                    "report": "report",
+                    "calendar": "calendar",
+                    "news": "news",
+                    "quote": "quote",
+                    // When #category? is on the url, the category method is called
+                    "category?:type": "category"
 
-            // When #category? is on the url, the category method is called
-            "category?:type": "category"
+                },
+                // Home method
+                home: function() {
 
-        },
+                    // Programatically changes to the categories page
+                    $.mobile.changePage("#", {reverse: false, changeHash: false});
 
-        // Home method
-        home: function() {
+                },
+                // Category method that passes in the type that is appended to the url hash
+                category: function(type) {
 
-            // Programatically changes to the categories page
-            $.mobile.changePage( "#categories" , { reverse: false, changeHash: false } );
+                    // Stores the current Category View  inside of the currentView variable
+                    var currentView = this[ type + "View" ];
+                    console.log(currentView);
 
-        },
+                    // If there are no collections in the current Category View
+                    if (!currentView.collection.length) {
 
-        // Category method that passes in the type that is appended to the url hash
-        category: function(type) {
+                        // Show's the jQuery Mobile loading icon
+                        $.mobile.loading("show");
 
-            // Stores the current Category View  inside of the currentView variable
-            var currentView = this[ type + "View" ];
-            console.log(currentView);
+                        // Fetches the Collection of Category Models for the current Category View
+                        currentView.collection.fetch().done(function() {
 
-            // If there are no collections in the current Category View
-            if(!currentView.collection.length) {
+                            // Programatically changes to the current categories page
+                            $.mobile.changePage("#" + type, {reverse: false, changeHash: false});
 
-                // Show's the jQuery Mobile loading icon
-                $.mobile.loading( "show" );
+                        });
 
-                // Fetches the Collection of Category Models for the current Category View
-                currentView.collection.fetch().done( function() {
+                    }
 
-                    // Programatically changes to the current categories page
-                    $.mobile.changePage( "#" + type, { reverse: false, changeHash: false } );
-    
-                } );
+                    // If there already collections in the current Category View
+                    else {
 
-            }
+                        // Programatically changes to the current categories page
+                        $.mobile.changePage("#" + type, {reverse: false, changeHash: false});
 
-            // If there already collections in the current Category View
-            else {
+                    }
 
-                // Programatically changes to the current categories page
-                $.mobile.changePage( "#" + type, { reverse: false, changeHash: false } );
+                },
+                report: function() {
+                    this.reportView.collection.fetch().done(function() {
+                        // Programatically changes to the current categories page
+                        $.mobile.changePage("#", {reverse: false, changeHash: false});
 
-            }
+                    });
+                },
+                news: function() {
 
-        }
+                },
+                quote: function() {
 
-    } );
+                }
 
-    // Returns the Router class
-    return CategoryRouter;
+            });
 
-} );
+            // Returns the Router class
+            return CategoryRouter;
+
+        });

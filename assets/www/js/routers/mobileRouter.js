@@ -79,7 +79,8 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
                 },
                 report: function() {
-                    this.reportView.collection.fetch().done(function() {
+            console.log(this.reportView.collection.fetch());
+                    this.reportView.collection.fetch().done(function() { 
                         // Programatically changes to the current categories page
                         $.mobile.changePage("#", {reverse: false, changeHash: false});
 

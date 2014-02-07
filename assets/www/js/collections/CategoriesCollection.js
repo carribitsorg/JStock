@@ -8,13 +8,13 @@ define(["jquery", "backbone", "models/CategoryModel"], function($, Backbone, Cat
     var Collection = Backbone.Collection.extend({
         // The Collection constructor
         initialize: function(models, options) {
-
+console.log(CategoryModel.CategoryModel);
             // Sets the type instance property (ie. animals)
             this.type = options.type;
 
         },
         // Sets the Collection model property to be a Category Model
-        model: CategoryModel,
+        model: CategoryModel.CategoryModel,
         // Sample JSON data that in a real app will most likely come from a REST web service
         jsonArray: [
             {"category": "animals", "type": "Pets"},

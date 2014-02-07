@@ -2,7 +2,7 @@
 // =============
 
 // Includes file dependencies
-define(["jquery", "backbone", "models/CategoryModel"], function($, Backbone, CategoryModel) {
+define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule) {
 
     // Extends Backbone.View
     var CategoryView = Backbone.View.extend({

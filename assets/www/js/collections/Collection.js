@@ -2,19 +2,18 @@
 // ===================
 
 // Includes file dependencies
-define(["jquery", "backbone", "models/CategoryModel"], function($, Backbone, CategoryModel) {
+define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule) {
 
     // Extends Backbone.Router
     var Collection = Backbone.Collection.extend({
         // The Collection constructor
         initialize: function(models, options) {
-console.log(CategoryModel.CategoryModel);
             // Sets the type instance property (ie. animals)
             this.type = options.type;
 
         },
         // Sets the Collection model property to be a Category Model
-        model: CategoryModel.CategoryModel,
+        model: ModelModule.CategoryModel,
         // Sample JSON data that in a real app will most likely come from a REST web service
         jsonArray: [
             {"category": "animals", "type": "Pets"},

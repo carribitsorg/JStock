@@ -2,9 +2,8 @@
 // =============
 
 // Includes file dependencies
-define(["jquery", "backbone", "../models/CategoryModel", "../collections/CategoriesCollection", "indexjs",
-    "../views/CategoryView", "../views/ReportView"],
-        function($, Backbone, CategoryModel, CategoriesCollection, indexjs, CategoryView, ReportView) {
+define(["jquery", "backbone", "indexjs", "AppModules"],
+        function($, Backbone, indexjs, AppModules) {
 
             // Extends Backbone.Router
             var CategoryRouter = Backbone.Router.extend({
@@ -12,17 +11,17 @@ define(["jquery", "backbone", "../models/CategoryModel", "../collections/Categor
                 initialize: function() {
 
                     // Instantiates a new Animal Category View
-                    this.animalsView = new CategoryView({el: "#animals", collection: new CategoriesCollection([], {type: "animals"})});
+                    this.animalsView = new AppModules.Views.CategoryView({el: "#animals", collection: new AppModules.Collection.CategoriesCollection([], {type: "animals"})});
 
                     // Instantiates a new Colors Category View
-                    this.colorsView = new CategoryView({el: "#colors", collection: new CategoriesCollection([], {type: "colors"})});
+                    this.colorsView = new AppModules.Views.CategoryView({el: "#colors", collection: new AppModules.Collection.CategoriesCollection([], {type: "colors"})});
 
                     // Instantiates a new Vehicles Category View
-                    this.vehiclesView = new CategoryView({el: "#vehicles", collection: new CategoriesCollection([], {type: "vehicles"})});
+                    this.vehiclesView = new AppModules.Views.CategoryView({el: "#vehicles", collection: new AppModules.Collection.CategoriesCollection([], {type: "vehicles"})});
 
 
 
-                    this.reportView = new ReportView({el: "#appview", collection: new CategoriesCollection([], {type: "vehicles"})});
+                    this.reportView = new AppModules.Views.ReportView({el: "#appview", collection: new AppModules.Collection.CategoriesCollection([], {type: "vehicles"})});
 
                     // Tells Backbone to start watching for hashchange events
                     Backbone.history.start();

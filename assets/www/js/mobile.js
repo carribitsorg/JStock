@@ -7,7 +7,8 @@ require.config({
         "indexjs": "../js/indexjs",
         "jquerymobile": "libs/jquerymobile",
         "underscore": "libs/lodash",
-        "backbone": "libs/backbone"
+        "backbone": "libs/backbone",
+         "AppModules": "../js/AppModules"
         
 
     },

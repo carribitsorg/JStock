@@ -10,7 +10,16 @@ define(["jquery", "backbone"], function($, Backbone) {
 
     DailyMainMarketSummary = Backbone.Model.extend({
         urlRoot: function() {
-            return  "http://192.168.0.4/jstock/trigger/dailymainmarketsummary?date=02/07/2014";
+            return  Config.baseurl + "/trigger/dailymainmarketsummary?date=" + Config.stockDate;
+        },
+        parse: function(response) {
+            this.advancing = response.stocks.ADVANCING;
+            this.declining = response.stocks.DECLINING;
+            this.tradingFirm = response.stocks.TRADING_FIRM;
+
+            //return models
+            return this;
+
         }
     });
 

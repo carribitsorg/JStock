@@ -11,8 +11,26 @@
         <script src="js/libs/require.js" data-main="js/mobile"></script>
 
 
+        <script type="text/javascript">
+            function toMoney(val) {
+            var parts= val.toString().split(".");
+            return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+            }
+
+            String.prototype.ellipse =
+            function(n,useWordBoundary){
+            var toLong = this.length>n,
+            s_ = toLong ? this.substr(0,n-1) : this;
+            s_ = useWordBoundary && toLong ? s_.substr(0,s_.lastIndexOf(' ')) : s_;
+            return  toLong ? s_ + '&hellip;' : s_;
+            };
+        </script>
 
         <style type="text/css">
+            #content-holder{
+                 margin-bottom: 2.5em;
+            }
+            
             .ui-content {
                 padding: 0.5em;
             }
@@ -29,7 +47,7 @@
                 line-height: 1.4;
                 margin: .7em 0;
             }
-
+ 
             .ui-icon-home:after{background-image:url('images/home_i.png')}
             .ui-icon-calendar:after{background-image:url('images/calendar_i.png')}
             .ui-icon-news:after{background-image:url('images/news_i.png')}
@@ -104,24 +122,38 @@
                 font-weight: 300 !important;
                 -webkit-margin-before: 0.0em !important;
             }
+            
             .summary-heading-3 {
                 height:40px;
                 font-size: 1.5em;
                 font-weight: 300;
                 padding-left: .25em;
                 width:100%;
-                background: url('images/advancing.png')  no-repeat;
-                background-position: 99% 50%;
+               
+                
+            }
+            
+            .advancing{
+                 background: url('images/advancing.png')  no-repeat;
+                 background-position: 99% 50%;
+            }
+            .declining{
+                 background: url('images/declining.png')  no-repeat;
+                 background-position: 99% 50%;
+            }
+            
+            .traded{
+                 background: url('images/dollar.png')  no-repeat;
+                 background-position: 99% 50%;
             }
 
-
             /*Tables */
-            #hor-minimalist
+            .stock-t
             {
                 line-height: 1.6em;
             }
 
-            #hor-minimalist
+            .stock-t
             {
 
                 font-size: 0.9em;
@@ -131,7 +163,7 @@
                 border-collapse: collapse;
                 text-align: left;
             }
-            #hor-minimalist th
+            .stock-t th
             {
 
                 font-weight: normal;
@@ -139,15 +171,13 @@
                 padding: 10px 8px;
                 border-bottom: 2px solid #ddd;
             }
-            #hor-minimalist td
+            .stock-t td
             {
                 color: #888687;
                 padding: 9px 8px 0px 8px;
             }
-            #hor-minimalist tbody tr:hover td
+            .stock-t tbody tr:hover td
             {
-                color: #888687;
-                font-weight: bold;
             }
         </style>
     </head>
@@ -169,7 +199,7 @@
                 </ul>
             </div>
 
-            <div id="main" role="main" class="ui-content jqm-content">
+            <div id="content-holder" role="main" class="ui-content jqm-content">
 
             </div><!-- /content -->
 
@@ -217,8 +247,8 @@
 
             <div class="ui-block-a" style="width:100%;">
                 <div class="jqm-block-content">
-                    <div class="summary-heading-3">Stocks Advancing</div>
-                    <table id="hor-minimalist" summary="Stocks Advancing">
+                    <div class="summary-heading-3 advancing">Stocks Advancing</div>
+                    <table id="stock-adv" class="stock-t" summary="Stocks Advancing">
                         <thead>
                             <tr>
                                 <th scope="col">SECURITY</th>
@@ -228,30 +258,41 @@
                             </tr>
                         </thead>
                         <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="ui-block-a" style="width:100%;">
+                <div class="jqm-block-content">
+                    <div class="summary-heading-3 declining">Stocks Declining</div>
+                    <table id="stock-dec" class="stock-t" summary="Stocks Declining">
+                        <thead>
                             <tr>
-                                <td>Carreras Limited</td>
-                                <td>16,350</td>
-                                <td>34.12</td>
-                                <td>0.12</td>
+                                <th scope="col">SECURITY</th>
+                                <th scope="col">VOLUME</th>
+                                <th scope="col">CLOSE PRICE ($)</th>
+                                <th scope="col">CHANGE ($)</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="ui-block-a" style="width:100%;">
+                <div class="jqm-block-content">
+                    <div class="summary-heading-3 traded">Stocks Trading firm</div>
+                    <table id="stock-trd" class="stock-t" summary="Stocks Trading firm">
+                        <thead>
                             <tr>
-                                <td>Carreras Limited</td>
-                                <td>16,350</td>
-                                <td>34.12</td>
-                                <td>0.12</td>
+                                <th scope="col">SECURITY</th>
+                                <th scope="col">VOLUME</th>
+                                <th scope="col">CLOSE PRICE ($)</th>
                             </tr>
-                            <tr>
-                                <td>Carreras Limited</td>
-                                <td>16,350</td>
-                                <td>34.12</td>
-                                <td>0.12</td>
-                            </tr>
-                            <tr>
-                                <td>Carreras Limited</td>
-                                <td>16,350</td>
-                                <td>34.12</td>
-                                <td>0.12</td>
-                            </tr>
+                        </thead>
+                        <tbody>
                         </tbody>
                     </table>
                 </div>
@@ -308,6 +349,25 @@
 
             <% }); %>
 
+        </script>
+        <script id="stocks" type="text/template">
+            <% _.each( stocks, function( stock, id ) { %>
+            <tr>
+            <td><%=stock.security.ellipse(25)%></td>
+            <td><%=toMoney(stock.volume)%></td>
+            <td><%=stock.close_price%></td>
+            <td><%=stock.change%></td>
+            </tr>
+            <% }); %>
+        </script>
+         <script id="stocks-trd" type="text/template">
+            <% _.each( stocks, function( stock, id ) { %>
+            <tr>
+            <td><%=stock.security.ellipse(25)%></td>
+            <td><%=toMoney(stock.volume)%></td>
+            <td><%=stock.close_price%></td>
+            </tr>
+            <% }); %>
         </script>
     </body>
 </html>

@@ -42,7 +42,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.template = _.template($("script#categoryItems").html(), {"collection": this.collection});
 
             // Renders the view's template inside of the current listview element
-            this.$el.find("#main").html(this.template);
+            this.$el.find("#content-holder").html(this.template);
 
             // Maintains chainability
             return this;
@@ -52,24 +52,25 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
     });
 
     var HomeView = Backbone.View.extend({
-        // The View Constructor
         initialize: function() {
             //this.model.on("change", this.render, this);
         },
         // Renders all of the Category models on the UI
         render: function() {
-            console.log("this.model");
-            // Sets the view's template property
+            var advancing = _.template($("script#stocks").html(), {"stocks": this.model.advancing});
+            var declining = _.template($("script#stocks").html(), {"stocks": this.model.declining});
+            var tradingFirm = _.template($("script#stocks-trd").html(), {"stocks": this.model.tradingFirm});
+            
             this.template = _.template($("#home").html());
 
             // Renders the view's template inside of the current listview element
-            this.$el.find("#main").html(this.template);
-
-            // Maintains chainability
+            this.$el.find("#content-holder").html(this.template);
+            
+            this.$el.find('#stock-adv tbody:last').append(advancing);
+            this.$el.find('#stock-dec tbody:last').append(declining);
+            this.$el.find('#stock-trd tbody:last').append(tradingFirm);
             return this;
-
         }
-
     });
 
     // Returns the View class

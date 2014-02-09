@@ -51,10 +51,32 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
 
     });
 
+    var HomeView = Backbone.View.extend({
+        // The View Constructor
+        initialize: function() {
+            //this.model.on("change", this.render, this);
+        },
+        // Renders all of the Category models on the UI
+        render: function() {
+            console.log("this.model");
+            // Sets the view's template property
+            this.template = _.template($("#home").html());
+
+            // Renders the view's template inside of the current listview element
+            this.$el.find("#main").html(this.template);
+
+            // Maintains chainability
+            return this;
+
+        }
+
+    });
+
     // Returns the View class
     return{
         CategoryView: CategoryView,
-        ReportView: ReportView
+        ReportView: ReportView,
+        HomeView: HomeView
     };
 
 });

@@ -1,6 +1,6 @@
 // Mobile Router
 // =============
-
+var Config = null;
 // Includes file dependencies
 define(["jquery", "backbone", "indexjs", "AppModules"],
         function($, Backbone, indexjs, AppModules) {
@@ -9,7 +9,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
             var CategoryRouter = Backbone.Router.extend({
                 // The Router constructor
                 initialize: function() {
-
+                    Config = AppModules.Config;
                     // Instantiates a new Animal Category View
                     this.animalsView = new AppModules.Views.CategoryView({el: "#animals", collection: new AppModules.Collection.CategoriesCollection([], {type: "animals"})});
 
@@ -22,6 +22,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
 
                     this.reportView = new AppModules.Views.ReportView({el: "#appview", collection: new AppModules.Collection.CategoriesCollection([], {type: "vehicles"})});
+                    this.homeView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.DailyMainMarketSummary()});
 
                     // Tells Backbone to start watching for hashchange events
                     Backbone.history.start();
@@ -31,6 +32,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                 routes: {
                     // When there is no hash bang on the url, the home method is called
                     "": "home",
+                    "home": "home",
                     "report": "report",
                     "calendar": "calendar",
                     "news": "news",
@@ -41,10 +43,14 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                 },
                 // Home method
                 home: function() {
+                    console.log("home");
+                    var self = this;
+                    this.homeView.model.fetch().done(function() {
+                        self.homeView.render();
+                        // Programatically changes to the current categories page
+                        $.mobile.changePage("#", {reverse: false, changeHash: false});
 
-                    // Programatically changes to the categories page
-                    $.mobile.changePage("#", {reverse: false, changeHash: false});
-
+                    });
                 },
                 // Category method that passes in the type that is appended to the url hash
                 category: function(type) {
@@ -79,8 +85,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
                 },
                 report: function() {
-            console.log(this.reportView.collection.fetch());
-                    this.reportView.collection.fetch().done(function() { 
+                    this.reportView.collection.fetch().done(function() {
                         // Programatically changes to the current categories page
                         $.mobile.changePage("#", {reverse: false, changeHash: false});
 

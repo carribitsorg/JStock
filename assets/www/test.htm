@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="lib/jquery.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $.ajax({
+            url: 'http://192.168.0.4/jstock/trigger/dailymainmarketsummary?date=02/07/2014',
+            success: function(result) {
+            console.log(result);
+            },
+            async: false
+            });
+        </script>
+
+    </body>
+</html>

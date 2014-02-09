@@ -8,9 +8,16 @@ define(["jquery", "backbone"], function($, Backbone) {
     var Category = Backbone.Model.extend({
     });
 
+    DailyMainMarketSummary = Backbone.Model.extend({
+        urlRoot: function() {
+            return  "http://192.168.0.4/jstock/trigger/dailymainmarketsummary?date=02/07/2014";
+        }
+    });
+
     // Returns the Model class
     return {
-        CategoryModel: Category
+        CategoryModel: Category,
+        DailyMainMarketSummary: DailyMainMarketSummary
     };
 
 });

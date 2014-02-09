@@ -1,15 +1,18 @@
 define([
     "../js/views/View",
     "../js/models/Model",
-    "../js/collections/Collection"
+    "../js/collections/Collection",
+    "../js/Config"
 ], function(
         Views,
         Models,
-        Collection)
+        Collection,
+        Config)
 {
     return {
         Views: Views,
         Models: Models,
-        Collection: Collection
+        Collection: Collection,
+        Config: Config
     };
 });

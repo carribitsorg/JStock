@@ -1,9 +1,10 @@
 <!doctype html>
 <html class="no-js ui-mobile-rendering" lang="en">
     <head>
-        <title>Backbone.js, Require.js, and jQuery Mobile</title>
+        <title>JStock</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=1">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9, target-densitydpi=medium-dpi, user-scalable=0" />-->
         <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
         <link rel="shortcut icon" href="../favicon.ico">
         <link rel="stylesheet" href="css/font.css">
@@ -12,6 +13,13 @@
 
 
         <script type="text/javascript">
+            function getDeviceDimention() {
+            console.log("Device Dimention using PhoneGap");
+            console.log("Width = " + window.innerWidth);
+            console.log("Height = " + window.innerHeight);
+            }
+            getDeviceDimention();
+
             function toMoney(val) {
             var parts= val.toString().split(".");
             return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
@@ -27,12 +35,16 @@
         </script>
 
         <style type="text/css">
-            #content-holder{
-                 margin-bottom: 2.5em;
+
+            .ui-navbar li .ui-btn {
+                font-size: 0.65em;
             }
-            
+            #content-holder{
+                margin-bottom: 2.5em;
+            }
+
             .ui-content {
-                padding: 0.5em;
+                padding: 0.03em;
             }
 
             .jqm-block-content {
@@ -47,7 +59,7 @@
                 line-height: 1.4;
                 margin: .7em 0;
             }
- 
+
             .ui-icon-home:after{background-image:url('images/home_i.png')}
             .ui-icon-calendar:after{background-image:url('images/calendar_i.png')}
             .ui-icon-news:after{background-image:url('images/news_i.png')}
@@ -122,29 +134,32 @@
                 font-weight: 300 !important;
                 -webkit-margin-before: 0.0em !important;
             }
-            
+
             .summary-heading-3 {
                 height:40px;
-                font-size: 1.5em;
+                font-size: 1.1em;
                 font-weight: 300;
                 padding-left: .25em;
                 width:100%;
-               
-                
+
+
             }
-            
+
             .advancing{
-                 background: url('images/advancing.png')  no-repeat;
-                 background-position: 99% 50%;
+                background: url('images/advancing.png')  no-repeat;
+                background-position: 99% 50%;
+                background-size: 24px 24px;
             }
             .declining{
-                 background: url('images/declining.png')  no-repeat;
-                 background-position: 99% 50%;
+                background: url('images/declining.png')  no-repeat;
+                background-position: 99% 50%;
+                background-size: 24px 24px;
             }
-            
+
             .traded{
-                 background: url('images/dollar.png')  no-repeat;
-                 background-position: 99% 50%;
+                background: url('images/dollar.png')  no-repeat;
+                background-position: 99% 50%;
+                background-size: 24px 24px;
             }
 
             /*Tables */
@@ -156,7 +171,7 @@
             .stock-t
             {
 
-                font-size: 0.9em;
+                font-size: 0.5em;
                 background: #fff;
 
                 width: 100%;
@@ -165,16 +180,14 @@
             }
             .stock-t th
             {
-
-                font-weight: normal;
                 color: #888687;
-                padding: 10px 8px;
+                padding: 7px 5px;
                 border-bottom: 2px solid #ddd;
             }
             .stock-t td
             {
                 color: #888687;
-                padding: 9px 8px 0px 8px;
+                padding: 5px 4px 0px 4px;
             }
             .stock-t tbody tr:hover td
             {
@@ -239,7 +252,7 @@
             <div class="ui-block-a" style="width:100%">
                 <div class="jqm-block-content">
                     <div >
-                        <h1 class="summary-heading-1">Daily Main Market Summary - Jan 24, 2014</h1>
+                        <h1 class="summary-heading-1">Daily Main Market Summary - X3Jan 24, 2014</h1>
                     </div>
                     <p>17 stocks: 6 advanced, 7 declined, 4 traded firm</p>
                 </div>
@@ -251,10 +264,10 @@
                     <table id="stock-adv" class="stock-t" summary="Stocks Advancing">
                         <thead>
                             <tr>
-                                <th scope="col">SECURITY</th>
-                                <th scope="col">VOLUME</th>
-                                <th scope="col">CLOSE PRICE ($)</th>
-                                <th scope="col">CHANGE ($)</th>
+                                <th scope="col">Security</th>
+                                <th scope="col">Volume</th>
+                                <th scope="col">Close Price $</th>
+                                <th scope="col">Change $</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -269,10 +282,10 @@
                     <table id="stock-dec" class="stock-t" summary="Stocks Declining">
                         <thead>
                             <tr>
-                                <th scope="col">SECURITY</th>
-                                <th scope="col">VOLUME</th>
-                                <th scope="col">CLOSE PRICE ($)</th>
-                                <th scope="col">CHANGE ($)</th>
+                                <th scope="col">Security</th>
+                                <th scope="col">Volume</th>
+                                <th scope="col">Close Price $</th>
+                                <th scope="col">Change $</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -280,16 +293,16 @@
                     </table>
                 </div>
             </div>
-            
+
             <div class="ui-block-a" style="width:100%;">
                 <div class="jqm-block-content">
                     <div class="summary-heading-3 traded">Stocks Trading firm</div>
                     <table id="stock-trd" class="stock-t" summary="Stocks Trading firm">
                         <thead>
                             <tr>
-                                <th scope="col">SECURITY</th>
-                                <th scope="col">VOLUME</th>
-                                <th scope="col">CLOSE PRICE ($)</th>
+                                <th scope="col">Security</th>
+                                <th scope="col">Volume</th>
+                                <th scope="col">Close Price $</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -360,7 +373,7 @@
             </tr>
             <% }); %>
         </script>
-         <script id="stocks-trd" type="text/template">
+        <script id="stocks-trd" type="text/template">
             <% _.each( stocks, function( stock, id ) { %>
             <tr>
             <td><%=stock.security.ellipse(25)%></td>

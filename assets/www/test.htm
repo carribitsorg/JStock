@@ -5,13 +5,33 @@
     </head>
     <body>
         <script type="text/javascript">
-            $.ajax({
-            url: 'http://192.168.0.4/jstock/trigger/dailymainmarketsummary?date=02/07/2014',
-            success: function(result) {
-            console.log(result);
-            },
-            async: false
-            });
+
+
+
+
+            function getSummart(text){
+            var summary = {};
+            var totalStocks = /(?:\d*)\s+stocks/;
+            var advanceStocks = /(?:\d*)\s+advanced/;
+            var declinedStocks = /(?:\d*)\s+declined/;
+            var tradedStocks = /(?:\d*)\s+traded/;
+
+            var totalMatch = totalStocks.exec(text);
+            var advanceMatch = advanceStocks.exec(text);
+            var declinedMatch = declinedStocks.exec(text);
+            var tradedMatch = tradedStocks.exec(text);
+
+
+            summary["total"] = totalMatch[0];
+            summary["advanced"] = advanceMatch[0];
+            summary["declined"] = declinedMatch[0];
+            summary["traded"] = tradedMatch[0];
+
+            return summary;
+            }
+
+            var res = getSummart("Overall Market activity resulted from trading in 21 stocks of which 7 advanced, 6 declined and 8 traded firm.");
+            console.log(res);
         </script>
 
     </body>

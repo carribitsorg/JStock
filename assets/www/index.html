@@ -32,6 +32,13 @@
             s_ = useWordBoundary && toLong ? s_.substr(0,s_.lastIndexOf(' ')) : s_;
             return  toLong ? s_ + '&hellip;' : s_;
             };
+
+            function parseDate(input) {
+            var parts = input.split('-');
+            // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+            var date = new Date(parts[0], parts[1]-1, parts[2]);
+            return date.toString('dddd, MMMM ,yyyy').substring(4, 15);
+            }
         </script>
 
         <style type="text/css">
@@ -252,9 +259,9 @@
             <div class="ui-block-a" style="width:100%">
                 <div class="jqm-block-content">
                     <div >
-                        <h1 class="summary-heading-1">Daily Main Market Summary - X3Jan 24, 2014</h1>
+                        <h1 class="summary-heading-1">Daily Main Market Summary - <span id="summary-date"></span></h1>
                     </div>
-                    <p>17 stocks: 6 advanced, 7 declined, 4 traded firm</p>
+                    <p id="market-summart1"></p>
                 </div>
             </div>
 
@@ -381,6 +388,12 @@
             <td><%=stock.close_price%></td>
             </tr>
             <% }); %>
+        </script>
+        <script id="market-summary" type="text/template">
+            <span><b><%=summary['total']%>:</b></span>&nbsp;
+            <span><%=summary['advanced']%>,</span>&nbsp;
+            <span><%=summary['declined']%>,</span>&nbsp;
+            <span><%=summary['traded']%></span>
         </script>
     </body>
 </html>

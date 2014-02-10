@@ -16,6 +16,8 @@ define(["jquery", "backbone"], function($, Backbone) {
             this.advancing = response.stocks.ADVANCING;
             this.declining = response.stocks.DECLINING;
             this.tradingFirm = response.stocks.TRADING_FIRM;
+            this.summary1 = response.details.summary1;
+            this.summarydate = response.details.summary_date;
 
             //return models
             return this;

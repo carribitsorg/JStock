@@ -72,6 +72,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
 
 
             this.$el.find('#summary-date').append(parseDate(this.model.summarydate));
+            this.$el.find('#graph-img').attr("src", Config.baseurl + '/trigger/summarygraph?date=' + this.model.summarydate + '&file=graph.png');
+            
 
             var details = this.getSummary(this.model.summary1);
             var summary = _.template($("script#market-summary").html(), {"summary": details});

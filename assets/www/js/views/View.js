@@ -73,13 +73,31 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
 
             this.$el.find('#summary-date').append(parseDate(this.model.summarydate));
             this.$el.find('#graph-img').attr("src", Config.baseurl + '/mainmarket/onemonthgraph?date=' + this.model.summarydate + '&file=graph.png');
-            
+
 
             var details = this.getSummary(this.model.summary1);
             var summary = _.template($("script#market-summary").html(), {"summary": details});
             this.$el.find('#market-summart1').append(summary);
 
             return this;
+        },
+        getMarketIndexDetails: function() {
+            var self = this;
+            var model = new ModelModule.MarketIndexDetails;
+
+            var success = function(json) {
+               
+                var template = _.template($("script#market-details").html(), {"summary": json.data});
+                 self.$el.find('.market-details tbody:last').append(template);
+                 console.log(template);
+            };
+
+            var error = function() {
+                console.log('ajax error');
+            };
+
+            model.fetch({success: success, error: error});
+
         },
         getSummary: function(text) {
             var summary = {};

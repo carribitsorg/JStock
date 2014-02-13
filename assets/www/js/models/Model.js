@@ -25,10 +25,30 @@ define(["jquery", "backbone"], function($, Backbone) {
         }
     });
 
+    MarketIndexDetails = Backbone.Model.extend({
+        urlRoot: function() {
+            return  Config.baseurl + "/mainmarket/marketindexdetails?date=" + Config.stockDate;
+        },
+        parse: function(response) {
+
+            if (response['change_direction'].indexOf("mov_down") !== -1) {
+                response['change_direction'] = 'down';
+            } else {
+                response['change_direction'] = 'up';
+            }
+            
+            this.data = response;
+
+
+            return this;
+        }
+    });
+
     // Returns the Model class
     return {
         CategoryModel: Category,
-        DailyMainMarketSummary: DailyMainMarketSummary
+        DailyMainMarketSummary: DailyMainMarketSummary,
+        MarketIndexDetails: MarketIndexDetails
     };
 
 });

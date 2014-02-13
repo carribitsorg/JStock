@@ -14,30 +14,30 @@
 
         <script type="text/javascript">
             function getDeviceDimention() {
-            console.log("Device Dimention using PhoneGap");
-            console.log("Width = " + window.innerWidth);
-            console.log("Height = " + window.innerHeight);
+                console.log("Device Dimention using PhoneGap");
+                console.log("Width = " + window.innerWidth);
+                console.log("Height = " + window.innerHeight);
             }
             getDeviceDimention();
 
             function toMoney(val) {
-            var parts= val.toString().split(".");
-            return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+                var parts = val.toString().split(".");
+                return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
             }
 
             String.prototype.ellipse =
-            function(n,useWordBoundary){
-            var toLong = this.length>n,
-            s_ = toLong ? this.substr(0,n-1) : this;
-            s_ = useWordBoundary && toLong ? s_.substr(0,s_.lastIndexOf(' ')) : s_;
-            return  toLong ? s_ + '&hellip;' : s_;
-            };
+                    function(n, useWordBoundary) {
+                        var toLong = this.length > n,
+                                s_ = toLong ? this.substr(0, n - 1) : this;
+                        s_ = useWordBoundary && toLong ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
+                        return  toLong ? s_ + '&hellip;' : s_;
+                    };
 
             function parseDate(input) {
-            var parts = input.split('-');
-            // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
-            var date = new Date(parts[0], parts[1]-1, parts[2]);
-            return date.toString('dddd, MMMM ,yyyy').substring(4, 15);
+                var parts = input.split('-');
+                // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+                var date = new Date(parts[0], parts[1] - 1, parts[2]);
+                return date.toString('dddd, MMMM ,yyyy').substring(4, 15);
             }
         </script>
 
@@ -199,8 +199,17 @@
             .stock-t tbody tr:hover td
             {
             }
-            
+
             img#graph-img { outline: 0; max-width: 100%; height: auto;}
+
+            .market-details{
+                font-size:0.45em;
+            }
+            .market-details th
+            {
+                color: #888687;
+                padding: 5px 5px;
+            }
         </style>
     </head>
     <body>
@@ -266,12 +275,22 @@
                     <p id="market-summart1"></p>
                 </div>
             </div>
-			
-			<div class="ui-block-a" style="width:100%">
+
+            <div class="ui-block-a" style="width:100%">
                 <div class="jqm-block-content">
                     <div >
                         <img id="graph-img" src="" alt="Graph" width="100%">
                     </div>
+                    <div style="font-size:0.7em"></div>
+                </div>
+            </div>
+
+            <div class="ui-block-a" style="width:100%">
+                <div class="jqm-block-content">
+                    <table class="market-details">
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -404,6 +423,15 @@
             <span><%=summary['advanced']%>,</span>&nbsp;
             <span><%=summary['declined']%>,</span>&nbsp;
             <span><%=summary['traded']%></span>
+        </script>
+
+        <script id="market-details" type="text/template">
+            <tr>
+            <th scope="col">Volume: <i><%=toMoney(summary['vol'])%></i></th>
+            <th scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
+            <th scope="col">Change: <i><%=summary['change']%></i></th>
+            <th scope="col">% Change: <i><%=summary['change_percentage']%></i></th>
+            </tr>
         </script>
     </body>
 </html>

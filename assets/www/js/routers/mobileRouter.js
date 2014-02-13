@@ -45,12 +45,18 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                 home: function() {
                     console.log("home");
                     var self = this;
-                    this.homeView.model.fetch().done(function() {
+                   
+                    var success = function() {
                         self.homeView.render();
-                        // Programatically changes to the current categories page
                         $.mobile.changePage("#", {reverse: false, changeHash: false});
+                    };
 
-                    });
+                    var error = function() {
+                        console.log('ajax error');
+                    };
+
+                    this.homeView.model.fetch({success: success, error: error});
+
                 },
                 // Category method that passes in the type that is appended to the url hash
                 category: function(type) {

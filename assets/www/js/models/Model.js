@@ -10,7 +10,7 @@ define(["jquery", "backbone"], function($, Backbone) {
 
     DailyMainMarketSummary = Backbone.Model.extend({
         urlRoot: function() {
-            return  Config.baseurl + "/trigger/dailymainmarketsummary?date=" + Config.stockDate;
+            return  Config.baseurl + "/mainmarket/dailySummary?date=" + Config.stockDate;
         },
         parse: function(response) {
             this.advancing = response.stocks.ADVANCING;

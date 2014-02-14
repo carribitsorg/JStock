@@ -53,7 +53,6 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
 
     var HomeView = Backbone.View.extend({
         initialize: function() {
-            //this.model.on("change", this.render, this);
         },
         // Renders all of the Category models on the UI
         render: function() {
@@ -72,7 +71,9 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
 
 
             this.$el.find('#summary-date').append(parseDate(this.model.summarydate));
-            this.$el.find('#graph-img').attr("src", Config.baseurl + '/mainmarket/onemonthgraph?date=' + this.model.summarydate + '&file=graph.png');
+            this.$el.find('#graph-img').attr("src", Config.baseurl + '/mainmarket/onemonthgraph?date=' + this.model.summarydate +
+                    '&index_name=' + options.indexName +
+                    '&file=graph.png');
 
 
             var details = this.getSummary(this.model.summary1);
@@ -81,15 +82,21 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
 
             return this;
         },
+        changeGraph: function() {
+            this.$el.find('#graph-img').attr("src", Config.baseurl + '/mainmarket/onemonthgraph?date=' + this.model.summarydate +
+                    '&index_name=' + options.indexName +
+                    '&file=graph.png');
+        },
         getMarketIndexDetails: function() {
             var self = this;
             var model = new ModelModule.MarketIndexDetails;
 
             var success = function(json) {
-               
+
                 var template = _.template($("script#market-details").html(), {"summary": json.data});
-                 self.$el.find('.market-details tbody:last').append(template);
-                 console.log(template);
+                self.$el.find(".market-details tr").remove();
+                self.$el.find('.market-details tbody:last').append(template);
+                console.log(template);
             };
 
             var error = function() {

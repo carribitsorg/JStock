@@ -9,6 +9,8 @@ define(["jquery", "backbone"], function($, Backbone) {
     });
 
     DailyMainMarketSummary = Backbone.Model.extend({
+        initialize: function(options) {
+        },
         urlRoot: function() {
             return  Config.baseurl + "/mainmarket/dailySummary?date=" + Config.stockDate;
         },
@@ -19,27 +21,32 @@ define(["jquery", "backbone"], function($, Backbone) {
             this.summary1 = response.details.summary1;
             this.summarydate = response.details.summary_date;
 
-            //return models
             return this;
-
         }
     });
 
     MarketIndexDetails = Backbone.Model.extend({
+        initialize: function() {
+            
+        },
         urlRoot: function() {
-            return  Config.baseurl + "/mainmarket/marketindexdetails?date=" + Config.stockDate;
+            return  Config.baseurl + "/mainmarket/marketindexdetails?date=" + Config.stockDate
+            + '&index_name=' + options.indexName;
         },
         parse: function(response) {
-
-            if (response['change_direction'].indexOf("mov_down") !== -1) {
-                response['change_direction'] = 'down';
-            } else {
-                response['change_direction'] = 'up';
+            if (response['change_dir'].indexOf("mov_down") !== -1) {
+                response['change_dir'] = 'mov_down';
+            } else if (response['change_dir'].indexOf("mov_up") !== -1) {
+                response['change_dir'] = 'mov_up';
             }
-            
+
+            if (response['change_perc_dir'].indexOf("mov_down") !== -1) {
+                response['change_perc_dir'] = 'mov_down';
+            } else if (response['change_perc_dir'].indexOf("mov_up") !== -1) {
+                response['change_perc_dir'] = 'mov_up';
+            }
+
             this.data = response;
-
-
             return this;
         }
     });

@@ -67,11 +67,11 @@
                 margin: .7em 0;
             }
 
-            .ui-icon-home:after{background-image:url('images/home_i.png')}
-            .ui-icon-calendar:after{background-image:url('images/calendar_i.png')}
-            .ui-icon-news:after{background-image:url('images/news_i.png')}
-            .ui-icon-report:after{background-image:url('images/report_i.png')}
-            .ui-icon-quote:after{background-image:url('images/quote_i.png')}
+            .ui-icon-home:after{background-image:url('images/home_a.png')}
+            .ui-icon-calendar:after{background-image:url('images/calendar_a.png')}
+            .ui-icon-news:after{background-image:url('images/news_a.png')}
+            .ui-icon-report:after{background-image:url('images/report_a.png')}
+            .ui-icon-quote:after{background-image:url('images/quote_a.png')}
 
             .application-icon .ui-btn-icon-left:after, 
             .application-icon .ui-btn-icon-right:after,
@@ -81,8 +81,8 @@
                 content: "";
                 position: absolute;
                 display: block;
-                width: 48px;
-                height: 48px;
+                width: 32px;
+                height: 32px;
             }
 
             .application-icon .ui-btn-icon-left:after, 
@@ -210,6 +210,10 @@
                 color: #888687;
                 padding: 5px 5px;
             }
+            
+            .stock-direction{
+                padding-left: 3px;
+            }
         </style>
     </head>
     <body>
@@ -223,10 +227,10 @@
 
             <div data-role="navbar" class="market-index">
                 <ul>
-                    <li><a href="#">Main Index</a></li>
-                    <li><a href="#">JSE Select</a></li>
-                    <li><a href="#">All Jamaican</a></li>
-                    <li><a href="#">Cross Listed</a></li>
+                    <li><a id="main_index" href="">Main Index</a></li>
+                    <li><a id="jse_select" href="">JSE Select</a></li>
+                    <li><a id="all_jamaican" href="">All Jamaican</a></li>
+                    <li><a id="cross_listed" href="">Cross Listed</a></li>
                 </ul>
             </div>
 
@@ -236,8 +240,8 @@
 
             <div data-role="navbar" data-position="fixed" data-iconpos="bottom" class="ui-footer ui-footer-fixed slideup ui-bar-inherit application-icon">
                 <ul>
-                    <li><a href="#home" data-icon="home"></a></li>
-                    <li><a href="#report" data-icon="report" class="ui-btn-active"></a></li>
+                    <li><a href="#home" class="ui-btn-active" data-icon="home"></a></li>
+                    <li><a href="#report" data-icon="report"></a></li>
                     <li><a href="#calendar" data-icon="calendar"></a></li>
                     <li><a href="#news" data-icon="news"></a></li>
                     <li><a href="#quote" data-icon="quote"></a></li>
@@ -269,7 +273,7 @@
         <div id="home" data-role="page" data-title="Home">
             <div class="ui-block-a" style="width:100%">
                 <div class="jqm-block-content">
-                    <div >
+                    <div style="font-size:0.85em">
                         <h1 class="summary-heading-1">Daily Main Market Summary - <span id="summary-date"></span></h1>
                     </div>
                     <p id="market-summart1"></p>
@@ -429,8 +433,8 @@
             <tr>
             <th scope="col">Volume: <i><%=toMoney(summary['vol'])%></i></th>
             <th scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
-            <th scope="col">Change: <i><%=summary['change']%></i></th>
-            <th scope="col">% Change: <i><%=summary['change_percentage']%></i></th>
+            <th scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.gif" alt="" width="100%"></th>
+            <th scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.gif"" alt="" width="100%"></th>
             </tr>
         </script>
     </body>

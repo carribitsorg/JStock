@@ -1,6 +1,17 @@
 // Mobile Router
 // =============
 var Config = null;
+var MarketIndex = {
+    MAIN_INDEX: 'MAIN_INDEX',
+    JSE_SELECT: 'JSE_SELECT',
+    ALL_JAMAICAN: 'ALL_JAMAICAN',
+    CROSS_LISTED: 'CROSS_LISTED'
+};
+
+var options = {
+    indexName: MarketIndex.JSE_SELECT
+};
+
 // Includes file dependencies
 define(["jquery", "backbone", "indexjs", "AppModules"],
         function($, Backbone, indexjs, AppModules) {
@@ -42,11 +53,32 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
                     this.homeView.model.fetch({success: success, error: error});
 
+                    $('div[data-role="navbar"] ul li a#main_index, a#jse_select, a#all_jamaican, a#cross_listed').on('click', function(e) {
+                        console.log(e);
+                        e.preventDefault();
+                        var el = e.target.id;
+                        switch (el)
+                        {
+                            case 'main_index':
+                                options.indexName = MarketIndex.MAIN_INDEX;
+                                break;
+                            case 'jse_select':
+                                options.indexName = MarketIndex.JSE_SELECT;
+                                break;
+                            case 'all_jamaican':
+                                options.indexName = MarketIndex.ALL_JAMAICAN;
+                                break;
+                            case 'cross_listed':
+                                options.indexName = MarketIndex.CROSS_LISTED;
+                                break;
+                        }
+                        self.homeView.changeGraph();
+                        self.homeView.getMarketIndexDetails();
+                    });
                 },
                 report: function() {
                     this.reportView.collection.fetch().done(function() {
                         $.mobile.changePage("#", {reverse: false, changeHash: false});
-
                     });
                 },
                 news: function() {

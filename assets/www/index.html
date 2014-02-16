@@ -54,8 +54,14 @@
                 padding: 0.03em;
             }
 
-            .jqm-block-content {
+            .jqm-block-content{
                 margin: .35em;
+                padding: 0.5em;
+                min-height: 0.1em;
+            }
+
+            .app-content{
+                margin: 0.0em;
                 padding: 0.5em;
                 min-height: 0.1em;
             }
@@ -68,10 +74,10 @@
             }
 
             .ui-icon-home:after{background-image:url('images/home_a.png')}
-            .ui-icon-calendar:after{background-image:url('images/calendar_a.png')}
-            .ui-icon-news:after{background-image:url('images/news_a.png')}
-            .ui-icon-report:after{background-image:url('images/report_a.png')}
-            .ui-icon-quote:after{background-image:url('images/quote_a.png')}
+            .ui-icon-calendar:after{background-image:url('images/calendar_i.png')}
+            .ui-icon-news:after{background-image:url('images/news_i.png')}
+            .ui-icon-report:after{background-image:url('images/report_i.png')}
+            .ui-icon-quote:after{background-image:url('images/quote_i.png')}
 
             .application-icon .ui-btn-icon-left:after, 
             .application-icon .ui-btn-icon-right:after,
@@ -133,12 +139,28 @@
                 padding-top: 1em;
             }
 
+            /* Remove border from menu bar*/
+            .ui-page-theme-a  .app-navbar .ui-btn{
+                background: #f6f6f6 !important;
+                border-color: #f6f6f6 !important;
+                color: #333 !important;
+                text-shadow: 0 1px 0 #f3f3f3 !important;
+            }
+
             .summary-heading-1 {
-                color: #333;
+                color: #333 !important;
                 font-size: 1.1em !important;
                 margin: 0 0 .625em !important;
                 font-family: 'Open Sans', sans-serif !important;
-                font-weight: 300 !important;
+                font-weight: 500 !important;
+                -webkit-margin-before: 0.0em !important;
+            }
+
+            .form-element-text {
+                color: #333;
+                font-size: 0.85em !important;
+                font-family: 'Open Sans', sans-serif !important;
+                font-weight: 500 !important;
                 -webkit-margin-before: 0.0em !important;
             }
 
@@ -210,7 +232,7 @@
                 color: #888687;
                 padding: 5px 5px;
             }
-            
+
             .stock-direction{
                 padding-left: 3px;
             }
@@ -238,7 +260,7 @@
 
             </div><!-- /content -->
 
-            <div data-role="navbar" data-position="fixed" data-iconpos="bottom" class="ui-footer ui-footer-fixed slideup ui-bar-inherit application-icon">
+            <div data-role="navbar" data-position="fixed" data-iconpos="bottom" class="ui-footer ui-footer-fixed slideup ui-bar-inherit application-icon app-navbar">
                 <ul>
                     <li><a href="#home" class="ui-btn-active" data-icon="home"></a></li>
                     <li><a href="#report" data-icon="report"></a></li>
@@ -277,6 +299,19 @@
                         <h1 class="summary-heading-1">Daily Main Market Summary - <span id="summary-date"></span></h1>
                     </div>
                     <p id="market-summart1"></p>
+                </div>
+            </div>
+
+            <div class="ui-select app-content">
+                <div id="select-choice-1-button" class="ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow">
+                    <span class="form-element-text">JSE Select: 1 Month</span>
+                    <select name="select-choice-1" data-native-menu="false" id="select-choice-1">
+                        <option value="standard">1 Week</option>
+                        <option value="rush">1 Months</option>
+                        <option value="express">3 Months</option>
+                        <option value="overnight">6 Months</option>
+                        <option value="overnight">1 Year</option>
+                    </select>
                 </div>
             </div>
 
@@ -433,8 +468,8 @@
             <tr>
             <th scope="col">Volume: <i><%=toMoney(summary['vol'])%></i></th>
             <th scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
-            <th scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.gif" alt="" width="100%"></th>
-            <th scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.gif"" alt="" width="100%"></th>
+            <th scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.png" alt="" width="100%"></th>
+            <th scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.png"" alt="" width="100%"></th>
             </tr>
         </script>
     </body>

@@ -27,11 +27,11 @@ define(["jquery", "backbone"], function($, Backbone) {
 
     MarketIndexDetails = Backbone.Model.extend({
         initialize: function() {
-            
+
         },
         urlRoot: function() {
             return  Config.baseurl + "/mainmarket/marketindexdetails?date=" + Config.stockDate
-            + '&index_name=' + options.indexName;
+                    + '&index_name=' + options.indexName;
         },
         parse: function(response) {
             if (response['change_dir'].indexOf("mov_down") !== -1) {
@@ -39,11 +39,17 @@ define(["jquery", "backbone"], function($, Backbone) {
             } else if (response['change_dir'].indexOf("mov_up") !== -1) {
                 response['change_dir'] = 'mov_up';
             }
+            else {
+                response['change_dir'] = 'one_pixel';
+            }
 
             if (response['change_perc_dir'].indexOf("mov_down") !== -1) {
                 response['change_perc_dir'] = 'mov_down';
             } else if (response['change_perc_dir'].indexOf("mov_up") !== -1) {
                 response['change_perc_dir'] = 'mov_up';
+            }
+            else {
+                response['change_perc_dir'] = 'one_pixel';
             }
 
             this.data = response;

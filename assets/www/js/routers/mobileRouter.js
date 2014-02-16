@@ -15,7 +15,7 @@ var options = {
 // Includes file dependencies
 define(["jquery", "backbone", "indexjs", "AppModules"],
         function($, Backbone, indexjs, AppModules) {
-
+            //initNavbar();
             // Extends Backbone.Router
             var CategoryRouter = Backbone.Router.extend({
                 // The Router constructor
@@ -34,11 +34,25 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     "calendar": "calendar",
                     "news": "news",
                     "quote": "quote",
+                    "indexdetails": "indexdetails",
                     "category?:type": "category"
+                },
+                route: function(route, name, callback) {
+                    var router = this;
+                    if (!callback)
+                        callback = this[name];
+
+                    var f = function() {
+                        $("#index-navbar").hide();
+                        console.log('route before', route);
+                        callback.apply(router, arguments);
+                        console.log('route after', route);
+                    };
+                    return Backbone.Router.prototype.route.call(this, route, name, f);
                 },
                 // Home method
                 home: function() {
-                    console.log("home");
+                    $("#index-navbar").show();
                     var self = this;
 
                     var success = function() {
@@ -54,7 +68,6 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     this.homeView.model.fetch({success: success, error: error});
 
                     $('div[data-role="navbar"] ul li a#main_index, a#jse_select, a#all_jamaican, a#cross_listed').on('click', function(e) {
-                        console.log(e);
                         e.preventDefault();
                         var el = e.target.id;
                         switch (el)
@@ -76,6 +89,12 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                         self.homeView.getMarketIndexDetails();
                     });
                 },
+                indexdetails: function() {
+                    this.reportView.collection.fetch().done(function() {
+                        $.mobile.changePage("#", {reverse: false, changeHash: false});
+                    });
+
+                },
                 report: function() {
                     this.reportView.collection.fetch().done(function() {
                         $.mobile.changePage("#", {reverse: false, changeHash: false});
@@ -94,3 +113,28 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
             return CategoryRouter;
 
         });
+
+function initNavbar() {
+    $(document).on("pageinit", function() {
+        $("[data-role='navbar']").navbar();
+        $("[data-role='header'], [data-role='footer']").toolbar();
+    });
+
+    // Update the contents of the toolbars
+    $(document).on("pageshow", "[data-role='page']", function() {
+        // Each of the four pages in this demo has a data-title attribute
+        // which value is equal to the text of the nav button
+        // For example, on first page: <div data-role="page" data-title="Info">
+        var current = $(this).jqmData("title");
+        // Change the heading
+        $("[data-role='header'] h1").text(current);
+        // Remove active class from nav buttons
+        $("[data-role='navbar'] a.ui-btn-active").removeClass("ui-btn-active");
+        // Add active class to current nav button
+        $("[data-role='navbar'] a").each(function() {
+            if ($(this).text() === current) {
+                $(this).addClass("ui-btn-active");
+            }
+        });
+    });
+}

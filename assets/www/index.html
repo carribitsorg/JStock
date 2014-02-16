@@ -129,8 +129,8 @@
             .market-index .ui-btn-active{ 
                 font-weight: bold !important;
                 border-color: red;
-                background: none !important;
-                background-color: rgba(255,255,255,0) !important;  
+              
+               background-color: #cecece !important;
                 border-width: 0;
                 border-bottom-width: 0;
             }
@@ -140,11 +140,22 @@
             }
 
             /* Remove border from menu bar*/
-            .ui-page-theme-a  .app-navbar .ui-btn{
-                background: #f6f6f6 !important;
+            .ui-page-theme-a  /*.app-navbar*/ .ui-btn{
+               
                 border-color: #f6f6f6 !important;
                 color: #333 !important;
                 text-shadow: 0 1px 0 #f3f3f3 !important;
+            }
+
+            /* Remove border from quick links*/
+            .jqm-demos .jqm-content .jqm-deeplink {
+                display: block;
+                color: #999;
+                font-weight: 300;
+                border-top: 0px solid #eee;
+                text-align: right;
+                padding-top: .2em;
+                margin: 0 0 1.5em;
             }
 
             .summary-heading-1 {
@@ -247,7 +258,7 @@
                 <a href="#" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-search ui-nodisc-icon ui-alt-icon ui-btn-right">Search</a>
             </div>
 
-            <div data-role="navbar" class="market-index">
+            <div style="display:none" id="index-navbar" data-role="navbar" class="market-index">
                 <ul>
                     <li><a id="main_index" href="">Main Index</a></li>
                     <li><a id="jse_select" href="">JSE Select</a></li>
@@ -301,6 +312,8 @@
                     <p id="market-summart1"></p>
                 </div>
             </div>
+
+            <a href="#indexdetails" data-ajax="false" class="jqm-deeplink jqm-open-quicklink-panel ui-icon-carat-l ui-alt-icon">View Index Details</a>
 
             <div class="ui-select app-content">
                 <div id="select-choice-1-button" class="ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow">

@@ -22,7 +22,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                 initialize: function() {
                     Config = AppModules.Config;
                     this.reportView = new AppModules.Views.ReportView({el: "#appview", collection: new AppModules.Collection.CategoriesCollection([], {type: "vehicles"})});
-                    this.indexDetailsView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.MarketIndexModel()});
+                    this.indexDetailsView = new AppModules.Views.IndexDetailsView({el: "#appview", model: new AppModules.Models.MarketIndexModel()});
                     this.homeView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.DailyMainMarketSummary()});
                     Backbone.history.start();
                 },
@@ -92,15 +92,39 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     });
                 },
                 indexdetails: function() {
+                    var self = this;
                     $("#index-details-navbar").show();
 
                     var success = function() {
+                        self.indexDetailsView.render();
                         console.log('indexdetails success');
                     };
 
                     var error = function() {
                         console.log('ajax error');
                     };
+                    
+                    $('div[data-role="navbar"] #index-details-navbar ul li a#info').on('click', function(e) {
+                        e.preventDefault();
+                        var el = e.target.id;
+                        switch (el)
+                        {
+                            case 'main_index':
+                                options.indexName = MarketIndex.MAIN_INDEX;
+                                break;
+                            case 'jse_select':
+                                options.indexName = MarketIndex.JSE_SELECT;
+                                break;
+                            case 'all_jamaican':
+                                options.indexName = MarketIndex.ALL_JAMAICAN;
+                                break;
+                            case 'cross_listed':
+                                options.indexName = MarketIndex.CROSS_LISTED;
+                                break;
+                        }
+                        self.homeView.changeGraph();
+                        self.homeView.getMarketIndexDetails();
+                    });
 
                     this.indexDetailsView.model.fetch({success: success, error: error});
 

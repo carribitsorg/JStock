@@ -56,14 +56,13 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         initialize: function() {
 
             // The render method is called when Category Models are added to the Collection
-            this.collection.on("added", this.render, this);
+            //this.collection.on("added", this.render, this);
 
         },
         // Renders all of the Category models on the UI
         render: function() {
-            console.log("Re");
-            // Sets the view's template property
-            this.template = _.template($("script#categoryItems").html(), {"collection": this.collection});
+             console.log("IndexDetailsView > render");
+            this.template = _.template($("#indexdetails").html());
 
             // Renders the view's template inside of the current listview element
             this.$el.find("#content-holder").html(this.template);
@@ -120,7 +119,6 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
                 var template = _.template($("script#market-details").html(), {"summary": json.data});
                 self.$el.find(".market-details tr").remove();
                 self.$el.find('.market-details tbody:last').append(template);
-                console.log(template);
             };
 
             var error = function() {

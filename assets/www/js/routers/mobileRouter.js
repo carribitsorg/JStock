@@ -22,6 +22,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                 initialize: function() {
                     Config = AppModules.Config;
                     this.reportView = new AppModules.Views.ReportView({el: "#appview", collection: new AppModules.Collection.CategoriesCollection([], {type: "vehicles"})});
+                    this.indexDetailsView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.MarketIndexModel()});
                     this.homeView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.DailyMainMarketSummary()});
                     Backbone.history.start();
                 },
@@ -44,6 +45,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
                     var f = function() {
                         $("#index-navbar").hide();
+                        $("#index-details-navbar").hide();
                         console.log('route before', route);
                         callback.apply(router, arguments);
                         console.log('route after', route);
@@ -90,9 +92,17 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     });
                 },
                 indexdetails: function() {
-                    this.reportView.collection.fetch().done(function() {
-                        $.mobile.changePage("#", {reverse: false, changeHash: false});
-                    });
+                    $("#index-details-navbar").show();
+
+                    var success = function() {
+                        console.log('indexdetails success');
+                    };
+
+                    var error = function() {
+                        console.log('ajax error');
+                    };
+
+                    this.indexDetailsView.model.fetch({success: success, error: error});
 
                 },
                 report: function() {

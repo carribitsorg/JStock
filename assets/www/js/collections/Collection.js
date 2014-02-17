@@ -63,7 +63,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
                 // Resolves the deferred object (this triggers the changePage method inside of the Category Router)
                 deferred.resolve();
 
-            }, 1000);
+            }, 60);
 
             // Returns the deferred object
             return deferred;

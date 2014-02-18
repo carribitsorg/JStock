@@ -283,10 +283,11 @@
             .stock-direction{
                 padding-left: 3px;
             }
-            
-            .index-info-tab{
+
+            .index-tabs{
                 padding:0em;
                 margin:0em;
+                display:none;
             }
         </style>
     </head>
@@ -310,7 +311,7 @@
 
             <div style="display:none" id="index-details-navbar" data-role="navbar" class="app-navbar market-index">
                 <ul>
-                    <li><a id="info">Information</a></li>
+                    <li><a class="ui-btn-active" id="info">Information</a></li>
                     <li><a id="performance" >Performance</a></li>
                     <li><a id="history" >History</a></li>
                     <li><a id="composition" >Composition</a></li>
@@ -451,7 +452,10 @@
         </div>
 
         <div id="indexdetails" data-role="page" data-title="Colors">
-            <div id="index-performance-tab" class="index-info-tab">
+            <div id="index-information-tab" class="index-tabs">
+                info
+            </div>
+            <div id="index-performance-tab" class="index-tabs">
                 <div class="ui-block-a" style="width:100%;">
                     <div class="jqm-block-content" style="font-size: 0.8em">
                         JSE Index Performance Feb 14, 2014
@@ -475,7 +479,6 @@
                 </div>
             </div>
         </div>
-
         <div id="vehicles" data-role="page" data-title="Vehicles">
 
             <div data-role="header">

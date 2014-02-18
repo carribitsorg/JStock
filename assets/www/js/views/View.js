@@ -57,7 +57,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
 
             // The render method is called when Category Models are added to the Collection
             //this.collection.on("added", this.render, this);
-
+            //this.showFirstTab();
+            //console.log('cc');
         },
         // Renders all of the Category models on the UI
         render: function() {
@@ -78,14 +79,24 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             model.fetch({success: success, error: error});
             return this;
         },
+        showFirstTab: function() {
+            //this.$el.find('#info').addClass('ui-btn-active');
+        },
+        changeTab: function(id) {
+            this.$el.find('.index-tabs').hide();
+            console.log(id);
+            this.$el.find(id).show();
+        },
         renderStockPerformance: function(performance) {
             this.$el.find('#performance-list #vol').text(toMoney(performance['volume_traded']));
             this.$el.find('#performance-list #wtd').text(performance['week_to_date'] + '%');
             this.$el.find('#performance-list #mtd').text(performance['month_to_date'] + '%');
             this.$el.find('#performance-list #qtd').text(performance['quarter_to_date'] + '%');
             this.$el.find('#performance-list #ytd').text(performance['year_to_date'] + '%');
-            this.$el.find('#performance-list #change_name').text(performance['change_name'] + '%');
+            this.$el.find('#performance-list #change_name').text(performance['change_name']);
             this.$el.find('#performance-list #change_value').text(performance['change_value'] + '%');
+            
+            this.$el.find("#info").trigger("click");
         },
         renderStockInformation: function() {
 

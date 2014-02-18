@@ -7,9 +7,16 @@ var MarketIndex = {
     ALL_JAMAICAN: 'ALL_JAMAICAN',
     CROSS_LISTED: 'CROSS_LISTED'
 };
+var MarketIndexTab = {
+    INFO: 'INFO',
+    PERFORMANCE: 'PERFORMANCE',
+    HISTORY: 'HISTORY',
+    COMPOSITION: 'COMPOSITION'
+};
 
 var options = {
-    indexName: MarketIndex.MAIN_INDEX
+    indexName: MarketIndex.MAIN_INDEX,
+    indexTab: MarketIndexTab
 };
 
 // Includes file dependencies
@@ -95,6 +102,8 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     var self = this;
                     $("#index-details-navbar").show();
 
+                    this.indexDetailsView.showFirstTab();
+
                     var success = function() {
                         self.indexDetailsView.render();
                         console.log('indexdetails success');
@@ -103,27 +112,32 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     var error = function() {
                         console.log('ajax error');
                     };
-                    
-                    $('div[data-role="navbar"] #index-details-navbar ul li a#info').on('click', function(e) {
+
+                    $('#index-details-navbar ul li a').on('click', function(e) {
                         e.preventDefault();
                         var el = e.target.id;
+                        var divId = '';
                         switch (el)
                         {
-                            case 'main_index':
-                                options.indexName = MarketIndex.MAIN_INDEX;
+                            case 'info':
+                                options.indexTab = MarketIndexTab.INFO;
+                                divId = '#index-information-tab';
                                 break;
-                            case 'jse_select':
-                                options.indexName = MarketIndex.JSE_SELECT;
+                            case 'performance':
+                                options.indexTab = MarketIndexTab.PERFORMANCE;
+                                divId = '#index-performance-tab';
                                 break;
-                            case 'all_jamaican':
-                                options.indexName = MarketIndex.ALL_JAMAICAN;
+                            case 'history':
+                                options.indexTab = MarketIndexTab.HISTORY;
+                                divId = '';
                                 break;
-                            case 'cross_listed':
-                                options.indexName = MarketIndex.CROSS_LISTED;
+                            case 'composition':
+                                options.indexTab = MarketIndexTab.COMPOSITION;
+                                divId = '';
                                 break;
                         }
-                        self.homeView.changeGraph();
-                        self.homeView.getMarketIndexDetails();
+                        self.indexDetailsView.changeTab(divId);
+
                     });
 
                     this.indexDetailsView.model.fetch({success: success, error: error});

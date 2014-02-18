@@ -9,7 +9,7 @@ var MarketIndex = {
 };
 
 var options = {
-    indexName: MarketIndex.JSE_SELECT
+    indexName: MarketIndex.MAIN_INDEX
 };
 
 // Includes file dependencies
@@ -22,7 +22,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                 initialize: function() {
                     Config = AppModules.Config;
                     this.reportView = new AppModules.Views.ReportView({el: "#appview", collection: new AppModules.Collection.CategoriesCollection([], {type: "vehicles"})});
-                    this.indexDetailsView = new AppModules.Views.IndexDetailsView({el: "#appview", model: new AppModules.Models.MarketIndexModel()});
+                    this.indexDetailsView = new AppModules.Views.IndexDetailsView({el: "#appview", model: new AppModules.Models.MarketIndexFull()});
                     this.homeView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.DailyMainMarketSummary()});
                     Backbone.history.start();
                 },

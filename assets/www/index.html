@@ -451,42 +451,26 @@
         </div>
 
         <div id="indexdetails" data-role="page" data-title="Colors">
-            <div id="index-info-tab" class="index-info-tab">
+            <div id="index-performance-tab" class="index-info-tab">
                 <div class="ui-block-a" style="width:100%;">
                     <div class="jqm-block-content" style="font-size: 0.8em">
-                        JSE Index Information Feb 14, 2014
+                        JSE Index Performance Feb 14, 2014
                     </div>
                 </div>
 
                 <div class="ui-block-a" style="width:100%;">
                     <div class="app-content">
                         <div data-demo-html="true">
-                            <ul data-role="listview" data-inset="true" data-divider-theme="a" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-                                <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-a ui-first-child">Stock information</li>
-                                <li class="odd"><a  class="ui-btn text">Volume Traded <span class="figure">25,498,480</span></a></li>
-                                <li><a  class="ui-btn text">Week to Date<span class="figure">0.00%</span></a></li>
-                                <li class="odd"><a  class="ui-btn text">Month to Date<span class="figure">0.00%</span></a></li>
-                                <li><a  class="ui-btn text">Quarter to Date<span class="figure">0.00%</span></a></li>
-                                <li class="odd"><a  class="ui-btn text">Year to Date<span class="figure">0.00%</span></a></li>
-                                <li><a class="ui-btn text">2013 Change<span class="figure">0.00%</span></a></li>
+                            <ul id="performance-list" data-role="listview" data-inset="true" data-divider-theme="a" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+                                <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-a ui-first-child">Stock Performance</li>
+                                <li class="odd"><a  class="ui-btn text">Volume Traded <span id="vol" class="figure"></span></a></li>
+                                <li><a  class="ui-btn text">Week to Date<span id="wtd" class="figure">%</span></a></li>
+                                <li class="odd"><a  class="ui-btn text">Month to Date<span id="mtd" class="figure">%</span></a></li>
+                                <li><a  class="ui-btn text">Quarter to Date<span id="qtd" class="figure">%</span></a></li>
+                                <li class="odd"><a  class="ui-btn text">Year to Date<span id="ytd" class="figure">%</span></a></li>
+                                <li><a class="ui-btn text"><span id="change_name"> 2013 Change</span><span id="change_value" class="figure">%</span></a></li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-
-                <div class="ui-block-a" style="width:100%">
-                    <div class="jqm-block-content">
-                        <table class="market-details">
-                            <tbody>
-
-                                <tr>
-                                    <th scope="col">Volume: <i>2,600,050.00</i></th>
-                                    <th scope="col">Value: <i>2,265.57</i></th>
-                                    <th scope="col">Change: <i>12.03</i><img class="stock-direction" height="6px" width="6px" id="" src="images/mov_up.png" alt=""></th>
-                                    <th scope="col">% Change: <i>0.53</i><img class="stock-direction" height="6px" width="6px" id="" src="images/mov_up.png" "="" alt=""></th>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>

@@ -61,17 +61,41 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         },
         // Renders all of the Category models on the UI
         render: function() {
-             console.log("IndexDetailsView > render");
-            this.template = _.template($("#indexdetails").html());
+            var self = this;
+            var model = new ModelModule.MarketIndexFull;
 
-            // Renders the view's template inside of the current listview element
+            var success = function() {
+                self.renderStockPerformance(model.performance);
+            };
+
+            var error = function() {
+                console.log('ajax error');
+            };
+
+            this.template = _.template($("#indexdetails").html());
             this.$el.find("#content-holder").html(this.template);
 
-            // Maintains chainability
+            model.fetch({success: success, error: error});
             return this;
+        },
+        renderStockPerformance: function(performance) {
+            this.$el.find('#performance-list #vol').text(toMoney(performance['volume_traded']));
+            this.$el.find('#performance-list #wtd').text(performance['week_to_date'] + '%');
+            this.$el.find('#performance-list #mtd').text(performance['month_to_date'] + '%');
+            this.$el.find('#performance-list #qtd').text(performance['quarter_to_date'] + '%');
+            this.$el.find('#performance-list #ytd').text(performance['year_to_date'] + '%');
+            this.$el.find('#performance-list #change_name').text(performance['change_name'] + '%');
+            this.$el.find('#performance-list #change_value').text(performance['change_value'] + '%');
+        },
+        renderStockInformation: function() {
+
+        },
+        renderStockHistory: function() {
+
+        },
+        renderStockComposition: function() {
 
         }
-
     });
 
     var HomeView = Backbone.View.extend({

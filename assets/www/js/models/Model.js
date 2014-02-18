@@ -8,6 +8,19 @@ define(["jquery", "backbone"], function($, Backbone) {
     var Category = Backbone.Model.extend({
     });
 
+    var BaseModel = Backbone.Model.extend({
+        getImageDir: function(value) {
+            var image = 'one_pixel';
+            if (value.indexOf("mov_down") !== -1) {
+                image = 'mov_down';
+            } else if (value.indexOf("mov_up") !== -1) {
+                image = 'mov_up';
+            }
+            return image;
+        }
+    });
+
+
     DailyMainMarketSummary = Backbone.Model.extend({
         initialize: function(options) {
         },
@@ -34,37 +47,29 @@ define(["jquery", "backbone"], function($, Backbone) {
                     + '&index_name=' + options.indexName;
         },
         parse: function(response) {
-            if (response['change_dir'].indexOf("mov_down") !== -1) {
-                response['change_dir'] = 'mov_down';
-            } else if (response['change_dir'].indexOf("mov_up") !== -1) {
-                response['change_dir'] = 'mov_up';
-            }
-            else {
-                response['change_dir'] = 'one_pixel';
-            }
-
-            if (response['change_perc_dir'].indexOf("mov_down") !== -1) {
-                response['change_perc_dir'] = 'mov_down';
-            } else if (response['change_perc_dir'].indexOf("mov_up") !== -1) {
-                response['change_perc_dir'] = 'mov_up';
-            }
-            else {
-                response['change_perc_dir'] = 'one_pixel';
-            }
+            response['change_dir'] = BaseModel.prototype.getImageDir.call(this, response['change_dir']);
+            response['change_perc_dir'] = BaseModel.prototype.getImageDir.call(this, response['change_dir']);
 
             this.data = response;
             return this;
         }
     });
 
-    MarketIndexModel = Backbone.Model.extend({
+    MarketIndexFull = Backbone.Model.extend({
         initialize: function(options) {
         },
         urlRoot: function() {
-            return  Config.baseurl + "/mainmarket/dailySummary?date=" + Config.stockDate;
+            return  Config.baseurl + "/mainmarket/marketindexfulldetails?date=" + Config.stockDate
+                    + '&index_name=' + options.indexName;
         },
         parse: function(response) {
+            this.composition = response['composition'];
+            this.history = response['history'];
+            this.information = response['information'];
+            this.performance = response['performance'];
 
+            this.information['change_dir'] = BaseModel.prototype.getImageDir.call(this, this.information['change_dir']);
+            this.information['change_perc_dir'] = BaseModel.prototype.getImageDir.call(this, this.information['change_dir']);
 
             return this;
         }
@@ -75,7 +80,7 @@ define(["jquery", "backbone"], function($, Backbone) {
         CategoryModel: Category,
         DailyMainMarketSummary: DailyMainMarketSummary,
         MarketIndexDetails: MarketIndexDetails,
-        MarketIndexModel: MarketIndexModel
+        MarketIndexFull: MarketIndexFull
     };
 
 });

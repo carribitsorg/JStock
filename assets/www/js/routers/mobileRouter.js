@@ -129,11 +129,11 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                                 break;
                             case 'history':
                                 options.indexTab = MarketIndexTab.HISTORY;
-                                divId = '';
+                                divId = '#index-history-tab';
                                 break;
                             case 'composition':
                                 options.indexTab = MarketIndexTab.COMPOSITION;
-                                divId = '';
+                                divId = '#index-composition-tab';
                                 break;
                         }
                         self.indexDetailsView.changeTab(divId);

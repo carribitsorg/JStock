@@ -1,0 +1,246 @@
+.ui-navbar li .ui-btn {
+    font-size: 0.65em;
+}
+#content-holder{
+    margin-bottom: 2.5em;
+}
+
+.ui-content {
+    padding: 0.03em;
+}
+
+.jqm-block-content{
+    margin: .35em;
+    padding: 0.5em;
+    min-height: 0.1em;
+}
+
+
+
+.jqm-block-content p {
+    font-size: 0.8em;
+    font-weight: 300;
+    line-height: 1.4;
+    margin: .7em 0;
+}
+
+.ui-icon-home:after{background-image:url('../images/home_a.png')}
+.ui-icon-calendar:after{background-image:url('../images/calendar_i.png')}
+.ui-icon-news:after{background-image:url('../images/news_i.png')}
+.ui-icon-report:after{background-image:url('../images/report_i.png')}
+.ui-icon-quote:after{background-image:url('../images/quote_i.png')}
+
+.application-icon .ui-btn-icon-left:after, 
+.application-icon .ui-btn-icon-right:after,
+.application-icon .ui-btn-icon-top:after, 
+.application-icon .ui-btn-icon-bottom:after,
+.application-icon .ui-btn-icon-notext:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+.application-icon .ui-btn-icon-left:after, 
+.application-icon .ui-btn-icon-right:after, 
+.application-icon .ui-btn-icon-top:after, 
+.application-icon .ui-btn-icon-bottom:after, 
+.application-icon .ui-btn-icon-notext:after {
+
+    background-color: rgba(255,255,255,0);
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+}
+
+.application-icon .ui-btn-icon-bottom:after {
+    bottom: -0.35em;
+}
+
+.application-icon .ui-btn-active{ 
+    color: #FFF !important;
+    border-color: red;
+    background: none !important;
+    background-color: rgba(255,255,255,0) !important;  
+    border-width: 0;
+}
+
+.market-index * { 
+    text-shadow:0 0 0 !important; 
+}
+.market-index .ui-btn{
+    font-weight: normal !important;
+}
+.market-index  a{ 
+    color: #6B6B6B !important;
+}
+
+.jqm-demos .jqm-content {
+    padding-top: 1em;
+}
+
+/* Remove border from menu bar*/
+.ui-page-theme-a  .app-navbar .ui-btn{
+
+    border-color: #E8E8E8 !important;
+    color: #333 !important;
+    text-shadow: 0 1px 0 #f3f3f3 !important;
+}
+
+.app-navbar  .ui-btn {
+    background: #E8E8E8 !important;
+    border-color: #E8E8E8 !important;
+    color: #333 !important;
+    text-shadow: 0 1px 0 #f3f3f3 !important;
+    border-width: 0px;
+    border-style: solid;
+}
+
+.market-index .ui-btn-active{ 
+    font-weight: bold !important;
+
+    background-color: #cecece !important;
+    border-width: 0;
+
+}
+
+/* Remove border from quick links*/
+.jqm-demos .jqm-content .jqm-deeplink {
+    display: block;
+    color: #999;
+    font-weight: 300;
+    border-top: 0px solid #eee;
+    text-align: right;
+    padding-top: .2em;
+    margin: 0 0 1.5em;
+}
+
+.summary-heading-1 {
+    color: #333 !important;
+    font-size: 1.1em !important;
+    margin: 0 0 .625em !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 500 !important;
+    -webkit-margin-before: 0.0em !important;
+}
+
+.form-element-text {
+    color: #333;
+    font-size: 0.85em !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 500 !important;
+    -webkit-margin-before: 0.0em !important;
+}
+
+.summary-heading-3 {
+    height:40px;
+    font-size: 1.1em;
+    font-weight: 300;
+    padding-left: .25em;
+    width:100%;
+
+
+}
+
+.app-link{
+    font-size: 0.7em;
+    color:#666600;
+    border: 1px;
+    border-radius: 5px;
+    border-color: #e9e9e9;
+    border-style: solid;
+    padding: 3px;
+    margin-top: 3px;
+}
+
+.app-content{
+    margin: 0.0em;
+    padding: 0.5em;
+    min-height: 0.1em;
+}
+
+.app-content .text{
+    font-size: 0.7em !important;
+    font-weight: 500 !important;
+}
+
+.app-content .text .figure{
+    position:absolute;
+    right: 3.2em;
+}
+
+.app-content .odd .ui-btn{
+    background: #F0F0F0   !important;
+}
+
+
+.advancing{
+    background: url('../images/advancing.png')  no-repeat;
+    background-position: 99% 50%;
+    background-size: 24px 24px;
+}
+.declining{
+    background: url('../images/declining.png')  no-repeat;
+    background-position: 99% 50%;
+    background-size: 24px 24px;
+}
+
+.traded{
+    background: url('../images/dollar.png')  no-repeat;
+    background-position: 99% 50%;
+    background-size: 24px 24px;
+}
+
+/*Tables */
+.stock-t
+{
+    line-height: 1.6em;
+}
+
+.stock-t
+{
+
+    font-size: 0.5em;
+    background: #fff;
+
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+.stock-t th
+{
+    color: #888687;
+    padding: 7px 5px;
+    border-bottom: 2px solid #ddd;
+}
+.stock-t td
+{
+    color: #888687;
+    padding: 5px 4px 0px 4px;
+}
+.stock-t tbody tr:hover td
+{
+}
+
+img#graph-img { outline: 0; max-width: 100%; height: auto;}
+
+.market-details{
+    font-size:0.45em;
+}
+.market-details th
+{
+    color: #888687;
+    padding: 5px 5px;
+}
+
+.stock-direction{
+    padding-left: 3px;
+}
+
+.index-tabs{
+    padding:0em;
+    margin:0em;
+    display:none;
+}

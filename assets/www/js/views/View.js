@@ -67,6 +67,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
 
             var success = function() {
                 self.renderStockPerformance(model.performance);
+                self.renderStockInformation(model.information);
             };
 
             var error = function() {
@@ -95,11 +96,22 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find('#performance-list #ytd').text(performance['year_to_date'] + '%');
             this.$el.find('#performance-list #change_name').text(performance['change_name']);
             this.$el.find('#performance-list #change_value').text(performance['change_value'] + '%');
-            
+
             this.$el.find("#info").trigger("click");
         },
-        renderStockInformation: function() {
-
+        renderStockInformation: function(information) {
+            this.$el.find('#information-list #value_date').text(information['value_date']);
+            this.$el.find('#information-list #value').text(toMoney(information['value']));
+            this.$el.find('#information-list #change').text(toMoney(information['change']));
+            this.$el.find('#information-list #change_perc').text(information['change_perc'] + '%');
+            this.$el.find('#information-list #volume').text(toMoney(information['vol']));
+            this.$el.find('#information-list #market_capitalization').text(information['market_capitalization']);
+            this.$el.find('#information-list #change_1969').text(information['change_1969']);
+            
+            this.$el.find('#information-list #wtd').text(information['wtd']);
+            this.$el.find('#information-list #mtd').text(information['mtd']);
+            this.$el.find('#information-list #qtd').text(information['qtd']);
+            this.$el.find('#information-list #ytd').text(information['ytd']);
         },
         renderStockHistory: function() {
 

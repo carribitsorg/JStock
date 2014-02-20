@@ -88,12 +88,50 @@ define(["jquery", "backbone"], function($, Backbone) {
         }
     });
 
+    Quote = Backbone.Model.extend({
+        initialize: function(options) {
+        },
+        urlRoot: function() {
+            return  Config.baseurl + "/mainmarket/dailySummary?date=" + Config.stockDate;
+        },
+        parse: function(response) {
+            this.advancing = response.stocks.ADVANCING;
+            this.declining = response.stocks.DECLINING;
+            this.tradingFirm = response.stocks.TRADING_FIRM;
+            this.summary1 = response.details.summary1;
+            this.summarydate = response.details.summary_date;
+
+            return this;
+        }
+    });
+
+
+
+    News = Backbone.Model.extend({
+        initialize: function(options) {
+        },
+        urlRoot: function() {
+            return  Config.baseurl + "/mainmarket/dailySummary?date=" + Config.stockDate;
+        },
+        parse: function(response) {
+            this.advancing = response.stocks.ADVANCING;
+            this.declining = response.stocks.DECLINING;
+            this.tradingFirm = response.stocks.TRADING_FIRM;
+            this.summary1 = response.details.summary1;
+            this.summarydate = response.details.summary_date;
+
+            return this;
+        }
+    });
+
     // Returns the Model class
     return {
         CategoryModel: Category,
         DailyMainMarketSummary: DailyMainMarketSummary,
         MarketIndexDetails: MarketIndexDetails,
-        MarketIndexFull: MarketIndexFull
+        MarketIndexFull: MarketIndexFull,
+        Quote: Quote,
+        News: News
     };
 
 });

@@ -28,11 +28,13 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                 // The Router constructor
                 initialize: function() {
                     Config = AppModules.Config;
-                    this.reportView = new AppModules.Views.ReportView({el: "#appview", collection: new AppModules.Collection.CategoriesCollection([], {type: "vehicles"})});
                     this.indexDetailsView = new AppModules.Views.IndexDetailsView({el: "#appview", model: new AppModules.Models.MarketIndexFull()});
                     this.homeView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.DailyMainMarketSummary()});
-                    
-                   $('.market-date').text('Feb 15, 2014');
+
+                    this.quoteView = new AppModules.Views.QuoteView({el: "#appview", model: new AppModules.Models.Quote()});
+                    this.newsView = new AppModules.Views.NewsView({el: "#appview", model: new AppModules.Models.News()});
+
+                    $('.market-date').text('Feb 15, 2014');
                     Backbone.history.start();
                 },
                 // Backbone.js Routes
@@ -147,16 +149,26 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     this.indexDetailsView.model.fetch({success: success, error: error});
 
                 },
-                report: function() {
-                    this.reportView.collection.fetch().done(function() {
-                        $.mobile.changePage("#", {reverse: false, changeHash: false});
-                    });
-                },
                 news: function() {
+                    var self = this;
+                    var success = function() {
+                        self.newsView.render();
+                    };
+                    var error = function() {
 
+                    };
+
+                    this.newsView.model.fetch({success: success, error: error});
                 },
                 quote: function() {
+                    var self = this;
+                    var success = function() {
+                        self.quoteView.render();
+                    };
+                    var error = function() {
 
+                    };
+                    this.quoteView.model.fetch({success: success, error: error});
                 }
 
             });

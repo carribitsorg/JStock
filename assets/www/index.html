@@ -40,11 +40,6 @@
                 return date.toString('dddd, MMMM ,yyyy').substring(4, 15);
             }
         </script>
-
-        <style type="text/css">
-
-
-        </style>
     </head>
     <body>
         <div id="appview" data-role="page" data-title="JSE" class="jqm-demos" data-quicklinks="true">
@@ -79,10 +74,9 @@
 
             <div data-role="navbar" data-position="fixed" data-iconpos="bottom" class="ui-footer ui-footer-fixed slideup ui-bar-inherit application-icon app-navbar">
                 <ul>
-                    <li><a href="#home" class="ui-btn-active" data-icon="home"></a></li>
-                    <li><a href="#report" data-icon="report"></a></li>
-                    <li><a href="#news" data-icon="news"></a></li>
+                    <li><a href="#home" class="ui-btn-active" data-icon="report"></a></li>
                     <li><a href="#quote" data-icon="quote"></a></li>
+                    <li><a href="#news" data-icon="news"></a></li>
                 </ul>
             </div>
 
@@ -300,45 +294,58 @@
                 </div>
             </div>
         </div>
-        <div id="vehicles" data-role="page" data-title="Vehicles">
-
-            <div data-role="header">
-                <h1>Vehicles</h1>
-            </div><!-- /header -->
-
-            <div role="main" class="ui-content">
-                <ul data-role="listview" data-inset="true">
-                </ul>
-            </div><!-- /content -->
-
+        <div id="quote" data-role="page" data-title="Quote">
+            <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search fruits..." data-inset="true">
+                <li><a href="#">Apple</a></li>
+                <li><a href="#">Banana</a></li>
+                <li><a href="#">Cherry</a></li>
+                <li><a href="#">Cranberry</a></li>
+                <li><a href="#">Grape</a></li>
+                <li><a href="#">Orange</a></li>
+            </ul>
         </div>
-
-        <div id="report" data-role="page" data-title="Report">
-
-
-
-            <div role="main" class="ui-content">
-                <ul data-role="listview" data-inset="true">
+        <div id="news" data-role="page" data-title="News">
+            <div data-demo-html="true">
+                <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+                    <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child">Company News<span class="ui-li-count ui-body-inherit">2</span></li>
+                    <li><a href="index.html" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+                            <h2>Stephen Weber</h2>
+                            <p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+                            <p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+                            <p class="ui-li-aside"><strong>6:24</strong>PM</p>
+                        </a></li>
+                    <li><a href="index.html" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+                            <h2>jQuery Team</h2>
+                            <p><strong>Boston Conference Planning</strong></p>
+                            <p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
+                            <p class="ui-li-aside"><strong>9:18</strong>AM</p>
+                        </a></li>
+                    <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count">Thursday, October 7, 2010 <span class="ui-li-count ui-body-inherit">1</span></li>
+                    <li class="ui-last-child"><a href="index.html" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+                            <h2>Avery Walker</h2>
+                            <p><strong>Re: Dinner Tonight</strong></p>
+                            <p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait!</p>
+                            <p class="ui-li-aside"><strong>4:48</strong>PM</p>
+                        </a></li>
                 </ul>
-            </div><!-- /content -->
-
+            </div>
         </div>
         <script id="stocks" type="text/template">
             <% _.each( stocks, function( stock, id ) { %>
             <tr>
-                <td><%=stock.security.ellipse(25)%></td>
-                <td class="alnright"><%=toMoney(stock.volume)%></td>
-                <td class="alnright"><%=stock.close_price%></td>
-                <td class="alnright"><%=stock.change%></td>
+            <td><%=stock.security.ellipse(25)%></td>
+            <td class="alnright"><%=toMoney(stock.volume)%></td>
+            <td class="alnright"><%=stock.close_price%></td>
+            <td class="alnright"><%=stock.change%></td>
             </tr>
             <% }); %>
         </script>
         <script id="stocks-trd" type="text/template">
             <% _.each( stocks, function( stock, id ) { %>
             <tr>
-                <td><%=stock.security.ellipse(25)%></td>
-                <td class="alnright"><%=toMoney(stock.volume)%></td>
-                <td class="alnright"><%=stock.close_price%></td>
+            <td><%=stock.security.ellipse(25)%></td>
+            <td class="alnright"><%=toMoney(stock.volume)%></td>
+            <td class="alnright"><%=stock.close_price%></td>
             </tr>
             <% }); %>
         </script>
@@ -351,10 +358,10 @@
 
         <script id="market-details" type="text/template">
             <tr>
-                <th scope="col">Volume: <i><%=toMoney(summary['vol'])%></i></th>
-                <th scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
-                <th scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.png" alt="" width="100%"></th>
-                <th scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.png"" alt="" width="100%"></th>
+            <th scope="col">Volume: <i><%=toMoney(summary['vol'])%></i></th>
+            <th scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
+            <th scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.png" alt="" width="100%"></th>
+            <th scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.png"" alt="" width="100%"></th>
             </tr>
         </script>
 
@@ -368,11 +375,11 @@
         <script id="index-history-tmp" type="text/template">
             <% _.each( history, function( row, id ) { %>
             <tr>
-               <td><%=row['date']%></td>
-               <td class="alnright"><%=toMoney(row['value'])%></td>
-               <td class="alnright"><%=toMoney(row['change'])%></td>
-               <td class="alnright"><%=toMoney(row['change_perc'])%></td>
-               <td class="alnright"><%=toMoney(row['volume_traded'])%></td>
+            <td><%=row['date']%></td>
+            <td class="alnright"><%=toMoney(row['value'])%></td>
+            <td class="alnright"><%=toMoney(row['change'])%></td>
+            <td class="alnright"><%=toMoney(row['change_perc'])%></td>
+            <td class="alnright"><%=toMoney(row['volume_traded'])%></td>
             </tr>
             <% }); %>
         </script>
@@ -380,11 +387,11 @@
         <script id="index-composition-tmp" type="text/template">
             <% _.each( composition, function( row, id ) { %>
             <tr>
-               <td><%=row['symbol']%></td>
-               <td class="alnright"><%=toMoney(row['price'])%></td>
-               <td class="alnright"><%=toMoney(row['change'])%></td>
-               <td class="alnright"><%=toMoney(row['change_perc'])%></td>
-               <td class="alnright"><%=toMoney(row['volume_traded'])%></td>
+            <td><%=row['symbol']%></td>
+            <td class="alnright"><%=toMoney(row['price'])%></td>
+            <td class="alnright"><%=toMoney(row['change'])%></td>
+            <td class="alnright"><%=toMoney(row['change_perc'])%></td>
+            <td class="alnright"><%=toMoney(row['volume_traded'])%></td>
             </tr>
             <% }); %>
         </script>

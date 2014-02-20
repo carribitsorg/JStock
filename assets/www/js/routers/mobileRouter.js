@@ -31,6 +31,8 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     this.reportView = new AppModules.Views.ReportView({el: "#appview", collection: new AppModules.Collection.CategoriesCollection([], {type: "vehicles"})});
                     this.indexDetailsView = new AppModules.Views.IndexDetailsView({el: "#appview", model: new AppModules.Models.MarketIndexFull()});
                     this.homeView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.DailyMainMarketSummary()});
+                    
+                   $('.market-date').text('Feb 15, 2014');
                     Backbone.history.start();
                 },
                 // Backbone.js Routes
@@ -94,6 +96,8 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                                 options.indexName = MarketIndex.CROSS_LISTED;
                                 break;
                         }
+
+                        $('.act-index-name').text($(e.target).text());
                         self.homeView.changeGraph();
                         self.homeView.getMarketIndexDetails();
                     });

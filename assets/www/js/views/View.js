@@ -68,6 +68,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var success = function() {
                 self.renderStockPerformance(model.performance);
                 self.renderStockInformation(model.information);
+                self.renderStockHistory(model.history);
+                self.renderStockComposition(model.composition);
             };
 
             var error = function() {
@@ -85,17 +87,16 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         },
         changeTab: function(id) {
             this.$el.find('.index-tabs').hide();
-            console.log(id);
             this.$el.find(id).show();
         },
         renderStockPerformance: function(performance) {
-            this.$el.find('#performance-list #vol').text(toMoney(performance['volume_traded']));
-            this.$el.find('#performance-list #wtd').text(performance['week_to_date'] + '%');
-            this.$el.find('#performance-list #mtd').text(performance['month_to_date'] + '%');
-            this.$el.find('#performance-list #qtd').text(performance['quarter_to_date'] + '%');
-            this.$el.find('#performance-list #ytd').text(performance['year_to_date'] + '%');
-            this.$el.find('#performance-list #change_name').text(performance['change_name']);
-            this.$el.find('#performance-list #change_value').text(performance['change_value'] + '%');
+            this.$el.find('#performance-list #vol').text(toMoney((performance['volume_traded'] || '')));
+            this.$el.find('#performance-list #wtd').text((performance['week_to_date'] || '') + '%');
+            this.$el.find('#performance-list #mtd').text((performance['month_to_date'] || '') + '%');
+            this.$el.find('#performance-list #qtd').text((performance['quarter_to_date'] || '') + '%');
+            this.$el.find('#performance-list #ytd').text((performance['year_to_date'] || '') + '%');
+            this.$el.find('#performance-list #change_name').text((performance['change_name'] || ''));
+            this.$el.find('#performance-list #change_value').text((performance['change_value'] || '') + '%');
 
             this.$el.find("#info").trigger("click");
         },
@@ -107,17 +108,27 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find('#information-list #volume').text(toMoney(information['vol']));
             this.$el.find('#information-list #market_capitalization').text(information['market_capitalization']);
             this.$el.find('#information-list #change_1969').text(information['change_1969']);
-            
+
             this.$el.find('#information-list #wtd').text(information['wtd']);
             this.$el.find('#information-list #mtd').text(information['mtd']);
             this.$el.find('#information-list #qtd').text(information['qtd']);
             this.$el.find('#information-list #ytd').text(information['ytd']);
-        },
-        renderStockHistory: function() {
 
+            this.$el.find('#information-list #change').addClass(information['change_dir']);
+            this.$el.find('#information-list #change_perc').addClass(information['change_perc_dir']);
+            this.$el.find('#information-list #wtd').addClass(information['wtd_direction']);
+            this.$el.find('#information-list #mtd').addClass(information['mtd_direction']);
+            this.$el.find('#information-list #qtd').addClass(information['qtd_direction']);
+            this.$el.find('#information-list #ytd').addClass(information['ytd_direction']);
         },
-        renderStockComposition: function() {
-
+        renderStockHistory: function(history) {
+            var historyTmp = _.template($("script#index-history-tmp").html(), {"history": history});
+            this.$el.find('#index-history-table tbody:last').append(historyTmp);
+        },
+        renderStockComposition: function(composition) {
+            var compositionTmp = _.template($("script#index-composition-tmp").html(), {"composition": composition});
+            this.$el.find('#index-composition-table tbody:last').append(compositionTmp);
+            console.log(compositionTmp);
         }
     });
 

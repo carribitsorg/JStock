@@ -167,8 +167,9 @@
 }
 
 .app-content .text .figure{
+    padding-right:16px;
     position:absolute;
-    right: 3.2em;
+    right: 0.02em;
 }
 
 .app-content .odd .ui-btn{
@@ -190,7 +191,7 @@
 .traded{
     background: url('../images/dollar.png')  no-repeat;
     background-position: 99% 50%;
-    background-size: 24px 24px;
+    background-size: 12px 16px;
 }
 
 /*Tables */
@@ -220,6 +221,10 @@
     color: #888687;
     padding: 5px 4px 0px 4px;
 }
+td.alnright, th.alnright 
+{ 
+    text-align: right; 
+}
 .stock-t tbody tr:hover td
 {
 }
@@ -239,8 +244,25 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     padding-left: 3px;
 }
 
+
 .index-tabs{
     padding:0em;
     margin:0em;
     display:none;
 }
+.value-dir  {
+
+}
+.value-dir-down{
+    background: url('../images/mov_down.png') no-repeat 90% 50% !important;
+    background-size: 8px 8px !important;
+    display: inline-block;
+    position: relative;
+}
+.value-dir-up{
+    background: url('../images/mov_up.png') no-repeat 90% 50% !important;
+    background-size: 8px 8px !important;
+    display: inline-block;
+    position: relative;
+}
+

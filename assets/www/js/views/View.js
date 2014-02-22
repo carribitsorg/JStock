@@ -15,7 +15,17 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
     var NewsView = Backbone.View.extend({
         initialize: function() {
         },
+        viewNewsItem: function(id) {
+            var template = _.template($("#viewnews").html());
+            this.$el.find("#content-holder").html(template);
+            console.log("viewNewsItem " + id);
+
+            window.localStorage.setItem("temperature", "100");
+            temperature = window.localStorage.getItem("temperature");
+            console.log(Storage);
+        },
         render: function() {
+            var newsCount = 0;
             this.template = _.template($("#news").html());
             this.$el.find("#content-holder").html(this.template);
 
@@ -24,10 +34,19 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
                 console.log(this.model.news[key]);
                 var news = this.model.news[key];
                 var newsItems = _.template($("script#new-item").html(), {"news": news});
-                var newDivider = _.template($("script#new-divider").html(), {"date": key});
+
+                var newDivider = '';
+                if (newsCount === 0) {
+                    newDivider = _.template($("script#new-divider-first").html(), {"date": key});
+                } else {
+                    newDivider = _.template($("script#new-divider").html(), {"date": key});
+                }
+
 
                 this.$el.find('#news-list').append(newDivider);
                 this.$el.find('#news-list').append(newsItems);
+
+                newsCount++;
             }
 
 

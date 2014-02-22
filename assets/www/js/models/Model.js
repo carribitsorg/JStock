@@ -111,7 +111,7 @@ define(["jquery", "backbone"], function($, Backbone) {
         initialize: function(options) {
         },
         urlRoot: function() {
-            return  Config.baseurl + "/news/getdailynews?date=2014-02-21";//+ Config.stockDate;
+            return  Config.baseurl + "/news/dailynews?date=" + Config.stockDate;
         },
         parse: function(response) {
             this.news = response;

@@ -266,3 +266,20 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     position: relative;
 }
 
+#news-list *{
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+#news-list h2 {
+    font-size: 0.8em !important;
+    font-weight: 600;
+}
+
+#news-list p {
+    font-size: 0.7em !important;
+    font-style: italic;
+}
+
+#news-list>.ui-li-divider {
+    color: #666600 !important;
+}

@@ -307,10 +307,11 @@
         <div id="news" data-role="page" data-title="News">
             <div data-demo-html="true">
                 <ul data-role="list-view" id="news-list" news-list data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-                    <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child">Thursday, October 7, 2010</li>
-
                 </ul>
             </div>
+        </div>
+        <div id="viewnews" data-role="page" data-title="View News">
+            Hello
         </div>
         <script id="stocks" type="text/template">
             <% _.each( stocks, function( stock, id ) { %>
@@ -377,9 +378,14 @@
             </tr>
             <% }); %>
         </script>
+        
+        
 
         <script id="new-divider" type="text/template">
-             <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count"><%=parseDate(date)%></li>
+             <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count"><%=date%></li>
+        </script>
+        <script id="new-divider-first" type="text/template">
+            <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child"><%=date%></li>
         </script>
 
         <script id="new-item" type="text/template">

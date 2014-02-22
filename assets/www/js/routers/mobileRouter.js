@@ -1,6 +1,8 @@
 // Mobile Router
 // =============
 var Config = null;
+var Storage = null;
+
 var MarketIndex = {
     MAIN_INDEX: 'MAIN_INDEX',
     JSE_SELECT: 'JSE_SELECT',
@@ -22,8 +24,9 @@ var options = {
 // Includes file dependencies
 define(["jquery", "backbone", "indexjs", "AppModules"],
         function($, Backbone, indexjs, AppModules) {
-            //initNavbar();
-            // Extends Backbone.Router
+            Config = AppModules.Config;
+            Storage = AppModules.Storage;
+            
             var CategoryRouter = Backbone.Router.extend({
                 // The Router constructor
                 initialize: function() {
@@ -44,10 +47,10 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     "home": "home",
                     "report": "report",
                     "calendar": "calendar",
+                    "news?:id": "viewnews",
                     "news": "news",
                     "quote": "quote",
-                    "indexdetails": "indexdetails",
-                    "category?:type": "category"
+                    "indexdetails": "indexdetails"
                 },
                 route: function(route, name, callback) {
                     var router = this;
@@ -160,6 +163,11 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
                     this.newsView.model.fetch({success: success, error: error});
                 },
+                viewnews: function(id) {
+                    console.log('ZZZZZZZZZZZZQQ');
+                    //this.newsView.render();
+                    this.newsView.viewNewsItem(id);
+                },
                 quote: function() {
                     var self = this;
                     var success = function() {
@@ -178,27 +186,3 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
         });
 
-function initNavbar() {
-    $(document).on("pageinit", function() {
-        $("[data-role='navbar']").navbar();
-        $("[data-role='header'], [data-role='footer']").toolbar();
-    });
-
-    // Update the contents of the toolbars
-    $(document).on("pageshow", "[data-role='page']", function() {
-        // Each of the four pages in this demo has a data-title attribute
-        // which value is equal to the text of the nav button
-        // For example, on first page: <div data-role="page" data-title="Info">
-        var current = $(this).jqmData("title");
-        // Change the heading
-        $("[data-role='header'] h1").text(current);
-        // Remove active class from nav buttons
-        $("[data-role='navbar'] a.ui-btn-active").removeClass("ui-btn-active");
-        // Add active class to current nav button
-        $("[data-role='navbar'] a").each(function() {
-            if ($(this).text() === current) {
-                $(this).addClass("ui-btn-active");
-            }
-        });
-    });
-}

@@ -47,6 +47,19 @@ define(["jquery", "backbone"], function($, Backbone) {
         }
     });
 
+    NewsItem = Backbone.Model.extend({
+        initialize: function(newsId) {
+            this.newsId = newsId;
+        },
+        urlRoot: function() {
+            return  Config.baseurl + "/news/viewNews?id=" + this.newsId;
+        },
+        parse: function(response) {
+            this.data = response;
+            return this;
+        }
+    });
+
     MarketIndexDetails = Backbone.Model.extend({
         initialize: function() {
 
@@ -126,7 +139,8 @@ define(["jquery", "backbone"], function($, Backbone) {
         MarketIndexDetails: MarketIndexDetails,
         MarketIndexFull: MarketIndexFull,
         Quote: Quote,
-        News: News
+        News: News,
+        NewsItem: NewsItem
     };
 
 });

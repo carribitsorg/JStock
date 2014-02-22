@@ -311,7 +311,16 @@
             </div>
         </div>
         <div id="viewnews" data-role="page" data-title="View News">
-            Hello
+            <div id="news-item" class="ui-block-a" style="width:100%">
+                <div class="jqm-block-content">
+                    <div id="news-heading" class="heading" style=""><h2></h2></div>
+                    <p class="pub-date"></p>
+                    <p id="news-content">
+                       
+                    </p>
+                </div>
+            </div>
+
         </div>
         <script id="stocks" type="text/template">
             <% _.each( stocks, function( stock, id ) { %>
@@ -378,11 +387,11 @@
             </tr>
             <% }); %>
         </script>
-        
-        
+
+
 
         <script id="new-divider" type="text/template">
-             <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count"><%=date%></li>
+            <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count"><%=date%></li>
         </script>
         <script id="new-divider-first" type="text/template">
             <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child"><%=date%></li>
@@ -391,11 +400,11 @@
         <script id="new-item" type="text/template">
             <% _.each( news, function( row, id ) { %>
             <li>
-                <a href="index.html" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-                    <h2><%=row['title']%></h2>
-                    <p><%=row['desc']%></p>
-                    <p class="ui-li-aside"></p>
-                </a>
+            <a href="#news?<%=row['id']%>" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+            <h2><%=row['title']%></h2>
+            <p><%=row['desc']%></p>
+            <p class="ui-li-aside"></p>
+            </a>
             </li>
             <% }); %>
         </script>

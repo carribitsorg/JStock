@@ -283,3 +283,29 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 #news-list>.ui-li-divider {
     color: #666600 !important;
 }
+
+.heading {
+    font-size: 1.2em !important;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    border-bottom: 1px solid #ddd;
+}
+.heading h2{
+    color:#666600 !important;
+    font-size: 0.9em !important;
+    font-weight: 400;
+}
+p {
+    margin-top: 1.5em !important;
+    margin-bottom: 2.5em !important;
+    font-size: 1.0em !important;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    padding: 0 1em 0 1em !important;
+}
+.pub-date{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.7em !important;
+    color: #888687;
+}

@@ -8,8 +8,8 @@ define([
         Views,
         Models,
         Collection,
-        Config,
-        Utility)
+        Utility,
+        Config)
 {
     return {
         Views: Views,

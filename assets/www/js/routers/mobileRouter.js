@@ -24,18 +24,18 @@ var options = {
 // Includes file dependencies
 define(["jquery", "backbone", "indexjs", "AppModules"],
         function($, Backbone, indexjs, AppModules) {
+            //Import Modules
             Config = AppModules.Config;
-            Storage = AppModules.Storage;
-            
+            Storage = AppModules.Utility.Storage;
+
             var CategoryRouter = Backbone.Router.extend({
-                // The Router constructor
                 initialize: function() {
-                    Config = AppModules.Config;
                     this.indexDetailsView = new AppModules.Views.IndexDetailsView({el: "#appview", model: new AppModules.Models.MarketIndexFull()});
                     this.homeView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.DailyMainMarketSummary()});
 
                     this.quoteView = new AppModules.Views.QuoteView({el: "#appview", model: new AppModules.Models.Quote()});
                     this.newsView = new AppModules.Views.NewsView({el: "#appview", model: new AppModules.Models.News()});
+                    this.newsItemView = new AppModules.Views.NewsItemView({el: "#appview", model: new AppModules.Models.NewsItem()});
 
                     $('.market-date').text('Feb 15, 2014');
                     Backbone.history.start();
@@ -165,8 +165,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                 },
                 viewnews: function(id) {
                     console.log('ZZZZZZZZZZZZQQ');
-                    //this.newsView.render();
-                    this.newsView.viewNewsItem(id);
+                    this.newsItemView.render(id);
                 },
                 quote: function() {
                     var self = this;

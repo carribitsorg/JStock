@@ -15,20 +15,10 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
     var NewsView = Backbone.View.extend({
         initialize: function() {
         },
-        viewNewsItem: function(id) {
-            var template = _.template($("#viewnews").html());
-            this.$el.find("#content-holder").html(template);
-            console.log("viewNewsItem " + id);
-
-            window.localStorage.setItem("temperature", "100");
-            temperature = window.localStorage.getItem("temperature");
-            console.log(Storage);
-        },
         render: function() {
             var newsCount = 0;
             this.template = _.template($("#news").html());
             this.$el.find("#content-holder").html(this.template);
-
 
             for (var key in this.model.news) {
                 console.log(this.model.news[key]);
@@ -42,14 +32,39 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
                     newDivider = _.template($("script#new-divider").html(), {"date": key});
                 }
 
-
                 this.$el.find('#news-list').append(newDivider);
                 this.$el.find('#news-list').append(newsItems);
-
                 newsCount++;
             }
 
 
+        }
+    });
+
+    var NewsItemView = Backbone.View.extend({
+        initialize: function() {
+        },
+        render: function(id) {
+            var self = this;
+            var model = new ModelModule.NewsItem(id);
+
+
+            var success = function() {
+                console.log(model.newsItem);
+                var template = _.template($("#viewnews").html());
+                self.$el.find("#content-holder").html(template);
+
+                self.$el.find('#news-item #news-heading h2').text(model.data['title']);
+                self.$el.find('#news-item #news-content').text(model.data['desc']);
+                self.$el.find('#news-item .pub-date').text(model.data['full_date']);
+            };
+
+            var error = function() {
+                console.log('ajax error');
+            };
+
+            model.fetch({success: success, error: error});
+            return this;
         }
     });
 
@@ -210,7 +225,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         HomeView: HomeView,
         IndexDetailsView: IndexDetailsView,
         QuoteView: QuoteView,
-        NewsView: NewsView
+        NewsView: NewsView,
+        NewsItemView: NewsItemView
     };
 
 });

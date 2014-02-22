@@ -306,27 +306,9 @@
         </div>
         <div id="news" data-role="page" data-title="News">
             <div data-demo-html="true">
-                <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-                    <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child">Company News<span class="ui-li-count ui-body-inherit">2</span></li>
-                    <li><a href="index.html" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-                            <h2>Stephen Weber</h2>
-                            <p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
-                            <p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
-                            <p class="ui-li-aside"><strong>6:24</strong>PM</p>
-                        </a></li>
-                    <li><a href="index.html" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-                            <h2>jQuery Team</h2>
-                            <p><strong>Boston Conference Planning</strong></p>
-                            <p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
-                            <p class="ui-li-aside"><strong>9:18</strong>AM</p>
-                        </a></li>
-                    <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count">Thursday, October 7, 2010 <span class="ui-li-count ui-body-inherit">1</span></li>
-                    <li class="ui-last-child"><a href="index.html" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-                            <h2>Avery Walker</h2>
-                            <p><strong>Re: Dinner Tonight</strong></p>
-                            <p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait!</p>
-                            <p class="ui-li-aside"><strong>4:48</strong>PM</p>
-                        </a></li>
+                <ul data-role="list-view" id="news-list" news-list data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+                    <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child">Thursday, October 7, 2010</li>
+
                 </ul>
             </div>
         </div>
@@ -393,6 +375,22 @@
             <td class="alnright"><%=toMoney(row['change_perc'])%></td>
             <td class="alnright"><%=toMoney(row['volume_traded'])%></td>
             </tr>
+            <% }); %>
+        </script>
+
+        <script id="new-divider" type="text/template">
+             <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count"><%=parseDate(date)%></li>
+        </script>
+
+        <script id="new-item" type="text/template">
+            <% _.each( news, function( row, id ) { %>
+            <li>
+                <a href="index.html" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+                    <h2><%=row['title']%></h2>
+                    <p><%=row['desc']%></p>
+                    <p class="ui-li-aside"></p>
+                </a>
+            </li>
             <% }); %>
         </script>
     </body>

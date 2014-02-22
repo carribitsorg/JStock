@@ -18,6 +18,19 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         render: function() {
             this.template = _.template($("#news").html());
             this.$el.find("#content-holder").html(this.template);
+
+
+            for (var key in this.model.news) {
+                console.log(this.model.news[key]);
+                var news = this.model.news[key];
+                var newsItems = _.template($("script#new-item").html(), {"news": news});
+                var newDivider = _.template($("script#new-divider").html(), {"date": key});
+
+                this.$el.find('#news-list').append(newDivider);
+                this.$el.find('#news-list').append(newsItems);
+            }
+
+
         }
     });
 

@@ -105,15 +105,13 @@ define(["jquery", "backbone"], function($, Backbone) {
         initialize: function(options) {
         },
         urlRoot: function() {
-            return  Config.baseurl + "/mainmarket/dailySummary?date=" + Config.stockDate;
+            return  Config.baseurl + "/mainmarket/dailyquote?date=" + Config.stockDate;
         },
         parse: function(response) {
-            this.advancing = response.stocks.ADVANCING;
-            this.declining = response.stocks.DECLINING;
-            this.tradingFirm = response.stocks.TRADING_FIRM;
-            this.summary1 = response.details.summary1;
-            this.summarydate = response.details.summary_date;
-
+            this.quote = response.quote;
+            this.ordinaryShares = response.ordinary_shares;
+            this.preferenceShares = response.preference_shares;
+            this.usDenominatedShares = response.us_denominated_shares;
             return this;
         }
     });

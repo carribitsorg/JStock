@@ -67,11 +67,11 @@
                     <li><a id="composition" >Composition</a></li>
                 </ul>
             </div>
-            
+
             <div style="display:none" id="quote-navbar" data-role="navbar" class="app-navbar market-index">
                 <ul>
                     <li><a class="ui-btn-active" id="quote-tab">Quote</a></li>
-                    <li><a id="irdinary-tab" >Ordinary</a></li>
+                    <li><a id="ordinary-tab" >Ordinary</a></li>
                     <li><a id="preference-tab" >Preference</a></li>
                     <li><a id="us-denom-tab" >US Denoninated</a></li>
                 </ul>
@@ -216,11 +216,11 @@
                         <table id="index-composition-table" class="stock-t">
                             <thead>
                                 <tr>
-                                    <th scope="col">Symbol</th>
-                                    <th class="alnright" scope="col">Price</th>
-                                    <th class="alnright" scope="col">Change ($)</th>
-                                    <th class="alnright" scope="col">Change (%)</th>
-                                    <th class="alnright" scope="col">Volume Traded</th>
+                                    <th class="no-border" scope="col">Symbol</th>
+                                    <th class="alnright no-border" scope="col">Price</th>
+                                    <th class="alnright no-border" scope="col">Change ($)</th>
+                                    <th class="alnright no-border" scope="col">Change (%)</th>
+                                    <th class="alnright no-border" scope="col">Vol. Traded</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -232,15 +232,15 @@
             <div id="index-history-tab" class="index-tabs">
                 <div class="ui-block-a" style="width:100%;">
                     <div class="jqm-block-content">
-                        <div class="summary-heading-3"><span class="act-index-name">Main Index History</span> </div>
+                        <div class="summary-heading-3"><span class="act-index-name">Main Index</span> History <span class="market-date"></span></div>
                         <table id="index-history-table" class="stock-t">
                             <thead>
                                 <tr>
-                                    <th scope="col">Date</th>
-                                    <th class="alnright" scope="col">Value</th>
-                                    <th class="alnright" scope="col">Change ($)</th>
-                                    <th class="alnright" scope="col">Change (%)</th>
-                                    <th class="alnright" scope="col">Volume Traded</th>
+                                    <th class="no-border" scope="col">Date</th>
+                                    <th class="alnright no-border" scope="col">Value</th>
+                                    <th class="alnright no-border" scope="col">Change ($)</th>
+                                    <th class="alnright no-border" scope="col">Change (%)</th>
+                                    <th class="alnright no-border" scope="col">Vol. Traded</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -304,7 +304,79 @@
             </div>
         </div>
         <div id="quote" data-role="page" data-title="Quote">
-            
+            <div id="quote-tab-page" class="quote-tabs">
+
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="jqm-block-content">
+                        <div class="summary-heading-3"><span class="act-index-name">Quote Sheet for <span class="market-date"></span></div>
+                        <table id="quote-main-table" class="stock-t" style="font-size: 0.5em;">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Index</th>
+                                    <th class="alnright" scope="col">Value</th>
+                                    <th class="alnright" scope="col">Volume ($)</th>
+                                    <th class="alnright" scope="col">Change</th>
+                                    <th class="alnright" scope="col">Change(%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="ordinary-tab-page" class="quote-tabs">
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="jqm-block-content">
+                        <div class="summary-heading-3">
+                            <span class="act-index-name">Ordinary Shares for <span class="market-date"></span></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="app-content">
+                        <div data-demo-html="true" class="tab-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="preference-tab-page" class="quote-tabs">
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="jqm-block-content">
+                        <div class="summary-heading-3">
+                            <span class="act-index-name">Preference Shares for <span class="market-date"></span></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="app-content">
+                        <div data-demo-html="true" class="tab-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="us-denom-tab-page" class="quote-tabs">
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="jqm-block-content">
+                        <div class="summary-heading-3">
+                            <span class="act-index-name">US Denominated Shares for <span class="market-date"></span></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="app-content">
+                        <div data-demo-html="true" class="tab-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="news" data-role="page" data-title="News">
@@ -331,10 +403,10 @@
         <script id="stocks" type="text/template">
             <% _.each( stocks, function( stock, id ) { %>
             <tr>
-                <td><%=stock.security.ellipse(25)%></td>
-                <td class="alnright"><%=toMoney(stock.volume)%></td>
-                <td class="alnright"><%=stock.close_price%></td>
-                <td class="alnright"><%=stock.change%></td>
+            <td><%=stock.security.ellipse(25)%></td>
+            <td class="alnright"><%=toMoney(stock.volume)%></td>
+            <td class="alnright"><%=stock.close_price%></td>
+            <td class="alnright"><%=stock.change%></td>
             </tr>
             <% }); %>
         </script>
@@ -358,40 +430,40 @@
 
         <script id="market-details" type="text/template">
             <tr>
-                <th scope="col">Volume: <i><%=toMoney(summary['vol'])%></i></th>
-                <th scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
-                <th scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.png" alt="" ></th>
-                <th scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.png"" alt="" ></th>
+            <th scope="col">Volume: <i><%=toMoney(summary['vol'])%></i></th>
+            <th scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
+            <th scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.png" alt="" ></th>
+            <th scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.png"" alt="" ></th>
             </tr>
         </script>
 
         <script id="index-information" type="text/template">
             <tr>
-                <td scope="col">Value Date</i></td>
-                <td scope="col">Volume: <i><%=toMoney(0)%></i></td>
+            <td scope="col">Value Date</i></td>
+            <td scope="col">Volume: <i><%=toMoney(0)%></i></td>
             </tr>
         </script>
 
         <script id="index-history-tmp" type="text/template">
             <% _.each( history, function( row, id ) { %>
-            <tr>
-                <td><%=row['date']%></td>
-                <td class="alnright"><%=toMoney(row['value'])%></td>
-                <td class="alnright"><%=toMoney(row['change'])%></td>
-                <td class="alnright"><%=toMoney(row['change_perc'])%></td>
-                <td class="alnright"><%=toMoney(row['volume_traded'])%></td>
+            <tr <% if((id+1)%2) { %>class="odd"<% } else { %>class="even" <% }%>>
+            <td><%=row['date']%></td>
+            <td class="alnright"><%=toMoney(row['value'])%></td>
+            <td class="alnright"><%=toMoney(row['change'])%></td>
+            <td class="alnright"><%=toMoney(row['change_perc'])%></td>
+            <td class="alnright"><%=toMoney(row['volume_traded'])%></td>
             </tr>
             <% }); %>
         </script>
 
         <script id="index-composition-tmp" type="text/template">
             <% _.each( composition, function( row, id ) { %>
-            <tr>
-                <td><%=row['symbol']%></td>
-                <td class="alnright"><%=toMoney(row['price'])%></td>
-                <td class="alnright"><%=toMoney(row['change'])%></td>
-                <td class="alnright"><%=toMoney(row['change_perc'])%></td>
-                <td class="alnright"><%=toMoney(row['volume_traded'])%></td>
+            <tr <% if((id+1)%2) { %>class="odd"<% } else { %>class="even" <% }%>>
+            <td><%=row['symbol']%></td>
+            <td class="alnright"><%=toMoney(row['price'])%></td>
+            <td class="alnright"><%=toMoney(row['change'])%></td>
+            <td class="alnright"><%=toMoney(row['change_perc'])%></td>
+            <td class="alnright"><%=toMoney(row['volume_traded'])%></td>
             </tr>
             <% }); %>
         </script>
@@ -407,13 +479,46 @@
         <script id="new-item" type="text/template">
             <% _.each( news, function( row, id ) { %>
             <li>
-                <a href="#news?<%=row['id']%>" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-                    <h2><%=row['title']%></h2>
-                    <p><%=row['desc']%></p>
-                    <p class="ui-li-aside"></p>
-                </a>
+            <a href="#news?<%=row['id']%>" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+            <h2><%=row['title']%></h2>
+            <p><%=row['desc']%></p>
+            <p class="ui-li-aside"></p>
+            </a>
             </li>
             <% }); %>
+        </script>
+
+        <script id="quote-main-tmp" type="text/template">
+            <% _.each( data, function( row, id ) { %>
+            <tr>
+            <td><img class="stock-direction" height="6px" width="6px" id="" src="<%=row['direction']%>"></td>
+            <td><%=row['index']%></td>
+            <td class="alnright"><%=toMoney(row['value'])%></td>
+            <td class="alnright"><%=toMoney(row['volume'])%></td>
+            <td class="alnright"><%=toMoney(row['change'])%></td>
+            <td class="alnright"><%=toMoney(row['change_perc'])%></td>
+            </tr>
+            <% }); %>
+        </script>
+
+        <script id="shares-tmp" type="text/template">
+            <div data-demo-html="true">
+                <ul id="performance-list" data-role="listview" data-inset="true" data-divider-theme="a" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+                    <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-a ui-first-child">Security: <%=row['security']%></li>
+                    <li class="odd"><a  class="ui-btn text">52 Week High <span id="vol" class="figure"><%=toMoney(row['week_high_52'])%></span></a></li>
+                    <li class=""><a  class="ui-btn text">52 Week Low<span id="wtd" class="figure"><%=toMoney(row['week_low_52'])%></span></a></li>
+                    <li class="odd"><a  class="ui-btn text">Prev Yr Div($)<span id="mtd" class="figure"><%=toMoney(row['prev_yr_div'])%></span></a></li>
+                    <li class=""><a  class="ui-btn text">Current Yr Div ($)<span id="qtd" class="figure"><%=toMoney(row['current_yr_div'])%></span></a></li>
+                    <li class="odd"><a  class="ui-btn text">Volume (non block) ($)<span id="ytd" class="figure"><%=toMoney(row['volume_non_block'])%></span></a></li>
+                    <li class=""><a  class="ui-btn text">Today's High ($)<span id="ytd" class="figure"><%=toMoney(row['today_high'])%></span></a></li>
+                    <li class="odd"><a  class="ui-btn text">Today's Low ($)<span id="ytd" class="figure"><%=toMoney(row['today_low'])%></span></a></li>
+                    <li class=""><a  class="ui-btn text">Last Traded Price ($)<span id="ytd" class="figure"><%=toMoney(row['last_traded_price'])%></span></a></li>
+                    <li class="odd"><a  class="ui-btn text">Close Price ($)<span id="ytd" class="figure"><%=toMoney(row['close_price'])%></span></a></li>
+                    <li class=""><a  class="ui-btn text">Change ($)<span id="ytd" class="figure"><%=toMoney(row['change'])%></span></a></li>
+                    <li class="odd"><a  class="ui-btn text">Closing Bid ($)<span id="ytd" class="figure"><%=toMoney(row['closing_bid'])%></span></a></li>
+                    <li class=""><a  class="ui-btn text">Closing Ask ($)<span id="ytd" class="figure"><%=toMoney(row['closing_ask'])%></span></a></li>
+                </ul>
+            </div>
         </script>
     </body>
 </html>

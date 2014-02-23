@@ -16,6 +16,13 @@ var MarketIndexTab = {
     COMPOSITION: 'COMPOSITION'
 };
 
+var QuoteTab = {
+    QUOTE: 'QUOTE',
+    ORDINARY: 'ORDINARY',
+    PREFERENCE: 'PREFERENCE',
+    US_DENONINATED: 'US_DENONINATED'
+};
+
 var options = {
     indexName: MarketIndex.MAIN_INDEX,
     indexTab: MarketIndexTab
@@ -37,7 +44,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     this.newsView = new AppModules.Views.NewsView({el: "#appview", model: new AppModules.Models.News()});
                     this.newsItemView = new AppModules.Views.NewsItemView({el: "#appview", model: new AppModules.Models.NewsItem()});
 
-                    $('.market-date').text('Feb 15, 2014');
+                    $('.market-date').text('Feb 14, 2014');
                     Backbone.history.start();
                 },
                 // Backbone.js Routes
@@ -165,7 +172,6 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     this.newsView.model.fetch({success: success, error: error});
                 },
                 viewnews: function(id) {
-                    console.log('ZZZZZZZZZZZZQQ');
                     this.newsItemView.render(id);
                 },
                 quote: function() {
@@ -177,6 +183,35 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     var error = function() {
 
                     };
+
+                    $('#quote-navbar ul li a').on('click', function(e) {
+                       
+                        e.preventDefault();
+                        var el = e.target.id;
+                        var divId = '';
+                        switch (el)
+                        {
+                            case 'quote-tab':
+                                options.indexTab = MarketIndexTab.INFO;
+                                divId = '#quote-tab-page';
+                                break;
+                            case 'ordinary-tab':
+                                options.indexTab = MarketIndexTab.PERFORMANCE;
+                                divId = '#ordinary-tab-page';
+                                break;
+                            case 'preference-tab':
+                                options.indexTab = MarketIndexTab.HISTORY;
+                                divId = '#preference-tab-page';
+                                break;
+                            case 'us-denom-tab':
+                                options.indexTab = MarketIndexTab.COMPOSITION;
+                                divId = '#us-denom-tab-page';
+                                break;
+                        }
+                        self.quoteView.changeTab(divId);
+
+                    });
+
                     this.quoteView.model.fetch({success: success, error: error});
                 }
 

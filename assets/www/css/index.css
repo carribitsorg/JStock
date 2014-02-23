@@ -1,11 +1,12 @@
 .ui-navbar li .ui-btn {
-    
+
 }
 
 #main_index, #jse_select, #all_jamaican, #cross_listed,
-#info, #performance, #history, #composition
+#info, #performance, #history, #composition,
+#quote-tab, #ordinary-tab, #preference-tab, #us-denom-tab
 {
-    font-size:  0.6em !important;
+    font-size:  0.65em !important;
 }
 #content-holder{
     margin-bottom: 2.5em;
@@ -62,7 +63,7 @@
 }
 
 .application-icon .ui-btn-icon-bottom:after {
-   bottom: 0.00em;
+    bottom: 0.00em;
 }
 
 .application-icon .ui-btn-active{ 
@@ -235,12 +236,17 @@ td.alnright, th.alnright
 {
 }
 
+.stock-t th.no-border {
+    border-bottom: none;
+}
+
+
 img#graph-img { outline: 0; max-width: 100%; height: auto;}
 
 .market-details{
-   font-size: 0.1em !important;
-   font-family:sans-serif;
-   font-weight: 200;
+    font-size: 0.1em !important;
+    font-family:sans-serif;
+    font-weight: 200;
 }
 .market-details th
 {
@@ -255,6 +261,11 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 
 
 .index-tabs{
+    padding:0em;
+    margin:0em;
+    display:none;
+}
+.quote-tabs{
     padding:0em;
     margin:0em;
     display:none;
@@ -333,4 +344,7 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     background: url('../images/arrow_left.png') no-repeat 0% 50% !important;
     clear:both;
     display:block;
+}
+.odd {
+    background: #ededed;
 }

@@ -7,8 +7,55 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         initialize: function() {
         },
         render: function() {
+            var self = this;
+            var model = new ModelModule.Quote();
+
             this.template = _.template($("#quote").html());
             this.$el.find("#content-holder").html(this.template);
+            this.$el.find("#quote-tab").trigger("click");
+
+            var success = function() {
+                self.renderQuotes(model.quote);
+                self.renderOrdinaryShares(model.ordinaryShares);
+                self.renderPreferenceShares(model.preferenceShares);
+                self.renderUsDenominatedShares(model.usDenominatedShares);
+            };
+
+            var error = function() {
+                console.log('ajax error');
+            };
+
+            model.fetch({success: success, error: error});
+            return this;
+        },
+        renderQuotes: function(data) {
+            var html = _.template($("script#quote-main-tmp").html(), {"data": data});
+            this.$el.find('#quote-main-table tbody:last').append(html);
+        },
+        renderOrdinaryShares: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                row = data[i];
+                html = _.template($("script#shares-tmp").html(), {"row": row});
+                this.$el.find('#ordinary-tab-page .tab-content').append(html);
+            }
+        },
+        renderPreferenceShares: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                row = data[i];
+                html = _.template($("script#shares-tmp").html(), {"row": row});
+                this.$el.find('#preference-tab-page .tab-content').append(html);
+            }
+        },
+        renderUsDenominatedShares: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                row = data[i];
+                html = _.template($("script#shares-tmp").html(), {"row": row});
+                this.$el.find('#us-denom-tab-page .tab-content').append(html);
+            }
+        },
+        changeTab: function(id) {
+            this.$el.find('.quote-tabs').hide();
+            this.$el.find(id).show();
         }
     });
 
@@ -47,7 +94,6 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         render: function(id) {
             var self = this;
             var model = new ModelModule.NewsItem(id);
-
 
             var success = function() {
                 console.log(model.newsItem);

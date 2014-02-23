@@ -238,12 +238,15 @@ td.alnright, th.alnright
 img#graph-img { outline: 0; max-width: 100%; height: auto;}
 
 .market-details{
-   font-size: 0.25em !important;
+   font-size: 0.1em !important;
+   font-family:sans-serif;
+   font-weight: 200;
 }
 .market-details th
 {
     color: #888687;
-    padding: 4px 4px;
+    padding: 4px 0px 0 4px;
+    line-height: 1em;
 }
 
 .stock-direction{

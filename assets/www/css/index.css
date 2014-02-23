@@ -1,5 +1,11 @@
 .ui-navbar li .ui-btn {
-    font-size: 0.65em;
+    
+}
+
+#main_index, #jse_select, #all_jamaican, #cross_listed,
+#info, #performance, #history, #composition
+{
+    font-size:  0.6em !important;
 }
 #content-holder{
     margin-bottom: 2.5em;
@@ -11,7 +17,7 @@
 
 .jqm-block-content{
     margin: .35em;
-    padding: 0.5em;
+    padding: 0.5em 0.2em 0.5em 0.2em;
     min-height: 0.1em;
 }
 
@@ -56,7 +62,7 @@
 }
 
 .application-icon .ui-btn-icon-bottom:after {
-    bottom: -0.35em;
+   bottom: 0.00em;
 }
 
 .application-icon .ui-btn-active{ 
@@ -203,7 +209,7 @@
 .stock-t
 {
 
-    font-size: 0.5em;
+    font-size: 0.65em;
     background: #fff;
 
     width: 100%;
@@ -232,12 +238,12 @@ td.alnright, th.alnright
 img#graph-img { outline: 0; max-width: 100%; height: auto;}
 
 .market-details{
-    font-size:0.45em;
+   font-size: 0.25em !important;
 }
 .market-details th
 {
     color: #888687;
-    padding: 5px 5px;
+    padding: 4px 4px;
 }
 
 .stock-direction{

@@ -60,6 +60,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     var f = function() {
                         $("#index-navbar").hide();
                         $("#index-details-navbar").hide();
+                        $("#quote-navbar").hide();
                         console.log('route before', route);
                         callback.apply(router, arguments);
                         console.log('route after', route);
@@ -168,6 +169,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     this.newsItemView.render(id);
                 },
                 quote: function() {
+                    $("#quote-navbar").show();
                     var self = this;
                     var success = function() {
                         self.quoteView.render();

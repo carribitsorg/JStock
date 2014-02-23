@@ -67,6 +67,15 @@
                     <li><a id="composition" >Composition</a></li>
                 </ul>
             </div>
+            
+            <div style="display:none" id="quote-navbar" data-role="navbar" class="app-navbar market-index">
+                <ul>
+                    <li><a class="ui-btn-active" id="quote-tab">Quote</a></li>
+                    <li><a id="irdinary-tab" >Ordinary</a></li>
+                    <li><a id="preference-tab" >Preference</a></li>
+                    <li><a id="us-denom-tab" >US Denoninated</a></li>
+                </ul>
+            </div>
 
             <div id="content-holder" role="main" class="ui-content jqm-content">
 
@@ -153,7 +162,7 @@
                             <tr>
                                 <th scope="col">Security</th>
                                 <th class="alnright" scope="col">Volume</th>
-                                <th class="alnright" scope="col">Close Price $</th>
+                                <th class="alnright" scope="col">Close $</th>
                                 <th class="alnright" scope="col">Change $</th>
                             </tr>
                         </thead>
@@ -171,7 +180,7 @@
                             <tr>
                                 <th scope="col">Security</th>
                                 <th class="alnright" scope="col">Volume</th>
-                                <th class="alnright" scope="col">Close Price $</th>
+                                <th class="alnright" scope="col">Close $</th>
                                 <th class="alnright" scope="col">Change $</th>
                             </tr>
                         </thead>
@@ -295,14 +304,7 @@
             </div>
         </div>
         <div id="quote" data-role="page" data-title="Quote">
-            <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search fruits..." data-inset="true">
-                <li><a href="#">Apple</a></li>
-                <li><a href="#">Banana</a></li>
-                <li><a href="#">Cherry</a></li>
-                <li><a href="#">Cranberry</a></li>
-                <li><a href="#">Grape</a></li>
-                <li><a href="#">Orange</a></li>
-            </ul>
+            
         </div>
 
         <div id="news" data-role="page" data-title="News">

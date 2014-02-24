@@ -3,6 +3,35 @@
 
 // Includes file dependencies
 define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule) {
+
+    var SymbolView = Backbone.View.extend({
+        initialize: function() {
+        },
+        render: function() {
+
+        },
+        refresh: function() {
+            var self = this;
+            var model = new ModelModule.Symbol();
+
+            var success = function() {
+                for (var i = 0; i < model.symbols.length; i++) {
+                    var row = model.symbols[i];
+                    var html = _.template($("script#symbol-lookup").html(), {"row": row});
+                    self.$el.find('#sysbol-list').append(html);
+                    //console.log(html);
+                }
+            };
+
+            var error = function() {
+                console.log('ajax error');
+            };
+
+            model.fetch({success: success, error: error});
+            return this;
+        }
+    });
+
     var QuoteView = Backbone.View.extend({
         initialize: function() {
         },
@@ -272,7 +301,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         IndexDetailsView: IndexDetailsView,
         QuoteView: QuoteView,
         NewsView: NewsView,
-        NewsItemView: NewsItemView
+        NewsItemView: NewsItemView,
+        SymbolView: SymbolView
     };
 
 });

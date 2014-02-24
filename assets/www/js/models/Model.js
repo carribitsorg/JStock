@@ -3,11 +3,6 @@
 
 // Includes file dependencies
 define(["jquery", "backbone"], function($, Backbone) {
-
-    // The Model constructor
-    var Category = Backbone.Model.extend({
-    });
-
     var BaseModel = Backbone.Model.extend({
         getImageDir: function(value) {
             var image = 'one_pixel';
@@ -29,6 +24,18 @@ define(["jquery", "backbone"], function($, Backbone) {
         }
     });
 
+    Symbol = Backbone.Model.extend({
+        initialize: function() {
+        },
+        urlRoot: function() {
+            return  Config.baseurl + "/symbollookup/allsymbols";
+        },
+        parse: function(response) {
+            this.symbols = response;
+
+            return this;
+        }
+    });
 
     DailyMainMarketSummary = Backbone.Model.extend({
         initialize: function(options) {
@@ -132,13 +139,13 @@ define(["jquery", "backbone"], function($, Backbone) {
 
     // Returns the Model class
     return {
-        CategoryModel: Category,
         DailyMainMarketSummary: DailyMainMarketSummary,
         MarketIndexDetails: MarketIndexDetails,
         MarketIndexFull: MarketIndexFull,
         Quote: Quote,
         News: News,
-        NewsItem: NewsItem
+        NewsItem: NewsItem,
+        Symbol: Symbol
     };
 
 });

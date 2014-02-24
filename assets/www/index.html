@@ -91,11 +91,9 @@
 
             <div data-role="panel" class="jqm-search-panel" data-position="right" data-display="overlay" data-theme="a">
                 <div class="jqm-search">
-                    <ul class="jqm-list" data-filter-placeholder="Search market" data-filter-reveal="true">
-                        <li data-filtertext="introduction overview getting started"><a href="../intro/" data-ajax="false">Introduction</a></li>
+                    <ul class="jqm-list" data-filter-placeholder="Search Symbol" data-filter-reveal="true" id="sysbol-list">
                         <li data-filtertext="buttons button markup buttonmarkup method anchor link button element"><a href="../button-markup/" data-ajax="false">Buttons</a></li>
-                        <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false">
-
+                        <li data-filtertext="West Indies Pulp & Paper"><a href="" data-ajax="false">Buttons</a></li>
                     </ul>
                 </div>
             </div>
@@ -503,22 +501,25 @@
 
         <script id="shares-tmp" type="text/template">
             <div data-demo-html="true">
-                <ul id="performance-list" data-role="listview" data-inset="true" data-divider-theme="a" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-                    <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-a ui-first-child">Security: <%=row['security']%></li>
-                    <li class="odd"><a  class="ui-btn text">52 Week High <span id="vol" class="figure"><%=toMoney(row['week_high_52'])%></span></a></li>
-                    <li class=""><a  class="ui-btn text">52 Week Low<span id="wtd" class="figure"><%=toMoney(row['week_low_52'])%></span></a></li>
-                    <li class="odd"><a  class="ui-btn text">Prev Yr Div($)<span id="mtd" class="figure"><%=toMoney(row['prev_yr_div'])%></span></a></li>
-                    <li class=""><a  class="ui-btn text">Current Yr Div ($)<span id="qtd" class="figure"><%=toMoney(row['current_yr_div'])%></span></a></li>
-                    <li class="odd"><a  class="ui-btn text">Volume (non block) ($)<span id="ytd" class="figure"><%=toMoney(row['volume_non_block'])%></span></a></li>
-                    <li class=""><a  class="ui-btn text">Today's High ($)<span id="ytd" class="figure"><%=toMoney(row['today_high'])%></span></a></li>
-                    <li class="odd"><a  class="ui-btn text">Today's Low ($)<span id="ytd" class="figure"><%=toMoney(row['today_low'])%></span></a></li>
-                    <li class=""><a  class="ui-btn text">Last Traded Price ($)<span id="ytd" class="figure"><%=toMoney(row['last_traded_price'])%></span></a></li>
-                    <li class="odd"><a  class="ui-btn text">Close Price ($)<span id="ytd" class="figure"><%=toMoney(row['close_price'])%></span></a></li>
-                    <li class=""><a  class="ui-btn text">Change ($)<span id="ytd" class="figure"><%=toMoney(row['change'])%></span></a></li>
-                    <li class="odd"><a  class="ui-btn text">Closing Bid ($)<span id="ytd" class="figure"><%=toMoney(row['closing_bid'])%></span></a></li>
-                    <li class=""><a  class="ui-btn text">Closing Ask ($)<span id="ytd" class="figure"><%=toMoney(row['closing_ask'])%></span></a></li>
-                </ul>
+            <ul id="performance-list" data-role="listview" data-inset="true" data-divider-theme="a" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+            <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-a ui-first-child">Security: <%=row['security']%></li>
+            <li class="odd"><a  class="ui-btn text">52 Week High <span id="vol" class="figure"><%=toMoney(row['week_high_52'])%></span></a></li>
+            <li class=""><a  class="ui-btn text">52 Week Low<span id="wtd" class="figure"><%=toMoney(row['week_low_52'])%></span></a></li>
+            <li class="odd"><a  class="ui-btn text">Prev Yr Div($)<span id="mtd" class="figure"><%=toMoney(row['prev_yr_div'])%></span></a></li>
+            <li class=""><a  class="ui-btn text">Current Yr Div ($)<span id="qtd" class="figure"><%=toMoney(row['current_yr_div'])%></span></a></li>
+            <li class="odd"><a  class="ui-btn text">Volume (non block) ($)<span id="ytd" class="figure"><%=toMoney(row['volume_non_block'])%></span></a></li>
+            <li class=""><a  class="ui-btn text">Today's High ($)<span id="ytd" class="figure"><%=toMoney(row['today_high'])%></span></a></li>
+            <li class="odd"><a  class="ui-btn text">Today's Low ($)<span id="ytd" class="figure"><%=toMoney(row['today_low'])%></span></a></li>
+            <li class=""><a  class="ui-btn text">Last Traded Price ($)<span id="ytd" class="figure"><%=toMoney(row['last_traded_price'])%></span></a></li>
+            <li class="odd"><a  class="ui-btn text">Close Price ($)<span id="ytd" class="figure"><%=toMoney(row['close_price'])%></span></a></li>
+            <li class=""><a  class="ui-btn text">Change ($)<span id="ytd" class="figure"><%=toMoney(row['change'])%></span></a></li>
+            <li class="odd"><a  class="ui-btn text">Closing Bid ($)<span id="ytd" class="figure"><%=toMoney(row['closing_bid'])%></span></a></li>
+            <li class=""><a  class="ui-btn text">Closing Ask ($)<span id="ytd" class="figure"><%=toMoney(row['closing_ask'])%></span></a></li>
+            </ul>
             </div>
+        </script>
+        <script id="symbol-lookup" type="text/template">
+            <li data-filtertext="<%=row['institution']%>" class="ui-screen-hidden"><a href="" data-ajax="false" class="ui-btn"><%=row['symbol']%><span class="jqm-search-results-keywords ui-li-desc"><%=row['institution']%></span></a></li>
         </script>
     </body>
 </html>

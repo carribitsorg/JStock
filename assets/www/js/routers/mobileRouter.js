@@ -39,12 +39,20 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                 initialize: function() {
                     this.indexDetailsView = new AppModules.Views.IndexDetailsView({el: "#appview", model: new AppModules.Models.MarketIndexFull()});
                     this.homeView = new AppModules.Views.HomeView({el: "#appview", model: new AppModules.Models.DailyMainMarketSummary()});
-
                     this.quoteView = new AppModules.Views.QuoteView({el: "#appview", model: new AppModules.Models.Quote()});
                     this.newsView = new AppModules.Views.NewsView({el: "#appview", model: new AppModules.Models.News()});
                     this.newsItemView = new AppModules.Views.NewsItemView({el: "#appview", model: new AppModules.Models.NewsItem()});
 
+                    this.symbolView = new AppModules.Views.SymbolView({el: "#appview", model: new AppModules.Models.Symbol()});
+                    this.symbolView.refresh();
+
                     $('.market-date').text('Feb 14, 2014');
+
+                    $('.symbol-items').hide();
+                    $(".ui-input-search [data-type='search']").click(function() {
+                        $('.symbol-items').show();
+                    });
+
                     Backbone.history.start();
                 },
                 // Backbone.js Routes
@@ -185,7 +193,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     };
 
                     $('#quote-navbar ul li a').on('click', function(e) {
-                       
+
                         e.preventDefault();
                         var el = e.target.id;
                         var divId = '';
@@ -221,4 +229,3 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
             return CategoryRouter;
 
         });
-

@@ -15,7 +15,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find("#content-holder").html(template);
 
             var success = function() {
-                self.renderTradeData(model);
+                self.renderTradeData(model.symbol);
+                self.renderPerformance(model.symbol);
             };
             var error = function() {
 
@@ -29,10 +30,27 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find(id).show();
         },
         renderTradeData: function(data) {
-            console.log(data);
+            this.$el.find('#trade-data-summary .symbol-symbol').text(data['symbol']);
+            this.$el.find('#trade-data-summary .symbol-fin-year').text(data['financial_year_end']);
+            this.$el.find('#trade-data-summary .symbol-last-traded').text(data['last_traded_price']);
+            this.$el.find('#trade-data-summary .symbol-close').text(data['close_price']);
+            this.$el.find('#trade-data-summary .symbol-change').text(toMoney(data['change']));
+            this.$el.find('#trade-data-summary .symbol-change-perc').text(data['change_perc']);
         },
-        renderPerformance: function() {
+        renderPerformance: function(data) {
+            this.$el.find('#trade-data-list .symbol-bid').text(data['bid']);
+            this.$el.find('#trade-data-list .week-to-date').text(data['week_to_date']);
+            this.$el.find('#trade-data-list .symbol-ask').text(data['ask']);
+            this.$el.find('#trade-data-list .symbol-month-to-date').text(data['month_to_date']);
+            this.$el.find('#trade-data-list .symbol-open').text(toMoney(data['open_previous_day_close']));
+            this.$el.find('#trade-data-list .symbol-today-range').text(data['today_range']);
 
+            this.$el.find('#trade-data-list .symbol-year-to-date').text(data['year_to_date']);
+            this.$el.find('#trade-data-list .symbol-week-range').text(data['week_range_52']);
+            this.$el.find('#trade-data-list .symbol-vol-traded').text(data['volume_traded']);
+            this.$el.find('#trade-data-list .symbol-vol-range').text(data['week_volume_range_52']);
+
+            this.$el.find('.company-name').text(data['institution']);
         }
     });
 

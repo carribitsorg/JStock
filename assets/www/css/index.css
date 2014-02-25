@@ -4,7 +4,8 @@
 
 #main_index, #jse_select, #all_jamaican, #cross_listed,
 #info, #performance, #history, #composition,
-#quote-tab, #ordinary-tab, #preference-tab, #us-denom-tab
+#quote-tab, #ordinary-tab, #preference-tab, #us-denom-tab,
+#trade-data-tab, #performance-tab
 {
     font-size:  0.65em !important;
 }

@@ -389,18 +389,52 @@
             </div>
         </div>
         <div id="symboldetail" data-role="page" data-title="SymbolDetail">
-          
+
             <div id="trade-data-tab-page" class="symbol-tabs">
-                  Hello
                 <div class="ui-block-a" style="width:100%;">
                     <div class="jqm-block-content">
-                        <div class="summary-heading-3"><span class="act-index-name">Quote Sheet for <span class="market-date"></span></div>
+                        <div class="summary-heading-3"><span class="act-index-name">Guardian Life Trade Data <span class="market-date"></span></div>
 
+                    </div>
+                </div>
+
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="app-content">
+                        <div data-demo-html="true">
+                            <ul id="trade-data-summary" data-role="listview" data-inset="true" data-divider-theme="a" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+                                <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-a ui-first-child">Guardian Life</li>
+                                <li class="odd"><a  class="ui-btn text">Symbol <span id="symbol-symbol" class="figure"></span></a></li>
+                                <li><a  class="ui-btn text">Financial Year End<span id="symbol-fin-year" class="figure"></span></a></li>
+                                <li class="odd"><a  class="ui-btn text">Last Traded Price<span id="symbol-last-traded" class="figure"></span></a></li>
+                                <li><a  class="ui-btn text">Close Price<span id="qtd" class="symbol-change"></span></a></li>
+                                <li><a  class="ui-btn text">Change<span id="qtd" class="symbol-change"></span></a></li>
+                                <li><a  class="ui-btn text">Change%<span id="qtd" class="symbol-change-perc"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="app-content">
+                        <div data-demo-html="true">
+                            <ul id="trade-data-list" data-role="listview" data-inset="true" data-divider-theme="a" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+                                <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-a ui-first-child">Trade Data</li>
+                                <li class="odd"><a  class="ui-btn text">Bid <span id="symbol-symbol" class="figure"></span></a></li>
+                                <li><a  class="ui-btn text">Week to Date<span id="symbol-fin-year" class="figure"></span></a></li>
+                                <li class="odd"><a  class="ui-btn text">Ask<span id="symbol-last-traded" class="figure"></span></a></li>
+                                <li><a  class="ui-btn text">Month to Date<span id="qtd" class="symbol-change"></span></a></li>
+                                <li><a  class="ui-btn text">Open (Previous day's close)<span id="qtd" class="symbol-change"></span></a></li>
+                                <li><a  class="ui-btn text">Today's Range<span id="qtd" class="symbol-change-perc"></span></a></li>
+                                <li><a  class="ui-btn text">Year to Date<span id="qtd" class="symbol-change-perc"></span></a></li>
+                                <li><a  class="ui-btn text">52 Week Range<span id="qtd" class="symbol-change-perc"></span></a></li>
+                                <li><a  class="ui-btn text">Volume Traded<span id="qtd" class="symbol-change-perc"></span></a></li>
+                                <li><a  class="ui-btn text">52 Week Volume Range<span id="qtd" class="symbol-change-perc"></span></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="performance-tab-page" class="symbol-tabs">
-                  Hello 2
                 <div class="ui-block-a" style="width:100%;">
                     <div class="jqm-block-content">
                         <div class="summary-heading-3"><span class="act-index-name">Quote Sheet for <span class="market-date"></span></div>

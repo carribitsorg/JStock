@@ -270,6 +270,11 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     margin:0em;
     display:none;
 }
+.symbol-tabs{
+    padding:0em;
+    margin:0em;
+    display:none;
+}
 .value-dir  {
 
 }
@@ -300,8 +305,9 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     font-style: italic;
 }
 
-#news-list>.ui-li-divider {
+#news-list>.ui-li-divider, .emphasis-col {
     color: #666600 !important;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .heading {
@@ -314,6 +320,7 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     color:#666600 !important;
     font-size: 0.9em !important;
     font-weight: 400;
+    padding: 0 1em 0 1em !important;
 }
 #news-item{
     margin-bottom: 1.0em;
@@ -331,6 +338,7 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     font-family: 'Open Sans', sans-serif;
     font-size: 0.7em !important;
     color: #888687;
+    padding: 0 1em 0 1.45em !important;
 }
 
 .app-link-button {

@@ -4,6 +4,38 @@
 // Includes file dependencies
 define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule) {
 
+    var SymbolDetailView = Backbone.View.extend({
+        initialize: function() {
+        },
+        render: function(id) {
+            var self = this;
+            var model = new ModelModule.SymbolDetail(id);
+
+            var template = _.template($("#symboldetail").html());
+            this.$el.find("#content-holder").html(template);
+
+            var success = function() {
+                self.renderTradeData(model);
+            };
+            var error = function() {
+
+            };
+
+            model.fetch({success: success, error: error});
+            return this;
+        },
+        changeTab: function(id) {
+            this.$el.find('.symbol-tabs').hide();
+            this.$el.find(id).show();
+        },
+        renderTradeData: function(data) {
+            console.log(data);
+        },
+        renderPerformance: function() {
+
+        }
+    });
+
     var SymbolView = Backbone.View.extend({
         initialize: function() {
         },
@@ -19,7 +51,6 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
                     var row = model.symbols[i];
                     var html = _.template($("script#symbol-lookup").html(), {"row": row});
                     self.$el.find('#sysbol-list').append(html);
-                    //console.log(html);
                 }
             };
 
@@ -289,7 +320,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             summary["total"] = totalMatch[0];
             summary["advanced"] = advanceMatch[0];
             summary["declined"] = declinedMatch[0];
-            summary["traded"] = tradedMatch[0];
+            summary["traded"] = tradedMatch[0] + ' firm';
 
             return summary;
         }
@@ -302,7 +333,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         QuoteView: QuoteView,
         NewsView: NewsView,
         NewsItemView: NewsItemView,
-        SymbolView: SymbolView
+        SymbolView: SymbolView,
+        SymbolDetailView: SymbolDetailView
     };
 
 });

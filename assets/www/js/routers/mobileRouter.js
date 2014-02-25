@@ -23,6 +23,11 @@ var QuoteTab = {
     US_DENONINATED: 'US_DENONINATED'
 };
 
+var SymbolDetailTab = {
+    PERFORMANCE: 'PERFORMANCE',
+    TRADE_DATA: 'TRADE_DATA'
+};
+
 var options = {
     indexName: MarketIndex.MAIN_INDEX,
     indexTab: MarketIndexTab
@@ -42,16 +47,12 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     this.quoteView = new AppModules.Views.QuoteView({el: "#appview", model: new AppModules.Models.Quote()});
                     this.newsView = new AppModules.Views.NewsView({el: "#appview", model: new AppModules.Models.News()});
                     this.newsItemView = new AppModules.Views.NewsItemView({el: "#appview", model: new AppModules.Models.NewsItem()});
+                    this.symbolDetailView = new AppModules.Views.SymbolDetailView({el: "#appview", model: new AppModules.Models.SymbolDetail()});
 
                     this.symbolView = new AppModules.Views.SymbolView({el: "#appview", model: new AppModules.Models.Symbol()});
                     this.symbolView.refresh();
 
                     $('.market-date').text('Feb 14, 2014');
-
-                    $('.symbol-items').hide();
-                    $(".ui-input-search [data-type='search']").click(function() {
-                        $('.symbol-items').show();
-                    });
 
                     Backbone.history.start();
                 },
@@ -65,7 +66,8 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     "news?:id": "viewnews",
                     "news": "news",
                     "quote": "quote",
-                    "indexdetails": "indexdetails"
+                    "indexdetails": "indexdetails",
+                    "symboldetail?:id": "symboldetail"
                 },
                 route: function(route, name, callback) {
                     var router = this;
@@ -76,6 +78,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                         $("#index-navbar").hide();
                         $("#index-details-navbar").hide();
                         $("#quote-navbar").hide();
+                        $("#symbol-navbar").hide();
                         console.log('route before', route);
                         callback.apply(router, arguments);
                         console.log('route after', route);
@@ -176,11 +179,33 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     var error = function() {
 
                     };
-
                     this.newsView.model.fetch({success: success, error: error});
                 },
                 viewnews: function(id) {
                     this.newsItemView.render(id);
+                },
+                symboldetail: function(id) {
+                    var self = this;
+                    $("#symbol-navbar").show();
+
+                    this.symbolDetailView.render(id);
+
+                    $('#symbol-navbar ul li a').on('click', function(e) {
+                        e.preventDefault();
+                        var el = e.target.id;
+                        var divId = '';
+                        switch (el)
+                        {
+                            case 'trade-data-tab':
+                                divId = '#trade-data-tab-page';
+                                break;
+                            case 'performance-tab':
+                                divId = '#performance-tab-page';
+                                break;
+                        }
+                        self.symbolDetailView.changeTab(divId);
+                    });
+                    $("#trade-data-tab").trigger("click");
                 },
                 quote: function() {
                     $("#quote-navbar").show();

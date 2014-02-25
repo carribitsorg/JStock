@@ -37,6 +37,19 @@ define(["jquery", "backbone"], function($, Backbone) {
         }
     });
 
+    SymbolDetail = Backbone.Model.extend({
+        initialize: function(symbolCode) {
+            this.symbolCode = symbolCode;
+        },
+        urlRoot: function() {
+            return  Config.baseurl + "/symbollookup/symboldata?symbol_code=" + this.symbolCode;
+        },
+        parse: function(response) {
+            this.symbol = response;
+            return this;
+        }
+    });
+
     DailyMainMarketSummary = Backbone.Model.extend({
         initialize: function(options) {
         },
@@ -145,7 +158,8 @@ define(["jquery", "backbone"], function($, Backbone) {
         Quote: Quote,
         News: News,
         NewsItem: NewsItem,
-        Symbol: Symbol
+        Symbol: Symbol,
+        SymbolDetail: SymbolDetail
     };
 
 });

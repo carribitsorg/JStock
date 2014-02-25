@@ -73,7 +73,14 @@
                     <li><a class="ui-btn-active" id="quote-tab">Quote</a></li>
                     <li><a id="ordinary-tab" >Ordinary</a></li>
                     <li><a id="preference-tab" >Preference</a></li>
-                    <li><a id="us-denom-tab" >US Denoninated</a></li>
+                    <li><a id="us-denom-tab" >US Denominated</a></li>
+                </ul>
+            </div>
+
+            <div style="display:none" id="symbol-navbar" data-role="navbar" class="app-navbar market-index">
+                <ul>
+                    <li><a class="ui-btn-active" id="trade-data-tab">Trade Data</a></li>
+                    <li><a id="performance-tab">Performance</a></li>
                 </ul>
             </div>
 
@@ -92,8 +99,6 @@
             <div data-role="panel" class="jqm-search-panel" data-position="right" data-display="overlay" data-theme="a">
                 <div class="jqm-search">
                     <ul class="jqm-list" data-filter-placeholder="Search Symbol" data-filter-reveal="true" id="sysbol-list">
-                        <li data-filtertext="buttons button markup buttonmarkup method anchor link button element"><a href="../button-markup/" data-ajax="false">Buttons</a></li>
-                        <li data-filtertext="West Indies Pulp & Paper"><a href="" data-ajax="false">Buttons</a></li>
                     </ul>
                 </div>
             </div>
@@ -383,7 +388,27 @@
                 </ul>
             </div>
         </div>
+        <div id="symboldetail" data-role="page" data-title="SymbolDetail">
+          
+            <div id="trade-data-tab-page" class="symbol-tabs">
+                  Hello
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="jqm-block-content">
+                        <div class="summary-heading-3"><span class="act-index-name">Quote Sheet for <span class="market-date"></span></div>
 
+                    </div>
+                </div>
+            </div>
+            <div id="performance-tab-page" class="symbol-tabs">
+                  Hello 2
+                <div class="ui-block-a" style="width:100%;">
+                    <div class="jqm-block-content">
+                        <div class="summary-heading-3"><span class="act-index-name">Quote Sheet for <span class="market-date"></span></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div id="viewnews" data-role="page" data-title="View News">
             <div id="news-item" class="ui-block-a" style="width:100%">
@@ -502,7 +527,7 @@
         <script id="shares-tmp" type="text/template">
             <div data-demo-html="true">
             <ul id="performance-list" data-role="listview" data-inset="true" data-divider-theme="a" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-            <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-a ui-first-child">Security: <%=row['security']%></li>
+            <li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-a ui-first-child"><span class="emphasis-col">Security: <%=row['security']%></span></li>
             <li class="odd"><a  class="ui-btn text">52 Week High <span id="vol" class="figure"><%=toMoney(row['week_high_52'])%></span></a></li>
             <li class=""><a  class="ui-btn text">52 Week Low<span id="wtd" class="figure"><%=toMoney(row['week_low_52'])%></span></a></li>
             <li class="odd"><a  class="ui-btn text">Prev Yr Div($)<span id="mtd" class="figure"><%=toMoney(row['prev_yr_div'])%></span></a></li>
@@ -519,7 +544,7 @@
             </div>
         </script>
         <script id="symbol-lookup" type="text/template">
-            <li data-filtertext="<%=row['institution']%>" class="ui-screen-hidden"><a href="" data-ajax="false" class="ui-btn"><%=row['symbol']%><span class="jqm-search-results-keywords ui-li-desc"><%=row['institution']%></span></a></li>
+            <li data-filtertext="<%=row['institution']%> <%=row['symbol']%>" class="ui-screen-hidden"><a href="#symboldetail?<%=row['stock_code']%>" data-ajax="false" class="ui-btn"><%=row['symbol']%><span class="jqm-search-results-keywords ui-li-desc"><%=row['institution']%></span></a></li>
         </script>
     </body>
 </html>

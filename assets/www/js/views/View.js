@@ -43,7 +43,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
                 this.$el.find('#symbol-img').attr("src", Config.baseurl + '/symbollookup/symbolAnnualGraphData?symbol_code=' + data['stock_code'] +
                         '&file=graph.png');
             } else {
-                this.$el.find('#symbol-img').attr("src", '');
+                this.$el.find('#symbol-img').attr("src", 'images/no_graph.png');
             }
         },
         renderPerformance: function(data) {
@@ -97,8 +97,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var self = this;
             var model = new ModelModule.Quote();
 
-            this.template = _.template($("#quote").html());
-            this.$el.find("#content-holder").html(this.template);
+            var template = _.template($("#quote").html());
+            this.$el.find("#content-holder").html(template);
             this.$el.find("#quote-tab").trigger("click");
 
             var success = function() {

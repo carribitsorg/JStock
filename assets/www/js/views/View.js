@@ -17,6 +17,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var success = function() {
                 self.renderTradeData(model.symbol);
                 self.renderPerformance(model.symbol);
+                self.changeGraph(model.symbol);
             };
             var error = function() {
 
@@ -36,6 +37,14 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find('#trade-data-summary .symbol-close').text(data['close_price']);
             this.$el.find('#trade-data-summary .symbol-change').text(toMoney(data['change']));
             this.$el.find('#trade-data-summary .symbol-change-perc').text(data['change_perc']);
+        },
+        changeGraph: function(data) {
+            if (data['graph_img'] === 'y') {
+                this.$el.find('#symbol-img').attr("src", Config.baseurl + '/symbollookup/symbolAnnualGraphData?symbol_code=' + data['stock_code'] +
+                        '&file=graph.png');
+            } else {
+                this.$el.find('#symbol-img').attr("src", '');
+            }
         },
         renderPerformance: function(data) {
             this.$el.find('#trade-data-list .symbol-bid').text(data['bid']);

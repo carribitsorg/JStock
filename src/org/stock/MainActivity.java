@@ -22,5 +22,6 @@ public class MainActivity extends DroidGap
         ws.setSupportZoom(false);
         ws.setBuiltInZoomControls(false);
         ws.setUseWideViewPort(false); */
+        
     }
 }

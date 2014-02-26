@@ -18,7 +18,7 @@
 }
 
 .jqm-block-content{
-    margin: .35em;
+    margin: .35em .35em .35em .35em;
     padding: 0.5em 0.2em 0.5em 0.2em;
     min-height: 0.1em;
 }
@@ -356,4 +356,13 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 }
 .odd {
     background: #ededed;
+}
+
+.not-available{
+    color:#d3d3d3 !important;
+}
+
+.hidden-text{
+    font-style: italic;
+    font-size: 0.9em;
 }

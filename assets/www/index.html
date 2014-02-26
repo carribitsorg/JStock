@@ -104,12 +104,11 @@
             </div>
             <div id="main_head" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-                    <li data-filtertext="demos homepage" data-icon="home"><a href=".././">Main Market</a></li>
-                    <li data-filtertext="introduction overview getting started"><a href="../intro/" data-ajax="false">Jnr. Market</a></li>
-                    <li data-filtertext="buttons button markup buttonmarkup method anchor link button element"><a href="../button-markup/" data-ajax="false">Comb. Market</a></li>
-                    <li data-filtertext="form button widget input button submit reset"><a href="../button/" data-ajax="false">US Market</a></li>
+                    <li data-filtertext="demos homepage"><a href="index.html">Main Market</a></li>
+                    <li data-filtertext=""><a class="not-available" data-ajax="false">Jnr. Market <span class="hidden-text">(not available)</span></a></li>
+                    <li data-filtertext=""><a class="not-available" data-ajax="false">Comb. Market <span class="hidden-text">(not available)</span></a></li>
+                    <li data-filtertext=""><a class="not-available" data-ajax="false">US Market <span class="hidden-text">(not available)</span></a></li>
                     <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false">
-
                 </ul>
             </div>
         </div>
@@ -310,7 +309,7 @@
             <div id="quote-tab-page" class="quote-tabs">
 
                 <div class="ui-block-a" style="width:100%;">
-                    <div class="jqm-block-content">
+                    <div class="jqm-block-content" style="margin-bottom: 2.0em">
                         <div class="summary-heading-3"><span class="act-index-name">Quote Sheet for <span class="market-date"></span></div>
                         <table id="quote-main-table" class="stock-t" style="font-size: 0.5em;">
                             <thead>
@@ -318,9 +317,9 @@
                                     <th scope="col"></th>
                                     <th scope="col">Index</th>
                                     <th class="alnright" scope="col">Value</th>
-                                    <th class="alnright" scope="col">Volume ($)</th>
+                                    <th class="alnright" scope="col">Volume</th>
                                     <th class="alnright" scope="col">Change</th>
-                                    <th class="alnright" scope="col">Change(%)</th>
+                                    <th class="alnright" scope="col">Change%</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -426,7 +425,7 @@
                                 <li><a  class="ui-btn text">Year to Date<span  class="figure symbol-year-to-date"></span></a></li>
                                 <li><a  class="ui-btn text">52 Week Range<span  class="figure symbol-week-range"></span></a></li>
                                 <li><a  class="ui-btn text">Volume Traded<span  class="figure symbol-vol-traded"></span></a></li>
-                                 <li><a  class="ui-btn text">52 Week Volume Range<span  class="figure symbol-vol-range"></span></a></li>
+                                <li><a  class="ui-btn text">52 Week Volume Range<span  class="figure symbol-vol-range"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -553,7 +552,7 @@
 
         <script id="quote-main-tmp" type="text/template">
             <% _.each( data, function( row, id ) { %>
-            <tr>
+            <tr <% if((id+1)%2) { %>class="odd"<% } else { %>class="even" <% }%>>
             <td><img class="stock-direction" height="6px" width="6px" id="" src="<%=row['direction']%>"></td>
             <td><%=row['index']%></td>
             <td class="alnright"><%=toMoney(row['value'])%></td>

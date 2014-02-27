@@ -52,9 +52,18 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     this.symbolView = new AppModules.Views.SymbolView({el: "#appview", model: new AppModules.Models.Symbol()});
                     this.symbolView.refresh();
 
-                    $('.market-date').text('Feb 14, 2014');
-
-                    Backbone.history.start();
+                    $.ajax({
+                        type: "POST",
+                        url: Config.baseurl + '/config',
+                        data: {},
+                        dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+                            Config.stockDate = data.stock_date;
+                            $('.market-date').text(data.stock_date_full);
+                            Backbone.history.start();
+                        }
+                    });
                 },
                 // Backbone.js Routes
                 routes: {

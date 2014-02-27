@@ -88,14 +88,19 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                         $("#index-details-navbar").hide();
                         $("#quote-navbar").hide();
                         $("#symbol-navbar").hide();
-                        console.log('route before', route);
+                        this.resetIcons();
                         callback.apply(router, arguments);
-                        console.log('route after', route);
                     };
                     return Backbone.Router.prototype.route.call(this, route, name, f);
                 },
+                resetIcons: function() {
+                    $('#home-icon').removeClass('ui-icon-home-a');
+                    $('#quote-icon').removeClass('ui-icon-quote-a');
+                    $('#news-icon').removeClass('ui-icon-news-a');
+                },
                 // Home method
                 home: function() {
+                    $('#home-icon').addClass('ui-icon-home-a');
                     $("#index-navbar").show();
                     var self = this;
 
@@ -181,6 +186,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
                 },
                 news: function() {
+                    $('#news-icon').addClass('ui-icon-news-a');
                     var self = this;
                     var success = function() {
                         self.newsView.render();
@@ -217,6 +223,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     $("#trade-data-tab").trigger("click");
                 },
                 quote: function() {
+                    $('#quote-icon').addClass('ui-icon-quote-a');
                     $("#quote-navbar").show();
                     var self = this;
                     var success = function() {

@@ -55,14 +55,13 @@ define([], function() {
     LiveData.getNextUpdate = function() {
         if (LiveData.data !== null) {
             var html = '';
-            LiveData.index++;
+
+            if ((LiveData.index) >= LiveData.data.length) {
+                LiveData.index = 0;
+            }
 
             var lines = LiveData.data[LiveData.index].lines;
             var link = LiveData.data[LiveData.index].link;
-
-            if ((LiveData.index + 1) >= LiveData.data.length) {
-                LiveData.index = 0;
-            }
 
             for (var i = 0; i < lines.length; i++) {
                 if (link && link.indexOf("#symboldetail?") !== -1) {
@@ -77,6 +76,7 @@ define([], function() {
                     html += _.template($("script#live-data-tmp").html(), {"text": lines[i]});
                 }
             }
+            LiveData.index++;
             return html;
         }
     };

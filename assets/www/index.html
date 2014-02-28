@@ -84,7 +84,7 @@
                 </ul>
             </div>
 
-            <div id="content-holder" role="main" class="ui-content jqm-content">
+            <div id="content-holder" role="main" class="ui-content jqm-content" style="padding-top: 0.3em;">
 
             </div><!-- /content -->
 
@@ -113,7 +113,13 @@
             </div>
         </div>
 
+
+
         <div id="home" data-role="page" data-title="Home">
+            <div style="margin:0.35em;" data-demo-html="true">
+                <a href="#" class="ui-btn ui-corner-all live-ui-btn"><span style="display: inline-block; overflow: hidden; height: 14px;">&nbsp;</span><span class="live-text">Loading Live Update...</span></a>
+            </div>
+
             <div class="ui-block-a" style="width:100%">
                 <div class="jqm-block-content">
                     <div style="font-size:0.80em">
@@ -584,6 +590,14 @@
         </script>
         <script id="symbol-lookup" type="text/template">
             <li data-filtertext="<%=row['institution']%> <%=row['symbol']%>" class="ui-screen-hidden"><a href="#symboldetail?<%=row['stock_code']%>" data-ajax="false" class="ui-btn"><%=row['symbol']%><span class="jqm-search-results-keywords ui-li-desc"><%=row['institution']%></span></a></li>
+        </script>
+        <script id="live-data-tmp" type="text/template">
+            <span><%=text%></span>
+        </script>
+        <script id="live-img-tmp" type="text/template">
+            <span>
+           <img class="live-img" height="7" width="7" src="<%=text%>">
+           </span>
         </script>
     </body>
 </html>

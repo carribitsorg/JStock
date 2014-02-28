@@ -33,11 +33,14 @@ var options = {
     indexTab: MarketIndexTab
 };
 
+var liveDada = {};
+
 // Includes file dependencies
 define(["jquery", "backbone", "indexjs", "AppModules"],
         function($, Backbone, indexjs, AppModules) {
             //Import Modules
             Config = AppModules.Config;
+            LiveData = AppModules.Utility.LiveData;
             Storage = AppModules.Utility.Storage;
 
             var CategoryRouter = Backbone.Router.extend({
@@ -58,12 +61,12 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                         data: {},
                         dataType: "json",
                         success: function(data) {
-                            console.log(data);
                             Config.stockDate = data.stock_date;
                             $('.market-date').text(data.stock_date_full);
                             Backbone.history.start();
                         }
                     });
+                    LiveData.start();
                 },
                 // Backbone.js Routes
                 routes: {

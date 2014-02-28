@@ -22,9 +22,6 @@
     padding: 0.5em 0.2em 0.5em 0.2em;
     min-height: 0.1em;
 }
-
-
-
 .jqm-block-content p {
     font-size: 0.8em;
     font-weight: 300;
@@ -367,4 +364,28 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 .hidden-text{
     font-style: italic;
     font-size: 0.9em;
+}
+
+.live-ui-btn {
+    margin: .5em 0 !important;
+    padding: .7em 1em !important;
+    display: block !important;
+    position: relative !important;
+    text-align: center !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    font-size: 0.7em !important;
+    font-family: 'Open Sans', sans-serif;
+}
+.live-ui-btn span {
+    margin-right: .5em;
+}
+.live-img{
+    
 }

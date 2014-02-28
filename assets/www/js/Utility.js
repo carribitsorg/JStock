@@ -86,7 +86,7 @@ define([], function() {
 
         setInterval(function()
         {
-            $('.live-text').slideUp("slow").promise().done(
+            $('.live-text').slideUp("medium").promise().done(
                     function() {
                         var text = LiveData.getNextUpdate();
                         $('.live-text').html(text);
@@ -95,8 +95,48 @@ define([], function() {
         }, 4000);
     };
 
+
+    var Monitor = function() {
+
+    };
+
+    Monitor.prototype = {
+    };
+
+    Monitor.refresh = function() {
+        var newFragment = Backbone.history.getFragment($(this).attr('href'));
+        if (Backbone.history.fragment === newFragment) {
+            // need to null out Backbone.history.fragement because 
+            // navigate method will ignore when it is the same as newFragment
+            Backbone.history.fragment = null;
+            Backbone.history.navigate(newFragment, true);
+        }
+    };
+
+    Monitor.checkMarketChange = function() {
+        $.ajax({
+            type: "POST",
+            url: Config.baseurl + '/config',
+            data: {},
+            dataType: "json",
+            success: function(data) {
+                console.log('TEST > checking market date change...');
+                if (Config.stockDate !== data.stock_date) {
+                    Monitor.refresh();
+                }
+            }
+        });
+    };
+
+    Monitor.start = function() {
+        setInterval(function() {
+            Monitor.checkMarketChange();
+        }, 600000);
+    };
+
     return {
         Storage: Storage,
-        LiveData: LiveData
+        LiveData: LiveData,
+        Monitor: Monitor
     };
 });

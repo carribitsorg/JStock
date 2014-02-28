@@ -34,6 +34,7 @@ var options = {
 };
 
 var liveDada = {};
+var Monitor = {};
 
 // Includes file dependencies
 define(["jquery", "backbone", "indexjs", "AppModules"],
@@ -42,6 +43,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
             Config = AppModules.Config;
             LiveData = AppModules.Utility.LiveData;
             Storage = AppModules.Utility.Storage;
+            Monitor = AppModules.Utility.Monitor;
 
             var CategoryRouter = Backbone.Router.extend({
                 initialize: function() {
@@ -67,6 +69,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                         }
                     });
                     LiveData.start();
+                    Monitor.start();
                 },
                 // Backbone.js Routes
                 routes: {

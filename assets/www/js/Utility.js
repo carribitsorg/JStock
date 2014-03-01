@@ -83,7 +83,6 @@ define([], function() {
 
     LiveData.start = function() {
         LiveData.update();
-
         setInterval(function()
         {
             $('.live-text').slideUp("medium").promise().done(
@@ -93,6 +92,7 @@ define([], function() {
                         $('.live-text').slideDown("slow");
                     });
         }, 4000);
+        navigator.notification.beep(2);
     };
 
 

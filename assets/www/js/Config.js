@@ -1,6 +1,6 @@
 define([], function() {
     return {
-        baseurl: 'http://jstock.com/jstock',
+        baseurl: 'http://192.168.0.101/jstock',
         stockDate: ''
     };
 });

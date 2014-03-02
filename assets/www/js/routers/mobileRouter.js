@@ -80,11 +80,14 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
                     };
 
+                    /*
                     WidgetUpdate = {
                         update: function(data) {
-                            Cordova.exec(success, fail, "WidgetUpdate", "update", data);
+                            if (Cordova !== undefined)
+                                Cordova.exec(success, fail, "WidgetUpdate", "update", data);
                         }
                     };
+                    */
                 },
                 // Backbone.js Routes
                 routes: {

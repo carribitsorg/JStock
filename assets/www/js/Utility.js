@@ -92,6 +92,7 @@ define([], function() {
                         $('.live-text').slideDown("slow");
                     });
         }, 4000);
+        if(navigator.notification)
         navigator.notification.beep(2);
     };
 

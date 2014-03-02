@@ -70,6 +70,28 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     });
                     LiveData.start();
                     Monitor.start();
+
+                    var success = function() {
+
+                    };
+
+                    var fail = function() {
+
+                    };
+
+                    WidgetUpdate = {
+                        update: function(success, fail, resultType) {
+                            Cordova.exec(
+                                    success,
+                                    fail,
+                                    "WidgetUpdate",
+                                    "update",
+                                    [resultType]
+                                    );
+                        }
+                    };
+
+                    WidgetUpdate.update(success, fail, "sinan");
                 },
                 // Backbone.js Routes
                 routes: {

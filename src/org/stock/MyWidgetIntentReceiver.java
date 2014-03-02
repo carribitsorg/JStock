@@ -43,6 +43,6 @@ public class MyWidgetIntentReceiver extends BroadcastReceiver {
 	}
 
 	private String getTitle() {
-		return "Funny Jokes";
+		return "Stock Update";
 	}
 }

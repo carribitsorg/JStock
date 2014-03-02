@@ -40,11 +40,11 @@ public class MyWidgetProvider extends AppWidgetProvider {
 	}
 
 	private static CharSequence getDesc() {
-		return "Sync to see some of our funniest joke collections";
+		return "Get the latest stock ipdate";
 	}
 
 	private static CharSequence getTitle() {
-		return "Funny Jokes";
+		return "Stock Data";
 	}
 
 	public static void pushWidgetUpdate(Context context, RemoteViews remoteViews) {

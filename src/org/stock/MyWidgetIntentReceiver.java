@@ -1,6 +1,5 @@
 package org.stock;
 
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,9 +20,14 @@ public class MyWidgetIntentReceiver extends BroadcastReceiver {
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
 				R.layout.widget_layout);
 
+		WidgetData data = WidgetData.getInstance();
+
+		String title = data.Title;
+		String desc = data.Desc;
+
 		// updating view
-		remoteViews.setTextViewText(R.id.title, getTitle());
-		remoteViews.setTextViewText(R.id.desc, getDesc(context));
+		remoteViews.setTextViewText(R.id.title, title);
+		remoteViews.setTextViewText(R.id.desc, desc);
 
 		// re-registering for click listener
 		remoteViews.setOnClickPendingIntent(R.id.sync_button,

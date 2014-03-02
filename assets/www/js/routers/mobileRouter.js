@@ -65,6 +65,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                         success: function(data) {
                             Config.stockDate = data.stock_date;
                             $('.market-date').text(data.stock_date_full);
+                            Config.fullDate = data.stock_date_full;
                             Backbone.history.start();
                         }
                     });
@@ -80,18 +81,10 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     };
 
                     WidgetUpdate = {
-                        update: function(success, fail, resultType) {
-                            Cordova.exec(
-                                    success,
-                                    fail,
-                                    "WidgetUpdate",
-                                    "update",
-                                    [resultType]
-                                    );
+                        update: function(data) {
+                            Cordova.exec(success, fail, "WidgetUpdate", "update", data);
                         }
                     };
-
-                    WidgetUpdate.update(success, fail, "sinan");
                 },
                 // Backbone.js Routes
                 routes: {

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class WidgetData {
 
 	private static WidgetData instance = null;
-	public ArrayList<String> name = new ArrayList<String>(); // Member
+	public ArrayList<String> name = new ArrayList<String>();
+	public String Title = "Daily";
+	public String Desc = "Stocks Traded";
 
 	protected WidgetData() {
 		// Exists only to defeat instantiation.
@@ -28,7 +30,6 @@ public class WidgetData {
 		name.add("IPhone");
 		name.add("Windows");
 		return name;
-
 	}
 
 }

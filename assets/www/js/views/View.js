@@ -306,6 +306,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var summary = _.template($("script#market-summary").html(), {"summary": details});
             this.$el.find('#market-summart1').append(summary);
 
+
+            WidgetUpdate.update([Config.fullDate, this.model.summary2.replace(/(\r\n|\n|\r)/g," ")]);
             return this;
         },
         changeGraph: function() {
@@ -318,7 +320,6 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var model = new ModelModule.MarketIndexDetails;
 
             var success = function(json) {
-
                 var template = _.template($("script#market-details").html(), {"summary": json.data});
                 self.$el.find(".market-details tr").remove();
                 self.$el.find('.market-details tbody:last').append(template);

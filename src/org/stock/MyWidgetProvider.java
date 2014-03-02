@@ -22,8 +22,8 @@ public class MyWidgetProvider extends AppWidgetProvider {
 				buildButtonPendingIntent(context));
 
 		// updating view with initial data
-		remoteViews.setTextViewText(R.id.title, getTitle());
-		remoteViews.setTextViewText(R.id.desc, getDesc());
+		remoteViews.setTextViewText(R.id.title, "Daily Market Summary");
+		remoteViews.setTextViewText(R.id.desc, "");
 
 		// request for widget update
 		pushWidgetUpdate(context, remoteViews);

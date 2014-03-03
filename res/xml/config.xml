@@ -104,5 +104,6 @@
     <!-- Deprecated plugins element. Remove in 3.0 -->
     <plugins>
         <plugin name="WidgetUpdate" value="org.stock.plugin.WidgetUpdate" />
+        <plugin name="SplashScreen" value="org.apache.cordova.SplashScreen"/>
     </plugins>
 </widget>

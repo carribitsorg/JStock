@@ -92,8 +92,6 @@ define([], function() {
                         $('.live-text').slideDown("slow");
                     });
         }, 4000);
-        if(navigator.notification)
-        navigator.notification.beep(2);
     };
 
 
@@ -123,6 +121,7 @@ define([], function() {
             success: function(data) {
                 console.log('TEST > checking market date change...');
                 if (Config.stockDate !== data.stock_date) {
+                    navigator.notification.beep(1);
                     Monitor.refresh();
                 }
             }

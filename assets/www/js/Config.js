@@ -1,6 +1,6 @@
 define([], function() {
     return {
-        baseurl: 'http://192.168.0.101/jstock',
+        baseurl: 'http://api.jstock.rivalbits.com',
         stockDate: ''
     };
 });

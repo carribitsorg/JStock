@@ -54,7 +54,7 @@ define(["jquery", "backbone"], function($, Backbone) {
         initialize: function(options) {
         },
         urlRoot: function() {
-            return  Config.baseurl + "/mainmarket/dailySummary?date=" + Config.stockDate;
+            return  Config.baseurl + "/mainmarket/dailysummary?date=" + Config.stockDate;
         },
         parse: function(response) {
             this.advancing = response.stocks.ADVANCING;
@@ -73,7 +73,7 @@ define(["jquery", "backbone"], function($, Backbone) {
             this.newsId = newsId;
         },
         urlRoot: function() {
-            return  Config.baseurl + "/news/viewNews?id=" + this.newsId;
+            return  Config.baseurl + "/news/viewnews?id=" + this.newsId;
         },
         parse: function(response) {
             this.data = response;

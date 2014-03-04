@@ -392,3 +392,12 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 .live-text{
     font-size: 11px;
 }
+
+.jqm-demos .jqm-refresh-link:after {
+    background-image: url('../images/refresh.png') !important;
+
+}
+.jqm-demos .jqm-refresh-link{
+    margin-right: 30px !important;
+    right:3% !important;
+}

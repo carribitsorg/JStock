@@ -104,14 +104,8 @@ define([], function() {
     Monitor.prototype = {
     };
 
-    Monitor.refresh = function() {
-        var newFragment = Backbone.history.getFragment($(this).attr('href'));
-        if (Backbone.history.fragment === newFragment) {
-            // need to null out Backbone.history.fragement because 
-            // navigate method will ignore when it is the same as newFragment
-            Backbone.history.fragment = null;
-            Backbone.history.navigate(newFragment, true);
-        }
+    Monitor.reload = function() {
+        location.reload(false);
     };
 
     Monitor.checkMarketChange = function() {
@@ -124,7 +118,7 @@ define([], function() {
                 console.log('TEST > checking market date change...');
                 if (Config.stockDate !== data.stock_date) {
                     navigator.notification.beep(1);
-                    Monitor.refresh();
+                    Monitor.reload();
                 }
             }
         });
@@ -135,6 +129,10 @@ define([], function() {
             Monitor.checkMarketChange();
         }, 600000);
     };
+
+    $(".jqm-refresh-link").on("click", function() {
+        Monitor.reload();
+    });
 
     return {
         Storage: Storage,

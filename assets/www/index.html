@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=1">
         <!--<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9, target-densitydpi=medium-dpi, user-scalable=0" />-->
-        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+        <!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
         <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
         <link rel="shortcut icon" href="../favicon.ico">
         <link rel="stylesheet" href="css/font.css">
@@ -117,8 +117,11 @@
 
 
         <div id="home" data-role="page" data-title="Home">
-            <div style="margin:0.35em;" data-demo-html="true">
-                <a href="#" class="ui-btn ui-corner-all live-ui-btn"><span style="display: inline-block; overflow: hidden; height: 14px;">&nbsp;</span><span class="live-text">Loading Stock Update...</span></a>
+            <div style="margin:0.0em;padding:3px;" data-demo-html="true" >
+                <a href="#" class="ui-btn ui-corner-all live-ui-btn">
+                    <span style="display: inline-block; overflow: hidden; height: 11px;">&nbsp;</span>
+                    <span class="live-text" style="height: 11px">Loading Stock Update...</span>
+                </a>
             </div>
 
             <div class="ui-block-a" style="width:100%">
@@ -593,7 +596,7 @@
             <li data-filtertext="<%=row['institution']%> <%=row['symbol']%>" class="ui-screen-hidden"><a href="#symboldetail?<%=row['stock_code']%>" data-ajax="false" class="ui-btn"><%=row['symbol']%><span class="jqm-search-results-keywords ui-li-desc"><%=row['institution']%></span></a></li>
         </script>
         <script id="live-data-tmp" type="text/template">
-            <span><%=text%></span>
+            <span class="live-block" style="11px"><%=text%></span>
         </script>
         <script id="live-img-tmp" type="text/template">
             <span>

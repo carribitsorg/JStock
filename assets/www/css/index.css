@@ -387,5 +387,8 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     margin-right: .5em;
 }
 .live-img{
-    
+
+}
+.live-text{
+    font-size: 11px;
 }

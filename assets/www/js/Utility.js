@@ -87,6 +87,8 @@ define([], function() {
         {
             $('.live-text').slideUp("medium").promise().done(
                     function() {
+                        //fix 1px max issue
+                        $('.live-text').height('11px');
                         var text = LiveData.getNextUpdate();
                         $('.live-text').html(text);
                         $('.live-text').slideDown("slow");

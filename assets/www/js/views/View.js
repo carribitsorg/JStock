@@ -59,7 +59,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find('#trade-data-list .symbol-vol-traded').text(data['volume_traded']);
             this.$el.find('#trade-data-list .symbol-vol-range').text(data['week_volume_range_52']);
 
-            this.$el.find('.company-name').text(data['institution']);
+            this.$el.find('.company-name').text(data['institution'] + ' Performance');
         }
     });
 
@@ -155,7 +155,6 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find("#content-holder").html(this.template);
 
             for (var key in this.model.news) {
-                console.log(this.model.news[key]);
                 var news = this.model.news[key];
                 var newsItems = _.template($("script#new-item").html(), {"news": news});
 
@@ -183,7 +182,6 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var model = new ModelModule.NewsItem(id);
 
             var success = function() {
-                console.log(model.newsItem);
                 var template = _.template($("#viewnews").html());
                 self.$el.find("#content-holder").html(template);
 
@@ -273,7 +271,6 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         renderStockComposition: function(composition) {
             var compositionTmp = _.template($("script#index-composition-tmp").html(), {"composition": composition});
             this.$el.find('#index-composition-table tbody:last').append(compositionTmp);
-            console.log(compositionTmp);
         }
     });
 

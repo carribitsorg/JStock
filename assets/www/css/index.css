@@ -18,7 +18,7 @@
 }
 
 .jqm-block-content{
-    margin: .35em .35em .35em .35em;
+    margin: .35em .35em .35em .35em;.summary-heading-3
     padding: 0.5em 0.2em 0.5em 0.2em;
     min-height: 0.1em;
 }
@@ -142,13 +142,10 @@
 }
 
 .summary-heading-3 {
-    height:40px;
     font-size: 1.1em;
     font-weight: 300;
     padding-left: .25em;
     width:100%;
-
-
 }
 
 .app-link{
@@ -391,6 +388,7 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 }
 .live-text{
     font-size: 11px;
+    padding: 1px;
 }
 
 .jqm-demos .jqm-refresh-link:after {

@@ -19,7 +19,7 @@
                 console.log("Width = " + window.innerWidth);
                 console.log("Height = " + window.innerHeight);
             }
-            getDeviceDimention();
+            //getDeviceDimention();
 
             function toMoney(val) {
                 var parts = val.toString().split(".");
@@ -119,10 +119,13 @@
 
 
         <div id="home" data-role="page" data-title="Home">
-            <div style="margin:0.0em;padding:3px;" data-demo-html="true" >
+            <div style="margin:0.0em 0.35em 0.0em 0.35em;padding:0px;" data-demo-html="true" >
                 <a href="#" class="ui-btn ui-corner-all live-ui-btn">
-                    <span style="display: inline-block; overflow: hidden; height: 11px;">&nbsp;</span>
-                    <span class="live-text" style="height: 11px">Loading Stock Update...</span>
+                    <span style="height:18px;display: inline-block;padding:2px">
+                        <span style="display: inline-block; overflow: hidden; height: 14px;">&nbsp;</span>
+                        <span class="live-text" style="height: 12px">Loading Stock Update...</span>
+                    </span>
+
                 </a>
             </div>
 
@@ -446,7 +449,7 @@
             <div id="performance-tab-page" class="symbol-tabs">
                 <div class="ui-block-a" style="width:100%;">
                     <div class="jqm-block-content">
-                        <div class="summary-heading-3"><span class="company-name"></span> <span>Performance</span></div>
+                        <div class="summary-heading-3"><span class="company-name"></span></div>
                     </div>
                 </div>
 

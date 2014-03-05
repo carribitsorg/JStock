@@ -309,7 +309,7 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 }
 
 .heading {
-    font-size: 1.2em !important;
+    font-size: 1.0em !important;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     border-bottom: 1px solid #ddd;
@@ -323,7 +323,7 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 #news-item{
     margin-bottom: 1.0em;
 }
-#news-item p {
+#news-item p, .disclaimer-msg {
     margin-top: 1.5em !important;
     margin-bottom: 2.5em !important;
     font-size: 1.0em !important;
@@ -331,6 +331,11 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     font-weight: 400 !important;
     line-height: 1.5 !important;
     padding: 0 1em 0 1em !important;
+}
+
+.disclaimer-msg {
+    font-size: 1.0em !important;
+    line-height: 2.0 !important;
 }
 #news-item .pub-date{
     font-family: 'Open Sans', sans-serif;
@@ -404,4 +409,8 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 .ui-icon-loading {
     background: url('../images/loader2.gif');
     background-size: 2.875em 2.875em;
+}
+
+.jqm-demos .available:hover, .available:active, .available {
+    color: #3388cc  !important;
 }

@@ -151,6 +151,15 @@ define(["jquery", "backbone"], function($, Backbone) {
         }
     });
 
+    Disclaimer = Backbone.Model.extend({
+        sync: function() {
+            var deferred = $.Deferred();
+            this.trigger("added");
+            deferred.resolve();
+            return deferred;
+        }
+    });
+
     // Returns the Model class
     return {
         DailyMainMarketSummary: DailyMainMarketSummary,
@@ -160,7 +169,8 @@ define(["jquery", "backbone"], function($, Backbone) {
         News: News,
         NewsItem: NewsItem,
         Symbol: Symbol,
-        SymbolDetail: SymbolDetail
+        SymbolDetail: SymbolDetail,
+        Disclaimer: Disclaimer
     };
 
 });

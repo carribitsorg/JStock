@@ -100,17 +100,15 @@
             </div>
             <div id="main_head" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
                 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-                    <li data-filtertext="demos homepage"><a href="index.html">Main Market</a></li>
+                    <li data-filtertext="demos homepage"><a class="available" href="index.html">Main Market</a></li>
                     <li data-filtertext=""><a class="not-available" data-ajax="false">Jnr. Market <span class="hidden-text">(not available)</span></a></li>
                     <li data-filtertext=""><a class="not-available" data-ajax="false">Comb. Market <span class="hidden-text">(not available)</span></a></li>
                     <li data-filtertext=""><a class="not-available" data-ajax="false">US Market <span class="hidden-text">(not available)</span></a></li>
-                    <li data-filtertext="demos homepage"><a href="index.html#disclaimer">Disclaimer</a></li>
+                    <li data-filtertext="demos homepage"><a id="disclaimer-link" class="available" href="index.html#disclaimer">Disclaimer</a></li>
                     <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false">
                 </ul>
             </div>
         </div>
-
-
 
         <div id="home" data-role="page" data-title="Home">
             <div style="margin:0.0em 0.35em 0.0em 0.35em;padding:0px;" data-demo-html="true" >
@@ -455,6 +453,25 @@
                 </div>
             </div>
             <a href="#news" class="app-link-button">Back to News</a>
+        </div>
+
+        <div id="disclaimer" data-role="page" data-title="Disclaimer">
+            <div id="disclaimer-content" class="ui-block-a" style="width:100%">
+                <div class="jqm-block-content">
+                    <div  class="heading" style="">
+                        <h2>Disclaimer</h2>
+                    </div>
+                    <p class="pub-date"></p>
+                    <p class="disclaimer-msg"> 
+                        Please note that the data contained in this application is not necessarily real time nor accurate. 
+                        All stock data are provided by The Jamaica Stock Exchange (JSE). 
+                        Therefore the developers of this application are not liable for any loss or damage from usage of the data provided. 
+                    </p>
+                    <p class="disclaimer-msg">
+                        Please visit <span style="color:#38c">www.jamstockex.com</span> for verification if you have any uncertainty regarding the information provided by the application at any time.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <script id="stocks" type="text/template">

@@ -229,8 +229,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
                 console.log('ajax error');
             };
 
-            this.template = _.template($("#indexdetails").html());
-            this.$el.find("#content-holder").html(this.template);
+            var template = _.template($("#indexdetails").html());
+            this.$el.find("#content-holder").html(template);
 
             model.fetch({success: success, error: error});
             return this;
@@ -360,6 +360,16 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         }
     });
 
+    var DisclaimerView = Backbone.View.extend({
+        initialize: function() {
+        },
+        render: function() {
+            var template = _.template($("#disclaimer").html());
+            this.$el.find("#content-holder").html(template);
+            return this;
+        }
+    });
+
     // Returns the View class
     return{
         HomeView: HomeView,
@@ -368,7 +378,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         NewsView: NewsView,
         NewsItemView: NewsItemView,
         SymbolView: SymbolView,
-        SymbolDetailView: SymbolDetailView
+        SymbolDetailView: SymbolDetailView,
+        DisclaimerView: DisclaimerView
     };
 
 });

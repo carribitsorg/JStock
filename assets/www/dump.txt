@@ -1,6 +1,0 @@
-/* this.homeView.model.fetch().done(function() {
-                        self.homeView.render();
-                        // Programatically changes to the current categories page
-                        $.mobile.changePage("#", {reverse: false, changeHash: false});
-
-                    });*/

@@ -14,13 +14,6 @@
         <link rel="stylesheet" href="css/index.css">
 
         <script type="text/javascript">
-            function getDeviceDimention() {
-                console.log("Device Dimention using PhoneGap");
-                console.log("Width = " + window.innerWidth);
-                console.log("Height = " + window.innerHeight);
-            }
-            //getDeviceDimention();
-
             function toMoney(val) {
                 var parts = val.toString().split(".");
                 return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
@@ -491,7 +484,7 @@
         <script id="stocks-trd" type="text/template">
             <% _.each( stocks, function( stock, id ) { %>
             <tr>
-            <td><%=stock.security.ellipse(25)%></td>
+            <td><%=stock.security.ellipse(32)%></td>
             <td class="alnright"><%=toMoney(stock.volume)%></td>
             <td class="alnright"><%=stock.close_price%></td>
             </tr>

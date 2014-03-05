@@ -191,8 +191,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
                 var template = _.template($("#viewnews").html());
                 self.$el.find("#content-holder").html(template);
 
-                self.$el.find('#news-item #news-heading h2').text(model.data['title']);
-                self.$el.find('#news-item #news-content').text(model.data['desc']);
+                self.$el.find('#news-item #news-heading h2').html(model.data['title']);
+                self.$el.find('#news-item #news-content').html(model.data['desc']);
                 self.$el.find('#news-item .pub-date').text(model.data['full_date']);
             };
 

@@ -221,6 +221,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
                 self.renderStockInformation(model.information);
                 self.renderStockHistory(model.history);
                 self.renderStockComposition(model.composition);
+                self.$el.find("#composition").trigger("click");
             };
 
             var error = function() {
@@ -249,8 +250,6 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find('#performance-list #ytd').text((performance['year_to_date'] || '') + '%');
             this.$el.find('#performance-list #change_name').text((performance['change_name'] || ''));
             this.$el.find('#performance-list #change_value').text((performance['change_value'] || '') + '%');
-
-            this.$el.find("#info").trigger("click");
         },
         renderStockInformation: function(information) {
             this.$el.find('#information-list #value_date').text(information['value_date']);

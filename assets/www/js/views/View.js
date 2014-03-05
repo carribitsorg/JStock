@@ -15,12 +15,13 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find("#content-holder").html(template);
 
             var success = function() {
+                $.mobile.loading("hide");
                 self.renderTradeData(model.symbol);
                 self.renderPerformance(model.symbol);
                 self.changeGraph(model.symbol);
             };
             var error = function() {
-
+                $.mobile.loading("hide");
             };
 
             model.fetch({success: success, error: error});
@@ -74,6 +75,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var model = new ModelModule.Symbol();
 
             var success = function() {
+                $.mobile.loading("hide");
                 for (var i = 0; i < model.symbols.length; i++) {
                     var row = model.symbols[i];
                     var html = _.template($("script#symbol-lookup").html(), {"row": row});
@@ -82,6 +84,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             };
 
             var error = function() {
+                $.mobile.loading("hide");
                 console.log('ajax error');
             };
 
@@ -102,6 +105,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find("#quote-tab").trigger("click");
 
             var success = function() {
+                $.mobile.loading("hide");
                 self.renderQuotes(model.quote);
                 self.renderOrdinaryShares(model.ordinaryShares);
                 self.renderPreferenceShares(model.preferenceShares);
@@ -109,6 +113,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             };
 
             var error = function() {
+                $.mobile.loading("hide");
                 console.log('ajax error');
             };
 
@@ -182,6 +187,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var model = new ModelModule.NewsItem(id);
 
             var success = function() {
+                $.mobile.loading("hide");
                 var template = _.template($("#viewnews").html());
                 self.$el.find("#content-holder").html(template);
 
@@ -191,6 +197,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             };
 
             var error = function() {
+                $.mobile.loading("hide");
                 console.log('ajax error');
             };
 
@@ -209,6 +216,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var model = new ModelModule.MarketIndexFull;
 
             var success = function() {
+                $.mobile.loading("hide");
                 self.renderStockPerformance(model.performance);
                 self.renderStockInformation(model.information);
                 self.renderStockHistory(model.history);
@@ -216,6 +224,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             };
 
             var error = function() {
+                $.mobile.loading("hide");
                 console.log('ajax error');
             };
 
@@ -316,12 +325,14 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             var model = new ModelModule.MarketIndexDetails;
 
             var success = function(json) {
+                $.mobile.loading("hide");
                 var template = _.template($("script#market-details").html(), {"summary": json.data});
                 self.$el.find(".market-details tr").remove();
                 self.$el.find('.market-details tbody:last').append(template);
             };
 
             var error = function() {
+                $.mobile.loading("hide");
                 console.log('ajax error');
             };
 

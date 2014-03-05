@@ -399,3 +399,8 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     margin-right: 30px !important;
     right:3% !important;
 }
+
+.ui-icon-loading {
+    background: url('../images/loader2.gif');
+    background-size: 2.875em 2.875em;
+}

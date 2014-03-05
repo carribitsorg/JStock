@@ -71,23 +71,6 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     });
                     LiveData.start();
                     Monitor.start();
-
-                    var success = function() {
-
-                    };
-
-                    var fail = function() {
-
-                    };
-
-                    /*
-                    WidgetUpdate = {
-                        update: function(data) {
-                            if (Cordova !== undefined)
-                                Cordova.exec(success, fail, "WidgetUpdate", "update", data);
-                        }
-                    };
-                    */
                 },
                 // Backbone.js Routes
                 routes: {
@@ -103,6 +86,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     "symboldetail?:id": "symboldetail"
                 },
                 route: function(route, name, callback) {
+
                     var router = this;
                     if (!callback)
                         callback = this[name];
@@ -113,6 +97,7 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                         $("#quote-navbar").hide();
                         $("#symbol-navbar").hide();
                         this.resetIcons();
+                        $.mobile.loading("show");
                         callback.apply(router, arguments);
                     };
                     return Backbone.Router.prototype.route.call(this, route, name, f);
@@ -213,10 +198,11 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     $('#news-icon').addClass('ui-icon-news-a');
                     var self = this;
                     var success = function() {
+                        $.mobile.loading("hide");
                         self.newsView.render();
                     };
                     var error = function() {
-
+                        $.mobile.loading("hide");
                     };
                     this.newsView.model.fetch({success: success, error: error});
                 },

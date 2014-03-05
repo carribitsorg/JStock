@@ -150,16 +150,6 @@ define(["jquery", "backbone"], function($, Backbone) {
             return this;
         }
     });
-
-    Disclaimer = Backbone.Model.extend({
-        sync: function() {
-            var deferred = $.Deferred();
-            this.trigger("added");
-            deferred.resolve();
-            return deferred;
-        }
-    });
-
     // Returns the Model class
     return {
         DailyMainMarketSummary: DailyMainMarketSummary,
@@ -170,7 +160,6 @@ define(["jquery", "backbone"], function($, Backbone) {
         NewsItem: NewsItem,
         Symbol: Symbol,
         SymbolDetail: SymbolDetail,
-        Disclaimer: Disclaimer
     };
 
 });

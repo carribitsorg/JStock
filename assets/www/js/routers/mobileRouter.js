@@ -53,7 +53,8 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     this.newsView = new AppModules.Views.NewsView({el: "#appview", model: new AppModules.Models.News()});
                     this.newsItemView = new AppModules.Views.NewsItemView({el: "#appview", model: new AppModules.Models.NewsItem()});
                     this.symbolDetailView = new AppModules.Views.SymbolDetailView({el: "#appview", model: new AppModules.Models.SymbolDetail()});
-                    this.disclaimerView = new AppModules.Views.DisclaimerView({el: "#appview", model: new AppModules.Models.Disclaimer()});
+                    this.disclaimerView = new AppModules.Views.DisclaimerView({el: "#appview", model: null});
+                    this.aboutView = new AppModules.Views.AboutView({el: "#appview", model: null});
 
                     this.symbolView = new AppModules.Views.SymbolView({el: "#appview", model: new AppModules.Models.Symbol()});
                     this.symbolView.refresh();
@@ -85,7 +86,8 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
                     "quote": "quote",
                     "indexdetails": "indexdetails",
                     "symboldetail?:id": "symboldetail",
-                    "disclaimer": "disclaimer"
+                    "disclaimer": "disclaimer",
+                    "about":"about"
                 },
                 route: function(route, name, callback) {
 
@@ -284,6 +286,16 @@ define(["jquery", "backbone", "indexjs", "AppModules"],
 
                     $.mobile.loading("hide");
                     this.disclaimerView.render();
+                },
+                about: function() {
+                    $(".jqm-navmenu-panel").panel("close");
+
+                    $('.jqm-navmenu-panel #about-link').on('click', function(e) {
+                        $(".jqm-navmenu-panel").panel("close");
+                    });
+
+                    $.mobile.loading("hide");
+                    this.aboutView.render();
                 }
 
             });

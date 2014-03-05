@@ -370,6 +370,16 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         }
     });
 
+    var AboutView = Backbone.View.extend({
+        initialize: function() {
+        },
+        render: function() {
+            var template = _.template($("#about").html());
+            this.$el.find("#content-holder").html(template);
+            return this;
+        }
+    });
+
     // Returns the View class
     return{
         HomeView: HomeView,
@@ -379,7 +389,8 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         NewsItemView: NewsItemView,
         SymbolView: SymbolView,
         SymbolDetailView: SymbolDetailView,
-        DisclaimerView: DisclaimerView
+        DisclaimerView: DisclaimerView,
+        AboutView: AboutView
     };
 
 });

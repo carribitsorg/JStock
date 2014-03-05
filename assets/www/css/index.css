@@ -323,7 +323,7 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 #news-item{
     margin-bottom: 1.0em;
 }
-#news-item p, .disclaimer-msg {
+#news-item p, .disclaimer-msg, .about-content {
     margin-top: 1.5em !important;
     margin-bottom: 2.5em !important;
     font-size: 1.0em !important;
@@ -333,16 +333,21 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
     padding: 0 1em 0 1em !important;
 }
 
-.disclaimer-msg {
+.disclaimer-msg,.about-content  {
     font-size: 1.0em !important;
     line-height: 2.0 !important;
 }
-#news-item .pub-date{
+#news-item .pub-date, .tiny-text{
     font-family: 'Open Sans', sans-serif;
     font-size: 0.7em !important;
     color: #888687;
     padding: 0 1em 0 1.45em !important;
+    display: block;
 }
+.tiny-text{
+    padding: 0 0 0 0 !important;
+}
+
 
 .app-link-button {
     color: #888687 !important;

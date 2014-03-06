@@ -20,14 +20,14 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         id        = "io.cordova.helloCordova"
         version   = "2.0.0">
-    <name>Hello Cordova</name>
+    <name>Jstock</name>
 
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Jamaica Stock Market Application
     </description>
 
     <author href="http://cordova.io" email="dev@cordova.apache.org">
-        Apache Cordova Team
+        Rivalbits
     </author>
 
     <access origin="*"/>

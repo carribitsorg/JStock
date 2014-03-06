@@ -258,7 +258,7 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
             this.$el.find('#information-list #change_perc').text(information['change_perc'] + '%');
             this.$el.find('#information-list #volume').text(toMoney(information['vol']));
             this.$el.find('#information-list #market_capitalization').text(information['market_capitalization']);
-            this.$el.find('#information-list #change_1969').text(information['change_1969']);
+            this.$el.find('#information-list #change_1969').text(information['change_1969'] + '%');
 
             this.$el.find('#information-list #wtd').text(information['wtd']);
             this.$el.find('#information-list #mtd').text(information['mtd']);

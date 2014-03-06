@@ -57,14 +57,17 @@ define(["jquery", "backbone"], function($, Backbone) {
             return  Config.baseurl + "/mainmarket/dailysummary?date=" + Config.stockDate;
         },
         parse: function(response) {
-            this.advancing = response.stocks.ADVANCING;
-            this.declining = response.stocks.DECLINING;
-            this.tradingFirm = response.stocks.TRADING_FIRM;
-            this.summary1 = response.details.summary1;
-            this.summary2 = response.details.summary2;
-            this.summarydate = response.details.summary_date;
+            if (response.stocks !== null) {
+                this.advancing = response.stocks.ADVANCING;
+                this.declining = response.stocks.DECLINING;
+                this.tradingFirm = response.stocks.TRADING_FIRM;
+                this.summary1 = response.details.summary1;
+                this.summary2 = response.details.summary2;
+                this.summarydate = response.details.summary_date;
 
-            return this;
+                return this;
+            }
+            return null;
         }
     });
 

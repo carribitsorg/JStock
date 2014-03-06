@@ -115,8 +115,8 @@ define([], function() {
             data: {},
             dataType: "json",
             success: function(data) {
-                console.log('TEST > checking market date change...');
                 if (Config.stockDate !== data.stock_date) {
+                    console.log('TEST > checking market date change...');
                     navigator.notification.beep(1);
                     Monitor.reload();
                 }

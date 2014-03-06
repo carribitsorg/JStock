@@ -287,32 +287,32 @@ define(["jquery", "backbone", "models/Model"], function($, Backbone, ModelModule
         },
         // Renders all of the Category models on the UI
         render: function() {
-            var advancing = _.template($("script#stocks").html(), {"stocks": this.model.advancing});
-            var declining = _.template($("script#stocks").html(), {"stocks": this.model.declining});
-            var tradingFirm = _.template($("script#stocks-trd").html(), {"stocks": this.model.tradingFirm});
+           
+                var advancing = _.template($("script#stocks").html(), {"stocks": this.model.advancing});
+                var declining = _.template($("script#stocks").html(), {"stocks": this.model.declining});
+                var tradingFirm = _.template($("script#stocks-trd").html(), {"stocks": this.model.tradingFirm});
 
-            this.template = _.template($("#home").html());
+                this.template = _.template($("#home").html());
 
-            // Renders the view's template inside of the current listview element
-            this.$el.find("#content-holder").html(this.template);
+                // Renders the view's template inside of the current listview element
+                this.$el.find("#content-holder").html(this.template);
 
-            this.$el.find('#stock-adv tbody:last').append(advancing);
-            this.$el.find('#stock-dec tbody:last').append(declining);
-            this.$el.find('#stock-trd tbody:last').append(tradingFirm);
+                this.$el.find('#stock-adv tbody:last').append(advancing);
+                this.$el.find('#stock-dec tbody:last').append(declining);
+                this.$el.find('#stock-trd tbody:last').append(tradingFirm);
 
+                //this.$el.find('#summary-date').append(parseDate(this.model.summarydate));
+                this.$el.find('#graph-img').attr("src", Config.baseurl + '/mainmarket/onemonthgraph?date=' + this.model.summarydate +
+                        '&index_name=' + options.indexName +
+                        '&file=graph.png');
 
-            this.$el.find('#summary-date').append(parseDate(this.model.summarydate));
-            this.$el.find('#graph-img').attr("src", Config.baseurl + '/mainmarket/onemonthgraph?date=' + this.model.summarydate +
-                    '&index_name=' + options.indexName +
-                    '&file=graph.png');
-
-
-            var details = this.getSummary(this.model.summary1);
-            var summary = _.template($("script#market-summary").html(), {"summary": details});
-            this.$el.find('#market-summart1').append(summary);
-
+                var details = this.getSummary(this.model.summary1);
+                var summary = _.template($("script#market-summary").html(), {"summary": details});
+                this.$el.find('#market-summart1').append(summary);
+           
             //WidgetUpdate.update([Config.fullDate, this.model.summary2.replace(/(\r\n|\n|\r)/g," ")]);
             return this;
+
         },
         changeGraph: function() {
             this.$el.find('#graph-img').attr("src", Config.baseurl + '/mainmarket/onemonthgraph?date=' + this.model.summarydate +

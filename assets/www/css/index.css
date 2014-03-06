@@ -337,7 +337,7 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 #news-item p, .disclaimer-msg, .about-content {
     margin-top: 1.5em !important;
     margin-bottom: 2.5em !important;
-    font-size: 1.0em !important;
+    font-size: 0.8em !important;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400 !important;
     line-height: 1.5 !important;
@@ -345,7 +345,6 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 }
 
 .disclaimer-msg,.about-content  {
-    font-size: 1.0em !important;
     line-height: 2.0 !important;
 }
 #news-item .pub-date, .tiny-text{

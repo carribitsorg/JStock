@@ -141,8 +141,8 @@
                 </div>
             </div>
 
-            <div class="ui-block-a" style="width:100%">
-                <div class="jqm-block-content">
+            <div class="ui-block-a" style="width:100%;">
+                <div class="jqm-block-content" style="padding :0.5em 0em 0.5em 0em;">
                     <table class="market-details">
                         <tbody>
                         </tbody>
@@ -500,7 +500,7 @@
         <script id="stocks" type="text/template">
             <% _.each( stocks, function( stock, id ) { %>
             <tr>
-            <td><%=stock.security.ellipse(25)%></td>
+            <td class="security-name"><%=stock.security%></td>
             <td class="alnright"><%=toMoney(stock.volume)%></td>
             <td class="alnright"><%=stock.close_price%></td>
             <td class="alnright"><%=stock.change%></td>
@@ -511,7 +511,7 @@
         <script id="stocks-trd" type="text/template">
             <% _.each( stocks, function( stock, id ) { %>
             <tr>
-            <td><%=stock.security.ellipse(32)%></td>
+            <td class="security-name trd"><%=stock.security%></td>
             <td class="alnright"><%=toMoney(stock.volume)%></td>
             <td class="alnright"><%=stock.close_price%></td>
             </tr>

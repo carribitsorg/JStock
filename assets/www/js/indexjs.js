@@ -109,7 +109,7 @@ define(["jquery"], function($) {
         var search,
                 page = $(this),
                 that = this,
-                searchUrl = ($(this).hasClass("jqm-home")) ? "_search/" : "../_search/",
+                searchUrl = '' //($(this).hasClass("jqm-home")) ? "_search/" : "../_search/",
                 searchContents = $(".jqm-search ul.jqm-list").find("li:not(.ui-collapsible)"),
                 version = $.mobile.version || "dev",
                 words = version.split("-"),
@@ -159,8 +159,8 @@ define(["jquery"], function($) {
             },
             arrowKeyNav: true,
             enterToNav: true,
-            highlight: true,
-            submitTo: searchUrl
+            highlight: true 
+            //submitTo: searchUrl
         }).filterable();
 
         // Initalize search page list and remove collapsibles

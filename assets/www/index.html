@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=1">
         <!--<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9, target-densitydpi=medium-dpi, user-scalable=0" />-->
-        <!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
         <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
         <link rel="shortcut icon" href="../favicon.ico">
         <link rel="stylesheet" href="css/font.css">
@@ -116,7 +116,7 @@
                 <a href="#" class="ui-btn ui-corner-all live-ui-btn">
                     <span style="height:18px;display: inline-block;padding:2px">
                         <span style="display: inline-block; overflow: hidden; height: 14px;">&nbsp;</span>
-                        <span class="live-text" style="height: 12px">Loading Stock Update...</span>
+                        <span class="live-text" style="height: 12px">Loading...</span>
                     </span>
 
                 </a>
@@ -135,7 +135,7 @@
             <div class="ui-block-a" style="width:100%">
                 <div class="jqm-block-content">
                     <div >
-                        <img id="graph-img" src="" alt="Graph" width="100%">
+                        <img id="graph-img" src="" alt="" width="100%">
                     </div>
                     <div style="font-size:0.7em"></div>
                 </div>
@@ -527,7 +527,7 @@
 
         <script id="market-details" type="text/template">
             <tr>
-            <th scope="col">Volume: <i><%=toMoney(summary['vol'])%></i></th>
+            <th scope="col">Vol.: <i><%=toMoney(summary['vol'])%></i></th>
             <th scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
             <th scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.png" alt="" ></th>
             <th scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.png"" alt="" ></th>

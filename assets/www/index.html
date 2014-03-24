@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=1">
         <!--<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9, target-densitydpi=medium-dpi, user-scalable=0" />-->
-        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+        <!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
         <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
         <link rel="shortcut icon" href="../favicon.ico">
         <link rel="stylesheet" href="css/font.css">
@@ -143,7 +143,7 @@
 
             <div class="ui-block-a" style="width:100%;">
                 <div class="jqm-block-content" style="padding :0.5em 0em 0.5em 0em;">
-                    <table class="market-details">
+                    <table class="market-details" style="width:100%">
                         <tbody>
                         </tbody>
                     </table>
@@ -527,10 +527,10 @@
 
         <script id="market-details" type="text/template">
             <tr>
-            <th scope="col">Vol.: <i><%=toMoney(summary['vol'])%></i></th>
-            <th scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
-            <th scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.png" alt="" ></th>
-            <th scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.png"" alt="" ></th>
+            <td scope="col">Vol.: <i><%=toMoney(summary['vol'])%></i></th>
+            <td scope="col">Value: <i><%=toMoney(summary['value'])%></i></th>
+            <td scope="col">Change: <i><%=summary['change']%></i></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_dir']%>.png" alt="" ></th>
+            <td scope="col">% Change: <i><%=summary['change_perc']%></i><img class="stock-direction" height="6px" width="6px" id="" src="images/<%=summary['change_perc_dir']%>.png"" alt="" ></th>
             </tr>
         </script>
 

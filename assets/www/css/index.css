@@ -253,9 +253,8 @@ td.alnright, th.alnright
 img#graph-img { outline: 0; max-width: 100%; height: auto;}
 
 .market-details{
-    font-size: 0.1em !important;
-    font-family:sans-serif;
-    font-weight: 200;
+    font-size: 0.5em !important;
+    font-family: 'Open Sans', sans-serif !important;
 }
 .market-details th
 {
@@ -428,4 +427,8 @@ img#graph-img { outline: 0; max-width: 100%; height: auto;}
 
 .jqm-demos .available:hover, .available:active, .available {
     color: #3388cc  !important;
+}
+
+.ui-page-theme-a{
+    background: #f5f5f5 !important;
 }
